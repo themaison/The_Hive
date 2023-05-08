@@ -1,12 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Numerics;
 using UnityEngine;
 
 public class BeePollinator : Bee
 {
     private int _beePollinatorObjectsCount;
-    private int _nectarСapacity;
+    private int _nectarCapacity;
     private int _NCR; // nectar collection rate (скорость сбора нектара)
 
     public override void Fly()
