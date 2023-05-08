@@ -11,9 +11,11 @@ public class BeeSpawner : MonoBehaviour
     private GameObject BeeWarriorObj;
     [SerializeField]
     private GameObject BeeRecyclerObj;
-    public float spawnInterval = 1f;
+    [SerializeField]
     [Range(1, 10)]
-    public float spawnRadius = 1f;  // радиус, в котором нужно спавнить объекты
+    private float spawnRadius = 1f;  // радиус, в котором нужно спавнить объекты
+    [SerializeField]
+    private float spawnInterval = 1f;
     private float timer = 0f;
 
     // Спавн пчёл-собирателей
@@ -37,24 +39,12 @@ public class BeeSpawner : MonoBehaviour
     // Спавн пчёл-переработчиков
     private void SpawnRecycler()
     {
-        float x = Random.Range(2f, 8f);
-        float y = Random.Range(-3f, 3f);
-        Vector3 spawnPosition = new Vector3(x, y, 0f);
-
-        // проверяем, не находится ли уже объект в радиусе спавна другого объекта
-        /*Collider2D[] colliders = Physics2D.OverlapCircleAll(spawnPosition, 10f);
-        foreach (Collider2D collider in colliders)
-        {
-            if (collider.gameObject.CompareTag("SpawnedObject"))
-            {
-                // если найден объект с тегом "SpawnedObject", то генерируем новую позицию и повторяем проверку
-                SpawnRecycler();
-                return;
-            }
-        }*/
+        float x = Random.Range(3, 8);
+        float y = Random.Range(-3, 3);
+        Vector2 spawnPosition = new Vector2(x, y);
 
         // Создаем новый объект на указанной позиции и с указанным поворотом
-        Instantiate(BeeRecyclerObj, spawnPosition, Quaternion.identity).tag = "SpawnedObject";
+        Instantiate(BeeRecyclerObj, spawnPosition, Quaternion.identity);
     }
 
     void Update()
@@ -65,7 +55,7 @@ public class BeeSpawner : MonoBehaviour
         // Проверяем, прошло ли достаточно времени для спавна нового объекта
         if (timer >= spawnInterval)
         {
-            SpawnWarrior();
+            SpawnRecycler();
 
             // Сбрасываем таймер
             timer = 0f;

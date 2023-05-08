@@ -155,8 +155,8 @@ MonoBehaviour:
   BeePollinatorObj: {fileID: 7885973786165688006, guid: eec7255db063e224e8f99e4614fd0ba4, type: 3}
   BeeWarriorObj: {fileID: 7885973786165688006, guid: eec7255db063e224e8f99e4614fd0ba4, type: 3}
   BeeRecyclerObj: {fileID: 7885973786165688006, guid: eec7255db063e224e8f99e4614fd0ba4, type: 3}
-  spawnInterval: 1
   spawnRadius: 1.5
+  spawnInterval: 1
 --- !u!4 &52189061
 Transform:
   m_ObjectHideFlags: 0
