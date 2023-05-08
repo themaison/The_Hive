@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class WaspSpawn : MonoBehaviour
 {
-    // Start is called before the first frame update
     [SerializeField]
     private GameObject WaspObj;
     public float spawnInterval = 1f;
@@ -14,13 +13,11 @@ public class WaspSpawn : MonoBehaviour
     {
         // Увеличиваем таймер на время, прошедшее с последнего кадра
         timer += Time.deltaTime;
-        
         // Проверяем, прошло ли достаточно времени для спавна нового объекта
         if (timer >= spawnInterval)
         {
             // Создаем новый объект на указанной позиции и с указанным поворотом
             Instantiate(WaspObj, Position(), Quaternion.identity);
-
             // Сбрасываем таймер
             timer = 0f;
         }
