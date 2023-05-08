@@ -31,8 +31,8 @@ public abstract class Flower : StaticObject
 
     private Vector2 GetRandPollenPosition()
     {
-        float randX = Random.Range(-0.25f, 0.25f);
-        float randY = Random.Range(0f, 0.3f);
+        float randX = Random.Range(-0.2f, 0.2f);
+        float randY = Random.Range(0.1f, 0.2f);
         return new Vector2(randX, randY);
     }
 }

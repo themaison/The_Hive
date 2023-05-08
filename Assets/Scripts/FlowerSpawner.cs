@@ -17,7 +17,7 @@ public class FlowerSpawner : MonoBehaviour
     private float spawnDelay;
     private float nextSpawnTime;
     [SerializeField]
-    [Range(1, 100)]
+    [Range(1, 500)]
     private int spawnLimit;
     private int spawnCounter;
     private Vector2 spawnPosition;
