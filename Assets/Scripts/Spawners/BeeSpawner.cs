@@ -6,11 +6,11 @@ public class BeeSpawner : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField]
-    private GameObject BeePollinatorObj;
+    private GameObject _beePollinator;
     [SerializeField]
-    private GameObject BeeWarriorObj;
+    private GameObject _beeWarrior;
     [SerializeField]
-    private GameObject BeeRecyclerObj;
+    private GameObject _beeRecycler;
     [SerializeField]
     [Range(1, 10)]
     private float spawnRadius = 1f;  // радиус, в котором нужно спавнить объекты
@@ -24,7 +24,7 @@ public class BeeSpawner : MonoBehaviour
         Vector3 spawnPosition = transform.position + Random.insideUnitSphere * spawnRadius;
 
         // Создаем новый объект на указанной позиции и с указанным поворотом
-        Instantiate(BeePollinatorObj, spawnPosition, Quaternion.identity);
+        Instantiate(_beePollinator, spawnPosition, Quaternion.identity);
     }
 
     // Спавн пчёл-воинов
@@ -33,7 +33,7 @@ public class BeeSpawner : MonoBehaviour
         Vector3 spawnPosition = transform.position + Random.insideUnitSphere * spawnRadius;
 
         // Создаем новый объект на указанной позиции и с указанным поворотом
-        Instantiate(BeeWarriorObj, spawnPosition, Quaternion.identity);
+        Instantiate(_beeWarrior, spawnPosition, Quaternion.identity);
     }
 
     // Спавн пчёл-переработчиков
@@ -44,7 +44,7 @@ public class BeeSpawner : MonoBehaviour
         Vector2 spawnPosition = new Vector2(x, y);
 
         // Создаем новый объект на указанной позиции и с указанным поворотом
-        Instantiate(BeeRecyclerObj, spawnPosition, Quaternion.identity);
+        Instantiate(_beeRecycler, spawnPosition, Quaternion.identity);
     }
 
     void Update()

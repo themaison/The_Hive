@@ -1,12 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class WaspSpawn : MonoBehaviour
+public class EnemySpawner : MonoBehaviour
 {
     [SerializeField]
-    private GameObject WaspObj;
-    public float spawnInterval = 1f;
+    private GameObject _wasp;
+    [SerializeField]
+    private float _spawnInterval = 1f;
     private float timer = 0f;
 
     private void Spawn()
@@ -14,10 +13,10 @@ public class WaspSpawn : MonoBehaviour
         // Увеличиваем таймер на время, прошедшее с последнего кадра
         timer += Time.deltaTime;
         // Проверяем, прошло ли достаточно времени для спавна нового объекта
-        if (timer >= spawnInterval)
+        if (timer >= _spawnInterval)
         {
             // Создаем новый объект на указанной позиции и с указанным поворотом
-            Instantiate(WaspObj, Position(), Quaternion.identity);
+            Instantiate(_wasp, Position(), Quaternion.identity);
             // Сбрасываем таймер
             timer = 0f;
         }
