@@ -3,7 +3,7 @@ using UnityEngine;
 public class BeeWarrior : Bee
 {
     private Rigidbody2D rb;
-    private int _beeWarriorObjectsCount;
+    private int _beeWarriorCounter;
     private int _damagePoints; // кол-во наносимого урона
 
     public void Bite() // кусать
@@ -11,7 +11,7 @@ public class BeeWarrior : Bee
         // РЕАЛИЗОВАТЬ СУЧКИ!
     }
 
-    public override void Fly()
+    protected override void Fly()
     {
         rb.velocity = Vector2.up;
     }

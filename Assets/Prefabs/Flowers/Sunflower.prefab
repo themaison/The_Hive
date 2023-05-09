@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4378371369679141923}
   m_Layer: 0
   m_Name: Sunflower
-  m_TagString: Untagged
+  m_TagString: flower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 1c63d59ab08a32c41bcd66fd9b155a7f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bd3bb072c586c5d4580e5f4618e63bf3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

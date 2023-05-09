@@ -6,7 +6,7 @@ public class BeeRecycler : Bee
     private int _productionEfficiency;
     private int _NPR; //nectar processing rate (скорость переработки нектара)
 
-    public override void Fly()
+    protected override void Fly()
     {
         // РЕАЛИЗОВАТЬ СУЧКИ!
     }

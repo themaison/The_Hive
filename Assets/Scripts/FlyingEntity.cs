@@ -2,8 +2,8 @@ using UnityEngine;
 
 public abstract class FlyingEntity : MonoBehaviour
 {
-    protected int healthPoints; // очки здоровья
-    protected int flightSpeed; // скорость полета
+    [SerializeField] protected int _healthPoints;
+    [SerializeField] protected float _flightSpeed;
 
-    public abstract void Fly(); // лететь (летают по разному)
+    protected abstract void Fly();
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 public class Hornet : Enemy
 {
 
-    public override void Fly()
+    protected override void Fly()
     {
         // ĞÅÀËÈÇÎÂÀÒÜ ÑÓ×ÊÈ!
     }

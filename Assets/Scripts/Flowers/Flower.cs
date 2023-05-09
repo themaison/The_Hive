@@ -3,6 +3,9 @@ using UnityEngine;
 
 public abstract class Flower : StaticObject
 {
+    [SerializeField]
+    protected GameObject _pollen;
+
     protected static int _flowersCount = 0;
     protected int _maxPollenCount;
     protected int _pollenCount;

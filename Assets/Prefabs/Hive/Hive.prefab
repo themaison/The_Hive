@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 2538268837914374462}
   - component: {fileID: 4665984523751766410}
   - component: {fileID: 2276191886184347448}
-  - component: {fileID: 3990779088236419808}
+  - component: {fileID: 5483070464273340634}
   m_Layer: 0
   m_Name: Hive
-  m_TagString: Untagged
+  m_TagString: hive
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: defefe44ac7f30343a91878b0be26ed5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6ef7fe09555dbef4383e78df96586d10, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -107,7 +107,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &3990779088236419808
+--- !u!61 &5483070464273340634
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -117,7 +117,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

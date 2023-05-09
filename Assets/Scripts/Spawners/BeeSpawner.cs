@@ -11,54 +11,51 @@ public class BeeSpawner : MonoBehaviour
     private GameObject _beeWarrior;
     [SerializeField]
     private GameObject _beeRecycler;
+
     [SerializeField]
     [Range(1, 10)]
     private float spawnRadius = 1f;  // радиус, в котором нужно спавнить объекты
-    [SerializeField]
-    private float spawnInterval = 1f;
-    private float timer = 0f;
+    //[SerializeField]
+    //[Range(1, 10)]
+    //private float _spawnDelay = 1f;
+    //private float _nextSpawnTime = 0f;
 
-    // Спавн пчёл-собирателей
-    private void SpawnPollinator()
+
+    private GameObject SpawnBee(GameObject _bee, Vector2 _spawnPos)
     {
-        Vector3 spawnPosition = transform.position + Random.insideUnitSphere * spawnRadius;
-
-        // Создаем новый объект на указанной позиции и с указанным поворотом
-        Instantiate(_beePollinator, spawnPosition, Quaternion.identity);
+        Bee.beeCounter++;
+        _spawnPos = this.transform.position + Random.insideUnitSphere * spawnRadius;
+        var obj = Instantiate(_beePollinator, _spawnPos, Quaternion.identity);
+        obj.transform.SetParent(this.transform);
+        return obj;
     }
 
-    // Спавн пчёл-воинов
-    private void SpawnWarrior()
+    public void SpawnPollinator()
     {
-        Vector3 spawnPosition = transform.position + Random.insideUnitSphere * spawnRadius;
-
-        // Создаем новый объект на указанной позиции и с указанным поворотом
-        Instantiate(_beeWarrior, spawnPosition, Quaternion.identity);
+        BeePollinator.BeePollinatorCounter++;
+        SpawnBee(_beePollinator, Vector2.zero);
     }
 
-    // Спавн пчёл-переработчиков
-    private void SpawnRecycler()
+    public void SpawnWarrior()
+    {
+        SpawnBee(_beeWarrior, Vector2.zero);
+    }
+
+    public void SpawnRecycler()
     {
         float x = Random.Range(3, 8);
         float y = Random.Range(-3, 3);
-        Vector2 spawnPosition = new Vector2(x, y);
-
-        // Создаем новый объект на указанной позиции и с указанным поворотом
-        Instantiate(_beeRecycler, spawnPosition, Quaternion.identity);
+        Vector2 spawnPos = new Vector2(x, y);
+        SpawnBee(_beeRecycler, spawnPos);
     }
 
     void Update()
     {
-        // Увеличиваем таймер на время, прошедшее с последнего кадра
-        timer += Time.deltaTime;
-
-        // Проверяем, прошло ли достаточно времени для спавна нового объекта
-        if (timer >= spawnInterval)
-        {
-            SpawnRecycler();
-
-            // Сбрасываем таймер
-            timer = 0f;
-        }
+        //_nextSpawnTime += Time.deltaTime;
+        //if (_nextSpawnTime >= _spawnDelay)
+        //{
+        //    SpawnPollinator();
+        //    _nextSpawnTime = 0f;
+        //}
     }
 }

@@ -2,29 +2,25 @@ using UnityEngine;
 
 public class Wasp : Enemy
 {
-    public float amplitude = 1f;  // Амплитуда синусоиды
-    public float frequency = 1f;  // Частота синусоиды
-    public float speed = 1f;      // Скорость движения
-    private Vector3 startPos;
+    [SerializeField]
+    private float _amplitude = 1f;  // Амплитуда синусоиды
+    [SerializeField]
+    private float _frequency = 1f;  // Частота синусоиды
+    private Vector3 _startPos;
 
-    public override void Fly()
+    protected override void Fly()
     {
         if (targetBeeObject != null)
         {
-            // Вычисляем направление к целевому объекту
             Vector3 directionToTarget = (targetBeeObject.transform.position - transform.position).normalized;
-
-            // Вычисляем новую позицию, двигаясь в направлении цели
-            Vector3 newPosition = transform.position + directionToTarget * speed * Time.deltaTime;
-
-            // Применяем новую позицию
+            Vector3 newPosition = transform.position + directionToTarget * _flightSpeed * Time.deltaTime;
             transform.position = newPosition;
         }
         else
         {
             // Вычисляем новую позицию по синусоиде
-            float yOffset = amplitude * Mathf.Sin(frequency * Time.time * speed);
-            Vector3 newPosition = startPos + new Vector3(0f, yOffset, 0f);
+            float yOffset = _amplitude * Mathf.Sin(_frequency * Time.time * _flightSpeed);
+            Vector3 newPosition = _startPos + new Vector3(0f, yOffset, 0f);
 
             // Применяем новую позицию
             transform.position = newPosition;
@@ -34,11 +30,11 @@ public class Wasp : Enemy
     // Start is called before the first frame update
     void Start()
     {
-        startPos = this.transform.position;
+        _startPos = this.transform.position;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Fly();
     }
