@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 8930252424247148536}
   - component: {fileID: 292824932066852987}
   - component: {fileID: 7481412080315190811}
-  - component: {fileID: 7180440589097092226}
   - component: {fileID: -8475815109518176788}
+  - component: {fileID: 3691348997192541566}
   m_Layer: 0
   m_Name: Chamomile
   m_TagString: flower
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 1797267ee68fecb45ad58c6148a12b4e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c5a3d1a5eeca6f74792a0c47460a9528, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -108,7 +108,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &7180440589097092226
+--- !u!114 &-8475815109518176788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7885973786165688006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc7dbea924e5d664d81c02e1f34da892, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultSprite: {fileID: 21300000, guid: c5a3d1a5eeca6f74792a0c47460a9528, type: 3}
+  _enteredSprite: {fileID: 21300000, guid: bc813cb6296623440847641a18c09095, type: 3}
+  _clickedSprite: {fileID: 21300000, guid: bc813cb6296623440847641a18c09095, type: 3}
+  _pollen: {fileID: 4770535055784607705, guid: 3e63b2d2b4fc93b4fabd01f00bd81693, type: 3}
+--- !u!61 &3691348997192541566
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,25 +141,12 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.625, y: 0.625}
+    oldSize: {x: 0.625, y: 0.6640625}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.625, y: 0.625}
+  m_Size: {x: 0.625, y: 0.6640625}
   m_EdgeRadius: 0
---- !u!114 &-8475815109518176788
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7885973786165688006}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc7dbea924e5d664d81c02e1f34da892, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _pollen: {fileID: 4770535055784607705, guid: 3e63b2d2b4fc93b4fabd01f00bd81693, type: 3}

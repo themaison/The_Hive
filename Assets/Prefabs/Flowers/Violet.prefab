@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 7792245924271076882}
   - component: {fileID: 5239201119759910798}
   - component: {fileID: 161574476044318802}
-  - component: {fileID: 1056446204297373334}
   - component: {fileID: 5909205613577786843}
+  - component: {fileID: 328115525337558897}
   m_Layer: 0
   m_Name: Violet
   m_TagString: flower
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 77d043d12c48b4c4a85e2fed557d5687, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4526b359cf8c416408c991c9a347f2ed, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -108,7 +108,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &1056446204297373334
+--- !u!114 &5909205613577786843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042887204422377118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ee2609ccdaf4f84787a04463fb49551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultSprite: {fileID: 21300000, guid: 4526b359cf8c416408c991c9a347f2ed, type: 3}
+  _enteredSprite: {fileID: 21300000, guid: 67dfd216881fcd347a9364e72d2d6434, type: 3}
+  _clickedSprite: {fileID: 21300000, guid: 67dfd216881fcd347a9364e72d2d6434, type: 3}
+  _pollen: {fileID: 4770535055784607705, guid: 3e63b2d2b4fc93b4fabd01f00bd81693, type: 3}
+--- !u!61 &328115525337558897
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,25 +141,12 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.625, y: 0.78125}
+    oldSize: {x: 0.625, y: 0.8203125}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.625, y: 0.78125}
+  m_Size: {x: 0.625, y: 0.8203125}
   m_EdgeRadius: 0
---- !u!114 &5909205613577786843
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1042887204422377118}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ee2609ccdaf4f84787a04463fb49551, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _pollen: {fileID: 4770535055784607705, guid: 3e63b2d2b4fc93b4fabd01f00bd81693, type: 3}

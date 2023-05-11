@@ -3,63 +3,31 @@ using System.Collections;
 
 public class CameraControl : MonoBehaviour
 {
+    [Range(1f, 10f)]
+    [SerializeField] private float _smoothSpeed;
+    [Range(1f, 10f)]
+    [SerializeField] private float _cameraSpeed;
+    private Vector3 _dragOrigin;
+    private Camera _camera;
 
-    private Vector3 mousePos;
-    private Vector3 inmousePos;
-    private Vector3 startPos;
-    private Vector3 newPos;
-
-    private float newX;
-    private float newY;
-
-    [SerializeField]
-    private float _boostMove;
-
-    private Camera mainCamera;
-
-    void Start()
+    private void Start()
     {
-        mainCamera = GetComponent<Camera>();
-        newPos = mainCamera.transform.position;
-
+        _camera = GetComponent<Camera>();
     }
 
-    void Update()
+    private void Update()
     {
-
-        mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition).normalized;
-
         if (Input.GetMouseButtonDown(0))
         {
-            newX = 0f;
-            inmousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition).normalized;
-            startPos = mainCamera.transform.position;
-
+            _dragOrigin = Input.mousePosition;
+            return;
         }
 
-        if (Input.GetMouseButtonUp(0))
-        {
-            inmousePos = new Vector3(0, 0, 0);
+        if (!Input.GetMouseButton(0)) return;
 
-            newX = 0f;
-            newY = 0f;
-            startPos = mainCamera.transform.position;
-        }
+        Vector2 pos = _camera.ScreenToViewportPoint(_dragOrigin - Input.mousePosition);
+        Vector3 move = new Vector3(pos.x * _cameraSpeed, pos.y * _cameraSpeed, 0);
 
-    }
-
-    void FixedUpdate()
-    {
-        if (Input.GetMouseButton(0))
-        {
-            newX = inmousePos.x - mousePos.x;
-            newY = inmousePos.y - mousePos.y;
-
-            newPos.x = startPos.x - newX;
-            newPos.y = startPos.x - newY;
-            mainCamera.transform.position = newPos;
-
-        }
-
+        this.transform.position += move * _smoothSpeed * Time.deltaTime;
     }
 }

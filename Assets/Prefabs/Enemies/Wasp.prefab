@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthPoints: 0
-  _flightSpeed: 2
+  _flightSpeed: 3
   targetBeeObject: {fileID: 8006398001252227384, guid: f455432976e1a7e49a3aa7547a6cb968, type: 3}
   damagePoints: 0
   _amplitude: 1
