@@ -1,61 +1,58 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BeeSpawner : MonoBehaviour
 {
-    // Start is called before the first frame update
-    [SerializeField]
-    private GameObject _beePollinator;
-    [SerializeField]
-    private GameObject _beeWarrior;
-    [SerializeField]
-    private GameObject _beeRecycler;
+    [SerializeField] private Bee _pollinator;
+    [SerializeField] private Bee _warrior;
+    [SerializeField] private Bee _recycler;
 
-    [SerializeField]
     [Range(1, 10)]
-    private float spawnRadius = 1f;  // радиус, в котором нужно спавнить объекты
-    //[SerializeField]
-    //[Range(1, 10)]
-    //private float _spawnDelay = 1f;
-    //private float _nextSpawnTime = 0f;
+    [SerializeField] private float _spawnRadius = 1f;
 
 
-    private GameObject SpawnBee(GameObject _bee, Vector2 _spawnPos)
+    private Bee SpawnBee(Bee _bee, Vector2 _spawnPos)
     {
-        Bee.beeCounter++;
-        _spawnPos = this.transform.position + Random.insideUnitSphere * spawnRadius;
-        var obj = Instantiate(_beePollinator, _spawnPos, Quaternion.identity);
-        obj.transform.SetParent(this.transform);
-        return obj;
+        Bee.BeeCounter += 1;
+
+        _spawnPos = this.transform.position + Random.insideUnitSphere * _spawnRadius;
+        Bee bee = Instantiate(_bee, _spawnPos, Quaternion.identity);
+        bee.transform.SetParent(this.transform);
+
+        return bee;
     }
 
     public void SpawnPollinator()
     {
-        BeePollinator.BeePollinatorCounter++;
-        SpawnBee(_beePollinator, Vector2.zero);
+        BeePollinator.BeePollinatorCounter += 1;
+
+        SpawnBee(_pollinator, Vector2.zero);
     }
 
     public void SpawnWarrior()
     {
-        SpawnBee(_beeWarrior, Vector2.zero);
+        BeeWarrior.BeeWarriorCounter += 1;
+
+        SpawnBee(_warrior, Vector2.zero);
     }
 
     public void SpawnRecycler()
     {
+        BeeRecycler.BeeRecyclerCounter += 1;
+
         float x = Random.Range(3, 8);
         float y = Random.Range(-3, 3);
         Vector2 spawnPos = new Vector2(x, y);
-        SpawnBee(_beeRecycler, spawnPos);
+
+        SpawnBee(_recycler, spawnPos);
     }
 
     void Update()
     {
-        //_nextSpawnTime += Time.deltaTime;
-        //if (_nextSpawnTime >= _spawnDelay)
-        //{
-        //    SpawnPollinator();
-        //    _nextSpawnTime = 0f;
-        //}
+        
+    }
+
+    private void Start()
+    {
+
     }
 }

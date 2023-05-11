@@ -3,9 +3,8 @@ using UnityEngine;
 public abstract class Enemy : FlyingEntity
 {
     [SerializeField]
-    protected GameObject targetBeeObject;
-    [SerializeField]
-    protected int damagePoints; // кол-во наносимого урона
+    protected int _damagePoints; // кол-во наносимого урона\
+    protected GameObject _target;
 
     public virtual void Bite()
     {

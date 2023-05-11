@@ -2,11 +2,15 @@ using UnityEngine;
 
 public abstract class Bee : FlyingEntity
 {
-    public static int beeCounter = 0; // кол-во объектов "Bee"
-    [SerializeField]
-    protected int satietyPoints; // очки сытости
-    [SerializeField]
-    protected int HRR; // health regeneration rate (скорость восстановления здоровья)
+    protected static int _beeCounter = 0; // кол-во объектов "Bee"
+    public static int BeeCounter
+    {
+        get { return _beeCounter; }
+        set { _beeCounter = value; }
+    }
+
+    [SerializeField] protected int satietyPoints; // очки сытости
+    [SerializeField] protected int HRR; // health regeneration rate (скорость восстановления здоровья)
 
     public virtual void Eat() // кушают по формуле
     {

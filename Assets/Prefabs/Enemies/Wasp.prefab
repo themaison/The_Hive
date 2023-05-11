@@ -108,8 +108,6 @@ MonoBehaviour:
   _flightSpeed: 3
   targetBeeObject: {fileID: 8006398001252227384, guid: f455432976e1a7e49a3aa7547a6cb968, type: 3}
   damagePoints: 0
-  _amplitude: 1
-  _frequency: 1
 --- !u!50 &-4250248868711300511
 Rigidbody2D:
   serializedVersion: 4

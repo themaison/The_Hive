@@ -4,21 +4,19 @@ using UnityEngine;
 public class BeePollinator : Bee
 {
     private static int _beePollinatorCounter;
-    [SerializeField]
-    private int _nectarCapacity;
-    [SerializeField]
-    private int _NCR; // nectar collection rate
-    private SpriteRenderer _sr;
-    private Rigidbody2D _rb;
-
     public static int BeePollinatorCounter
     {
         get { return _beePollinatorCounter; }
-        set { _beePollinatorCounter = value;}
+        set { _beePollinatorCounter = value; }
     }
 
-    private GameObject _flowerSpawner;
-    private GameObject _nearestFlower;
+    [SerializeField] private int _nectarCapacity;
+    [SerializeField] private int _NCR; // nectar collection rate
+
+    private SpriteRenderer _sr;
+    private Rigidbody2D _rb;
+
+    private Flower _nearestFlower;
 
     private bool _isCollecting;
     private float _baseSpeed;
@@ -28,12 +26,10 @@ public class BeePollinator : Bee
     {
         _rb = GetComponent<Rigidbody2D>();
         _sr = GetComponent<SpriteRenderer>();
-        _flowerSpawner = GameObject.Find("FlowerSpawner");
         _baseSpeed = _flightSpeed;
         _isCollecting = false;
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {   
         if (_isCollecting == false)
@@ -50,7 +46,7 @@ public class BeePollinator : Bee
             if (_nearestFlower.gameObject.tag == "flower")
             {
                 _sr.flipX = _nearestFlower.transform.position.x >= this.transform.position.x;
-                this.transform.position = Vector2.MoveTowards(transform.position, _nearestFlower.transform.position, base._flightSpeed * Time.deltaTime);
+                this.transform.position = Vector2.MoveTowards(transform.position, _nearestFlower.transform.position, _flightSpeed * Time.deltaTime);
             }
 
             if (this.transform.position.Equals(_nearestFlower.transform.position))
@@ -75,35 +71,24 @@ public class BeePollinator : Bee
 
     private void FindNearestFlower()
     {
-        Transform[] flowersTransfroms = _flowerSpawner.GetComponentsInChildren<Transform>();
+        Flower[] flowers = FindObjectsOfType<Flower>();
 
         float minDistance = Mathf.Infinity;
-        foreach (Transform flowerT in flowersTransfroms)
+        foreach (Flower f in flowers)
         {
-            float distance = Vector2.Distance(this.transform.position, flowerT.position);
-            if (distance < minDistance && flowerT.gameObject.tag == "flower")
+            float distance = Vector2.Distance(this.transform.position, f.transform.position);
+            if (distance < minDistance && f.gameObject.tag == "flower")
             {
                 minDistance = distance;
-                _nearestFlower = flowerT.gameObject;
+                _nearestFlower = f;
             }
         }
     }
 
-    //IEnumerator CollectNectar(GameObject _flower)
-    //{
-    //    _flower.gameObject.tag = "flower_busy";
-
-    //    yield return new WaitForSeconds(_NCR);
-    //    //Collecting
-
-    //    Destroy(_flower);
-    //    _flower = null;
-    //}
-
-    private void CollectNectar(GameObject _flower)
+    private void CollectNectar(Flower _flower)
     {
         //Collecting
-        Destroy(_flower);
+        Destroy(_flower.gameObject);
         _flower = null;
     }
 }

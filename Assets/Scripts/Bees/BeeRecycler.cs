@@ -2,9 +2,15 @@ using UnityEngine;
 
 public class BeeRecycler : Bee
 {
-    private int _beeRecyclerObjectsCount;
-    private int _productionEfficiency;
-    private int _NPR; //nectar processing rate (скорость переработки нектара)
+    private  static int _beeRecyclerCounter;
+    public static int BeeRecyclerCounter
+    {
+        get { return _beeRecyclerCounter; }
+        set { _beeRecyclerCounter = value; }
+    }
+
+    [SerializeField] private int _productionEfficiency;
+    [SerializeField] private int _NPR; //nectar processing rate (скорость переработки нектара)
 
     protected override void Fly()
     {

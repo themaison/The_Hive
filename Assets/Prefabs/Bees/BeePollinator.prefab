@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthPoints: 0
-  _flightSpeed: 3
+  _flightSpeed: 2
   satietyPoints: 0
   HRR: 0
   _nectarCapacity: 5
