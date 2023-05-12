@@ -10,7 +10,7 @@ public abstract class Flower : StaticObject
     protected int _maxPollenCount;
     protected int _pollenCount;
 
-    public int FlowersCount
+    public static int FlowersCount
     {
         get { return _flowersCount; }
         set { _flowersCount = value; }

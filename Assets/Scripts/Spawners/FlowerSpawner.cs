@@ -4,9 +4,9 @@ using UnityEngine;
 public class FlowerSpawner : MonoBehaviour
 {
     [SerializeField] private Flower[] _flowers;
-    [Range(1, 50)]
-    [SerializeField] private int _startFlowerCount;
     [Range(1, 100)]
+    [SerializeField] private int _startFlowerCount;
+    [Range(1, 500)]
     [SerializeField] private int _spawnLimit;
 
     [Range(1f, 10f)]
@@ -18,7 +18,6 @@ public class FlowerSpawner : MonoBehaviour
 
     private Vector2 _spawnPosition;
     private float _nextSpawnTime = 0;
-    private int _spawnCounter;
 
 
     private int[] placementProbability = { 0, 1, 0, 0, 0, 1, 1, 0, 2, 0 };
@@ -35,20 +34,19 @@ public class FlowerSpawner : MonoBehaviour
         for (int i = 0; i < _startFlowerCount;++i)
             SpawnFlower();
 
-        _spawnCounter = _startFlowerCount;
+        Flower.FlowersCount = _startFlowerCount;
     }
 
 
     void Update()
     {
-        if (_spawnCounter < _spawnLimit)
+        if (Flower.FlowersCount < _spawnLimit)
         {
-            //spawner timer
             _nextSpawnTime += Time.deltaTime;
             if (_nextSpawnTime >= _spawnDelay)
             {
                 SpawnFlower();
-                _spawnCounter++;
+                Flower.FlowersCount += 1;
                 _nextSpawnTime = 0f;
             }
         }

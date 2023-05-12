@@ -25,7 +25,7 @@ public class BeePollinator : Bee
 
     private float _baseSpeed;
     private float _collectingTime = 0f;
-    private int _nectar—ollectedCounter = 0;
+    private int _nectarOccupancy = 0;
     private Vector2 _targetPos;
 
     private void Start()
@@ -35,7 +35,7 @@ public class BeePollinator : Bee
         _hive = FindObjectOfType<Hive>();
 
         _baseSpeed = _flightSpeed;
-        _nectar—ollectedCounter = 0;
+        _nectarOccupancy = 0;
 
         _isCollecting = false;
         _isCollected = false;
@@ -43,28 +43,32 @@ public class BeePollinator : Bee
 
     private void Update()
     {
-        if (_isCollecting == false && _nearestFlower == null)
+        if (_isCollecting == false &&  _isCollected == false)
+        {
             FindNearestFlower();
+        }
 
-        else if (transform.position.Equals(_nearestFlower.transform.position))
+        if (_nearestFlower != null && transform.position.Equals(_nearestFlower.transform.position))
+        {
             CollectNectar(_nearestFlower);
+        }
 
         Fly();
-
         SpriteController();
     }
 
     protected override void Fly()
     {
-        if (_nearestFlower != null && _nearestFlower.gameObject.tag == "flower")
+        if (_nearestFlower != null && _isCollected == false && _isCollecting == false && _nearestFlower.gameObject.tag == "flower")
         {
             _targetPos = _nearestFlower.transform.position;
         }
-        else
+        else if (_nearestFlower == null)
         {
             _targetPos = _hive.transform.position;
             _isCollected = true;
         }
+
         transform.position = Vector2.MoveTowards(transform.position, _targetPos, _flightSpeed * Time.deltaTime);
     }
 
@@ -76,7 +80,7 @@ public class BeePollinator : Bee
         foreach (Flower flower in flowers)
         {
             float distance = Vector2.Distance(transform.position, flower.transform.position);
-            int futureNectar = _nectar—ollectedCounter + flower.GetComponent<Flower>().PollenCount;
+            int futureNectar = _nectarOccupancy + flower.GetComponent<Flower>().PollenCount;
 
             if (distance < minDistance && flower.gameObject.tag == "flower" && futureNectar <= _nectarCapacity)
             {
@@ -88,9 +92,9 @@ public class BeePollinator : Bee
 
     private void CollectNectar(Flower _flower)
     {
-        _isCollecting = true;
-        _flightSpeed = 0;
         _flower.gameObject.tag = "flower_busy";
+        _isCollecting = true;
+       // _flightSpeed = 0;
 
         if (_collectingTime < _NCR)
         {
@@ -99,21 +103,22 @@ public class BeePollinator : Bee
 
         else
         {
-            _nectar—ollectedCounter += _flower.GetComponent<Flower>().PollenCount;
-            Debug.Log(_nectar—ollectedCounter);
+            _nectarOccupancy += _flower.GetComponent<Flower>().PollenCount;
+            Debug.Log(_nectarOccupancy);
 
             Destroy(_flower.gameObject);
             _flower = null;
+            Flower.FlowersCount -= 1;
 
             _collectingTime = 0;
+            //_flightSpeed = _baseSpeed;
             _isCollecting = false;
-            _flightSpeed = _baseSpeed;
         }
     }
 
     private void SpriteController()
     {
-        if (_nectar—ollectedCounter > 0)
+        if (_nectarOccupancy > 0)
             _sr.sprite = _pollinatedSprite;
         else 
             _sr.sprite = _defaultSprite;
@@ -123,10 +128,10 @@ public class BeePollinator : Bee
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "hive" && _nectar—ollectedCounter>0)
+        if (collision.gameObject.tag == "hive" && _nectarOccupancy>0)
         {
-            collision.gameObject.GetComponent<Hive>().AddNectar(_nectar—ollectedCounter);
-            _nectar—ollectedCounter = 0;
+            collision.gameObject.GetComponent<Hive>().AddNectar(_nectarOccupancy);
+            _nectarOccupancy = 0;
             _isCollected = false;
         }
     }

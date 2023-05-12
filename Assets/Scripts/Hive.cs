@@ -66,7 +66,6 @@ public class Hive : StaticObject
 
     public override void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("Open Hive Menu");
         if (_integrityPoints > 0)
         {
             _integrityStateSlider.value = (float)_integrityPoints / _maxIntegrity;
