@@ -26,7 +26,7 @@ public class CameraControl : MonoBehaviour
 
         if (!Input.GetMouseButton(0))
         {
-            transform.position = Vector3.SmoothDamp(transform.position, transform.position + _velocity, ref _velocity, _smoothSpeed/100);
+            transform.position = Vector3.SmoothDamp(transform.position, transform.position + _velocity, ref _velocity, _smoothSpeed/10);
             return;
         }
 

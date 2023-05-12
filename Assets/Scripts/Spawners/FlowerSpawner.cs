@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class FlowerSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject[] _flowers;
+    [SerializeField] private Flower[] _flowers;
     [Range(1, 50)]
     [SerializeField] private int _startFlowerCount;
     [Range(1, 100)]
@@ -17,21 +17,41 @@ public class FlowerSpawner : MonoBehaviour
     [SerializeField] private float _spawnDelay;
 
     private Vector2 _spawnPosition;
-    private float _nextSpawnTime;
+    private float _nextSpawnTime = 0;
     private int _spawnCounter;
 
 
     private int[] placementProbability = { 0, 1, 0, 0, 0, 1, 1, 0, 2, 0 };
 
-    void Start()
+    private void Awake()
     {
+        if (_spawnLimit < _startFlowerCount)
+            _startFlowerCount = _spawnLimit;
+    }
+
+    private void Start()
+    {
+
         for (int i = 0; i < _startFlowerCount;++i)
-        {
             SpawnFlower();
-        }
 
         _spawnCounter = _startFlowerCount;
-        _nextSpawnTime = 0;
+    }
+
+
+    void Update()
+    {
+        if (_spawnCounter < _spawnLimit)
+        {
+            //spawner timer
+            _nextSpawnTime += Time.deltaTime;
+            if (_nextSpawnTime >= _spawnDelay)
+            {
+                SpawnFlower();
+                _spawnCounter++;
+                _nextSpawnTime = 0f;
+            }
+        }
     }
 
     private void SpawnFlower()
@@ -39,36 +59,18 @@ public class FlowerSpawner : MonoBehaviour
         bool isRing = false;
         do
         {
-            _spawnPosition = GetRandSpawnPosition();
+            //renerate random position
+            _spawnPosition = transform.position + Random.insideUnitSphere * _maxSpawnRadius;
             isRing = Mathf.Pow(_spawnPosition.x, 2) + Mathf.Pow(_spawnPosition.y, 2) > Mathf.Pow(_forbiddenSpawnRadius, 2);
 
         } while (isRing == false);
 
-        GameObject randFlower = GetRandFlowerObject();
+        Flower randFlower = GetRandFlower();
         var obj = Instantiate(randFlower, _spawnPosition, Quaternion.identity);
-        obj.transform.SetParent(this.transform);
+        obj.transform.SetParent(transform);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        _nextSpawnTime += Time.deltaTime;
-        if (_nextSpawnTime >= _spawnDelay)
-        {
-            SpawnFlower();
-            _spawnCounter++;
-            _nextSpawnTime = 0f;
-        }
-    }
-
-    private Vector2 GetRandSpawnPosition()
-    {
-        float randX = Random.Range(-_maxSpawnRadius, _maxSpawnRadius + 1);
-        float randY = Random.Range(-_maxSpawnRadius, _maxSpawnRadius + 1);
-        return new Vector2(randX, randY);
-    }
-
-    private GameObject GetRandFlowerObject()
+    private Flower GetRandFlower()
     {
         int randInx = placementProbability[Random.Range(0, placementProbability.Length)];
         return _flowers[randInx];

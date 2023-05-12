@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4665984523751766410}
   - component: {fileID: 7902886442859103625}
   - component: {fileID: 2276191886184347448}
-  - component: {fileID: 2139245399274940977}
+  - component: {fileID: 533212271317391165}
   m_Layer: 0
   m_Name: Hive
   m_TagString: hive
@@ -104,7 +104,11 @@ MonoBehaviour:
   _clickedSprite: {fileID: 21300000, guid: 1855f0c3b3bc9384e95d9c6ac53a8261, type: 3}
   _integrityStateSlider: {fileID: 0}
   _integrityText: {fileID: 0}
-  _integrity: 100
+  _upgradeMenuUI: {fileID: 0}
+  _maxIntegrity: 0
+  _beeCapacity: 20
+  _nectarCapacity: 100
+  _honeyCapacity: 500
 --- !u!50 &2276191886184347448
 Rigidbody2D:
   serializedVersion: 4
@@ -126,7 +130,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &2139245399274940977
+--- !u!61 &533212271317391165
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,12 +147,12 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.625, y: 0.64453125}
+    oldSize: {x: 1.25, y: 1.2890625}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.625, y: 0.64453125}
+  m_Size: {x: 1.19, y: 1.2890625}
   m_EdgeRadius: 0

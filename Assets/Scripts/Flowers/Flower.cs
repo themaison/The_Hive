@@ -16,6 +16,12 @@ public abstract class Flower : StaticObject
         set { _flowersCount = value; }
     }
 
+    public int PollenCount
+    {
+        get { return _pollenCount; }
+        set { _pollenCount = value; }
+    }
+
     protected void SpawnPollens(GameObject pollen)
     {
         _pollenCount = GetRandPollenCount();

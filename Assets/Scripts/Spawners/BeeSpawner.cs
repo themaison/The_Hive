@@ -9,14 +9,25 @@ public class BeeSpawner : MonoBehaviour
     [Range(1, 10)]
     [SerializeField] private float _spawnRadius = 1f;
 
+    private Vector2 _spawnPos;
 
-    private Bee SpawnBee(Bee _bee, Vector2 _spawnPos)
+    private void Update()
+    {
+
+    }
+
+    private void Start()
+    {
+
+    }
+
+    private Bee SpawnBee(Bee _bee)
     {
         Bee.BeeCounter += 1;
 
         _spawnPos = this.transform.position + Random.insideUnitSphere * _spawnRadius;
         Bee bee = Instantiate(_bee, _spawnPos, Quaternion.identity);
-        bee.transform.SetParent(this.transform);
+        bee.transform.SetParent(transform);
 
         return bee;
     }
@@ -25,34 +36,20 @@ public class BeeSpawner : MonoBehaviour
     {
         BeePollinator.BeePollinatorCounter += 1;
 
-        SpawnBee(_pollinator, Vector2.zero);
+        SpawnBee(_pollinator);
     }
 
     public void SpawnWarrior()
     {
         BeeWarrior.BeeWarriorCounter += 1;
 
-        SpawnBee(_warrior, Vector2.zero);
+        SpawnBee(_warrior);
     }
 
     public void SpawnRecycler()
     {
         BeeRecycler.BeeRecyclerCounter += 1;
 
-        float x = Random.Range(3, 8);
-        float y = Random.Range(-3, 3);
-        Vector2 spawnPos = new Vector2(x, y);
-
-        SpawnBee(_recycler, spawnPos);
-    }
-
-    void Update()
-    {
-        
-    }
-
-    private void Start()
-    {
-
+        SpawnBee(_recycler);
     }
 }
