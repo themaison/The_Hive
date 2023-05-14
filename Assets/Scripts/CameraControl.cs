@@ -1,38 +1,24 @@
 using UnityEngine;
 using System.Collections;
+using Unity.VisualScripting;
 
 public class CameraControl : MonoBehaviour
 {
-    [Range(0.1f, 10f)]
-    [SerializeField] private float _smoothSpeed = 0.3f;
-    [Range(1f, 10f)]
-    [SerializeField] private float _cameraSpeed;
-    private Vector3 _velocity;
-    private Vector3 _dragOrigin;
-    private Camera _camera;
+    [SerializeField] private float _zoomSpeed;
+    private Camera _mainCamera;
+    private float _minSize = 2.0f;
+    private float _maxSize = 7.7f;
 
     private void Start()
     {
-        _camera = GetComponent<Camera>();
+        _mainCamera = GetComponent<Camera>();
+        _mainCamera.orthographicSize = 5;
     }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            _dragOrigin = Input.mousePosition;
-            return;
-        }
-
-        if (!Input.GetMouseButton(0))
-        {
-            transform.position = Vector3.SmoothDamp(transform.position, transform.position + _velocity, ref _velocity, _smoothSpeed/10);
-            return;
-        }
-
-        Vector2 pos = _camera.ScreenToViewportPoint(_dragOrigin - Input.mousePosition);
-        Vector3 move = new Vector3(pos.x * _cameraSpeed, pos.y * _cameraSpeed, 0);
-
-        this.transform.position += move * _smoothSpeed * Time.deltaTime;
+        float currentSize = _mainCamera.orthographicSize;
+        currentSize -= Input.GetAxis("Mouse ScrollWheel") * _zoomSpeed;
+        _mainCamera.orthographicSize = Mathf.Clamp(currentSize, _minSize, _maxSize);
     }
 }

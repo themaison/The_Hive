@@ -11,12 +11,13 @@ public class FlowerSpawner : MonoBehaviour
 
     [Range(1f, 10f)]
     [SerializeField] private float _forbiddenSpawnRadius;
-    [Range(2f, 15f)]
-    [SerializeField] private float _maxSpawnRadius;
+    [Range(1f, 20f)]
+    [SerializeField] private float _maxSpawnRadiusX;
+    [Range(1f, 20f)]
+    [SerializeField] private float _maxSpawnRadiusY;
     [Range(0f, 10f)]
     [SerializeField] private float _spawnDelay;
 
-    private Vector2 _spawnPosition;
     private float _nextSpawnTime = 0;
 
 
@@ -46,7 +47,6 @@ public class FlowerSpawner : MonoBehaviour
             if (_nextSpawnTime >= _spawnDelay)
             {
                 SpawnFlower();
-                Flower.FlowersCount += 1;
                 _nextSpawnTime = 0f;
             }
         }
@@ -54,23 +54,29 @@ public class FlowerSpawner : MonoBehaviour
 
     private void SpawnFlower()
     {
-        bool isRing = false;
-        do
-        {
-            //renerate random position
-            _spawnPosition = transform.position + Random.insideUnitSphere * _maxSpawnRadius;
-            isRing = Mathf.Pow(_spawnPosition.x, 2) + Mathf.Pow(_spawnPosition.y, 2) > Mathf.Pow(_forbiddenSpawnRadius, 2);
-
-        } while (isRing == false);
-
-        Flower randFlower = GetRandFlower();
-        var obj = Instantiate(randFlower, _spawnPosition, Quaternion.identity);
+        Flower flower = GetRandFlower();
+        Vector2 _spawnPosition = RandomElipse(this.transform.position, _maxSpawnRadiusX, _maxSpawnRadiusY);
+        
+        var obj = Instantiate(flower, _spawnPosition, Quaternion.identity);
         obj.transform.SetParent(transform);
+        Flower.FlowersCount += 1;
     }
 
     private Flower GetRandFlower()
     {
         int randInx = placementProbability[Random.Range(0, placementProbability.Length)];
         return _flowers[randInx];
+    }
+
+    Vector2 RandomElipse(Vector2 center, float radiusX, float radiusY)
+    {
+        float ang = Random.value * 360;
+        float randX = Random.Range(_forbiddenSpawnRadius, radiusX);
+        float randY = Random.Range(_forbiddenSpawnRadius, radiusY);
+
+        Vector2 pos;
+        pos.x = center.x + randX * Mathf.Sin(ang * Mathf.Deg2Rad);
+        pos.y = center.y + randY * Mathf.Cos(ang * Mathf.Deg2Rad);
+        return pos;
     }
 }

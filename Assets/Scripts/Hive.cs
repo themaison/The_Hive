@@ -5,24 +5,23 @@ using UnityEngine.UI;
 
 public class Hive : StaticObject
 {
-    [SerializeField] private Slider _integrityStateSlider;
-    [SerializeField] private Text _integrityText;
+    //[SerializeField] private Slider _integrityStateSlider;
+    //[SerializeField] private Text _integrityText;
     [SerializeField] private GameObject _upgradeMenuUI;
 
     [Range(1, 100)]
     [SerializeField] private int _maxIntegrity;
-
-    private SpriteRenderer _spriteRenderer;
-
-    private int _integrityPoints; // целостность улья
     [SerializeField] private int _beeCapacity; // вместимость пчел
     [SerializeField] private int _nectarCapacity; // вместимость нектара
     [SerializeField] private int _honeyCapacity; // вместимость меда
 
-    private int _hiveLevel;
+    private SpriteRenderer _spriteRenderer;
+
+    private int _integrityPoints; // целостность улья
     private int _nectarOccupancy = 0;
     private int _honeyOccupancy = 0;
     private int _beeOccupancy = 0;
+    private int _hiveLevel;
 
 
     // Start is called before the first frame update
@@ -32,8 +31,8 @@ public class Hive : StaticObject
 
         _integrityPoints = _maxIntegrity;
         _spriteRenderer = GetComponent<SpriteRenderer>();
-        _integrityText.text = _maxIntegrity.ToString();
-        _integrityStateSlider.value = _maxIntegrity;
+        //_integrityText.text = _maxIntegrity.ToString();
+        //_integrityStateSlider.value = _maxIntegrity;
     }
 
     // Update is called once per frame
@@ -68,8 +67,8 @@ public class Hive : StaticObject
     {
         if (_integrityPoints > 0)
         {
-            _integrityStateSlider.value = (float)_integrityPoints / _maxIntegrity;
-            _integrityText.text = _integrityPoints.ToString();
+            //_integrityStateSlider.value = (float)_integrityPoints / _maxIntegrity;
+            //_integrityText.text = _integrityPoints.ToString();
             SetHiveMenu();
         }
         _spriteRenderer.sprite = _clickedSprite;

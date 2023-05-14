@@ -23,7 +23,6 @@ public class BeePollinator : Bee
     private bool _isCollecting;
     private bool _isCollected;
 
-    private float _baseSpeed;
     private float _collectingTime = 0f;
     private int _nectarOccupancy = 0;
     private Vector2 _targetPos;
@@ -34,14 +33,11 @@ public class BeePollinator : Bee
         _sr = GetComponent<SpriteRenderer>();
         _hive = FindObjectOfType<Hive>();
 
-        _baseSpeed = _flightSpeed;
-        _nectarOccupancy = 0;
-
         _isCollecting = false;
         _isCollected = false;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (_isCollecting == false &&  _isCollected == false)
         {
@@ -94,7 +90,6 @@ public class BeePollinator : Bee
     {
         _flower.gameObject.tag = "flower_busy";
         _isCollecting = true;
-       // _flightSpeed = 0;
 
         if (_collectingTime < _NCR)
         {
@@ -111,7 +106,6 @@ public class BeePollinator : Bee
             Flower.FlowersCount -= 1;
 
             _collectingTime = 0;
-            //_flightSpeed = _baseSpeed;
             _isCollecting = false;
         }
     }

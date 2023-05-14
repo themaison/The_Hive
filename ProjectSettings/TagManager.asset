@@ -7,11 +7,9 @@ TagManager:
   - enemy
   - bee
   - hive
-  - chamomile
-  - sunflower
-  - violet
   - flower
   - flower_busy
+  - tree
   layers:
   - Default
   - TransparentFX
