@@ -10,26 +10,24 @@ public class BeeRecycler : Bee
     }
 
     [SerializeField] private int _productionEfficiency;
-    [SerializeField] private int _NPR; //nectar processing rate (скорость переработки нектара)
+    [SerializeField] private int _NPR; //nectar processing rate
 
     protected override void Fly()
     {
-        // РЕАЛИЗОВАТЬ СУЧКИ!
+        // soon
     }
 
     public void ProcessNectar()
     {
-        // РЕАЛИЗОВАТЬ СУЧКИ!
+        // soon
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        Destroy(this.gameObject, 3);
+        
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         
     }

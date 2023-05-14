@@ -3,10 +3,8 @@ using UnityEngine.EventSystems;
 
 public class Violet : Flower
 {
-
     private SpriteRenderer _spriteRenderer;
 
-    // Start is called before the first frame update
     private void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -14,8 +12,7 @@ public class Violet : Flower
         SpawnPollens(_pollen);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
 
     }

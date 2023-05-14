@@ -520,7 +520,7 @@ GameObject:
   m_Layer: 0
   m_Name: BeeSpawner
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1508,7 +1508,7 @@ GameObject:
   m_Layer: 0
   m_Name: FlowerSpawner
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1530,10 +1530,10 @@ MonoBehaviour:
   - {fileID: 4378371369679141923, guid: c7ba2e9d6f15ad34983627143bf81b4b, type: 3}
   _startFlowerCount: 25
   _spawnLimit: 100
-  _forbiddenSpawnRadius: 3
-  _maxSpawnRadiusX: 12
-  _maxSpawnRadiusY: 8
-  _spawnDelay: 0.1
+  _forbiddenSpawnRadius: 2.5
+  _SpawnRadiusX: 14
+  _SpawnRadiusY: 8
+  _spawnDelay: 1
 --- !u!4 &493805444
 Transform:
   m_ObjectHideFlags: 0
@@ -1542,7 +1542,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 493805442}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2073,8 +2073,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 637ff721feeeb834997569c2bfe15934, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wasp: {fileID: 8339045346598863340, guid: f4814613917565643816e3a629149ca0, type: 3}
-  _spawnInterval: 1
+  _wasp: {fileID: -6811798146704725045, guid: f4814613917565643816e3a629149ca0, type: 3}
+  _hornet: {fileID: 54563566628176786, guid: 8a9ab225588556c458603e154909c044, type: 3}
+  _spawnDelay: 3
+  _spawnRadiusX: 17
+  _spawnRadiusY: 10
 --- !u!212 &668457649
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2135,7 +2138,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 668457647}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.5, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5459,7 +5462,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7568707120079367216, guid: a64c043f5e8613c45b5001071e91df35, type: 3}
       propertyPath: m_SortingOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7568707120079367217, guid: a64c043f5e8613c45b5001071e91df35, type: 3}
       propertyPath: m_RootOrder

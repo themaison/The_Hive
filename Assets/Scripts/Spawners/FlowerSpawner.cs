@@ -12,9 +12,9 @@ public class FlowerSpawner : MonoBehaviour
     [Range(1f, 10f)]
     [SerializeField] private float _forbiddenSpawnRadius;
     [Range(1f, 20f)]
-    [SerializeField] private float _maxSpawnRadiusX;
+    [SerializeField] private float _SpawnRadiusX;
     [Range(1f, 20f)]
-    [SerializeField] private float _maxSpawnRadiusY;
+    [SerializeField] private float _SpawnRadiusY;
     [Range(0f, 10f)]
     [SerializeField] private float _spawnDelay;
 
@@ -39,7 +39,7 @@ public class FlowerSpawner : MonoBehaviour
     }
 
 
-    void Update()
+    private void Update()
     {
         if (Flower.FlowersCount < _spawnLimit)
         {
@@ -55,7 +55,7 @@ public class FlowerSpawner : MonoBehaviour
     private void SpawnFlower()
     {
         Flower flower = GetRandFlower();
-        Vector2 _spawnPosition = RandomElipse(this.transform.position, _maxSpawnRadiusX, _maxSpawnRadiusY);
+        Vector2 _spawnPosition = RandomElipse(transform.position, _SpawnRadiusX, _SpawnRadiusY);
         
         var obj = Instantiate(flower, _spawnPosition, Quaternion.identity);
         obj.transform.SetParent(transform);
@@ -68,7 +68,7 @@ public class FlowerSpawner : MonoBehaviour
         return _flowers[randInx];
     }
 
-    Vector2 RandomElipse(Vector2 center, float radiusX, float radiusY)
+    private Vector2 RandomElipse(Vector2 center, float radiusX, float radiusY)
     {
         float ang = Random.value * 360;
         float randX = Random.Range(_forbiddenSpawnRadius, radiusX);

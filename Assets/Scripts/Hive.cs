@@ -23,9 +23,7 @@ public class Hive : StaticObject
     private int _beeOccupancy = 0;
     private int _hiveLevel;
 
-
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         CancelHiveMenu();
 
@@ -35,15 +33,14 @@ public class Hive : StaticObject
         //_integrityStateSlider.value = _maxIntegrity;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
 
     }
 
     public void Restore()
     {
-        // –≈¿À»«Œ¬¿“‹ —”◊ »
+        // soon
     }
 
     public void AddNectar(int _amount)

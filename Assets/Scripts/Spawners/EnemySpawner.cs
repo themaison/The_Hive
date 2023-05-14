@@ -2,35 +2,46 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject _wasp;
-    [SerializeField]
-    private float _spawnInterval = 1f;
-    private float timer = 0f;
+    [SerializeField] private Wasp _wasp;
+    [SerializeField] private Hornet _hornet;
 
-    private void Spawn()
+    [SerializeField] private float _spawnDelay = 1f;
+    [SerializeField] private float _spawnRadiusX = 15f;
+    [SerializeField] private float _spawnRadiusY = 8f;
+
+    private float _nextSpawnTime = 0f;
+
+    private void Start()
     {
-        // Увеличиваем таймер на время, прошедшее с последнего кадра
-        timer += Time.deltaTime;
-        // Проверяем, прошло ли достаточно времени для спавна нового объекта
-        if (timer >= _spawnInterval)
+        
+    }
+
+    private void Update()
+    {
+        _nextSpawnTime += Time.deltaTime;
+        if (_nextSpawnTime >= _spawnDelay)
         {
-            // Создаем новый объект на указанной позиции и с указанным поворотом
-            Instantiate(_wasp, Position(), Quaternion.identity);
-            // Сбрасываем таймер
-            timer = 0f;
+            SpawnEnemy(_wasp);
+            _nextSpawnTime = 0f;
         }
     }
-    
-    Vector2 Position()
+
+    private void SpawnEnemy(Enemy enemy)
     {
-        float randY = Random.Range(-5, 5);
-        Vector2 pos = new Vector2(this.transform.position.x, randY);
-        return pos;
+        Vector2 _spawnPosition = RandomElipse(transform.position, _spawnRadiusX, _spawnRadiusY);
+
+        var obj = Instantiate(enemy, _spawnPosition, Quaternion.identity);
+        obj.transform.SetParent(transform);
+        Flower.FlowersCount += 1;
     }
 
-    void Update()
+    private Vector2 RandomElipse(Vector2 center, float radiusX, float radiusY)
     {
-        Spawn();
+        float ang = Random.value * 360;
+
+        Vector2 pos;
+        pos.x = center.x + radiusX * Mathf.Sin(ang * Mathf.Deg2Rad);
+        pos.y = center.y + radiusY * Mathf.Cos(ang * Mathf.Deg2Rad);
+        return pos;
     }
 }

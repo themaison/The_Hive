@@ -15,7 +15,6 @@ public class BeePollinator : Bee
     [SerializeField] private Sprite _pollinatedSprite;
 
     private SpriteRenderer _sr;
-    private Rigidbody2D _rb;
     private Hive _hive;
 
     private Flower _nearestFlower;
@@ -29,7 +28,6 @@ public class BeePollinator : Bee
 
     private void Start()
     {
-        _rb = GetComponent<Rigidbody2D>();
         _sr = GetComponent<SpriteRenderer>();
         _hive = FindObjectOfType<Hive>();
 
@@ -102,7 +100,6 @@ public class BeePollinator : Bee
             Debug.Log(_nectarOccupancy);
 
             Destroy(_flower.gameObject);
-            _flower = null;
             Flower.FlowersCount -= 1;
 
             _collectingTime = 0;
