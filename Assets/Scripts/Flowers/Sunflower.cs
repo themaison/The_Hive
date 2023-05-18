@@ -10,7 +10,8 @@ public class Sunflower : Flower
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _maxPollenCount = 3;
-        SpawnPollens(_pollen);
+        //SpawnPollens(_pollen);
+        InitPollenCount();
     }
 
     // Update is called once per frame

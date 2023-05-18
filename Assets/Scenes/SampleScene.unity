@@ -362,7 +362,7 @@ GameObject:
   - component: {fileID: 49692307}
   - component: {fileID: 49692306}
   m_Layer: 5
-  m_Name: Bee (4)
+  m_Name: BR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -600,7 +600,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 101273695}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.5, y: -0.5, z: 0}
+  m_LocalPosition: {x: -2, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -638,7 +638,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 581718048}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &111624714
 SpriteRenderer:
@@ -760,7 +760,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2901961, g: 0.18431373, b: 0.18039216, a: 0.78431374}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.39215687}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1160,7 +1160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1528,11 +1528,11 @@ MonoBehaviour:
   - {fileID: -8475815109518176788, guid: 36730839c3bc29c488faf4d179dcc86b, type: 3}
   - {fileID: 5909205613577786843, guid: 09e1ae443ef4bbc458673d970b2d45c6, type: 3}
   - {fileID: 4378371369679141923, guid: c7ba2e9d6f15ad34983627143bf81b4b, type: 3}
-  _startFlowerCount: 25
+  _startFlowerCount: 15
   _spawnLimit: 100
-  _forbiddenSpawnRadius: 2.5
+  _forbiddenSpawnRadius: 3
   _SpawnRadiusX: 14
-  _SpawnRadiusY: 8
+  _SpawnRadiusY: 7
   _spawnDelay: 1
 --- !u!4 &493805444
 Transform:
@@ -1796,7 +1796,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96037a0622836f743b27dc9ed997df3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _zoomSpeed: 10
+  _minSize: 2
+  _maxSize: 7.7
+  _defaultSize: 5
+  _zoomSpeed: 5
+  _moveSpeed: 10
+  _mapRenderer: {fileID: 581718047}
 --- !u!1 &545128592
 GameObject:
   m_ObjectHideFlags: 0
@@ -1809,7 +1814,7 @@ GameObject:
   - component: {fileID: 545128595}
   - component: {fileID: 545128594}
   m_Layer: 5
-  m_Name: Bee (8)
+  m_Name: BR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1949,13 +1954,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 581718046}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 226064163}
-  - {fileID: 1065942468}
   - {fileID: 729594037}
   - {fileID: 1388771178}
   - {fileID: 1904407671}
@@ -1965,7 +1969,7 @@ Transform:
   - {fileID: 111624713}
   - {fileID: 1006008337}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &637675667
 GameObject:
@@ -1979,7 +1983,7 @@ GameObject:
   - component: {fileID: 637675670}
   - component: {fileID: 637675669}
   m_Layer: 5
-  m_Name: Bee (6)
+  m_Name: BR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2068,14 +2072,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 668457647}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 637ff721feeeb834997569c2bfe15934, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _wasp: {fileID: -6811798146704725045, guid: f4814613917565643816e3a629149ca0, type: 3}
   _hornet: {fileID: 54563566628176786, guid: 8a9ab225588556c458603e154909c044, type: 3}
-  _spawnDelay: 3
+  _spawnDelay: 10
   _spawnRadiusX: 17
   _spawnRadiusY: 10
 --- !u!212 &668457649
@@ -2278,7 +2282,7 @@ GameObject:
   - component: {fileID: 679358381}
   - component: {fileID: 679358380}
   m_Layer: 5
-  m_Name: Bee (7)
+  m_Name: BR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2618,7 +2622,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 581718048}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &770818759
 SpriteRenderer:
@@ -2707,8 +2711,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -105.194824, y: 0}
-  m_SizeDelta: {x: -210.39, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &926165177
 MonoBehaviour:
@@ -2723,7 +2727,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9058824, g: 1, b: 0.32156864, a: 1}
+  m_Color: {r: 1, g: 0.9215687, b: 0.38823533, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2881,7 +2885,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.20392159, g: 0.25882354, b: 0.25882354, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.39215687}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2937,7 +2941,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 581718048}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1006008338
 SpriteRenderer:
@@ -3220,11 +3224,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1036229901}
   m_CullTransparentMesh: 1
---- !u!4 &1065942468 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2538268837914374462, guid: f455432976e1a7e49a3aa7547a6cb968, type: 3}
-  m_PrefabInstance: {fileID: 2608684637391112930}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1073982512
 GameObject:
   m_ObjectHideFlags: 0
@@ -3552,23 +3551,11 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1265277367}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 101273696}
-        m_TargetAssemblyTypeName: BeeSpawner, Assembly-CSharp
-        m_MethodName: SpawnRecycler
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1265277367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3624,7 +3611,7 @@ GameObject:
   - component: {fileID: 1346408050}
   - component: {fileID: 1346408049}
   m_Layer: 5
-  m_Name: Bee
+  m_Name: BR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3663,14 +3650,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.39215687}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ee9c06a7d1bab9a40bbdb6981731b400, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3700,7 +3687,7 @@ GameObject:
   - component: {fileID: 1347947369}
   - component: {fileID: 1347947368}
   m_Layer: 5
-  m_Name: Bee (3)
+  m_Name: BR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3739,14 +3726,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.39215687}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ee9c06a7d1bab9a40bbdb6981731b400, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3852,7 +3839,7 @@ GameObject:
   - component: {fileID: 1381818062}
   - component: {fileID: 1381818061}
   m_Layer: 5
-  m_Name: Bee (5)
+  m_Name: BR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4306,7 +4293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.9215687, b: 0.38823533, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4347,7 +4334,7 @@ GameObject:
   - component: {fileID: 1576198629}
   - component: {fileID: 1576198628}
   m_Layer: 5
-  m_Name: Bee (2)
+  m_Name: BR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4386,14 +4373,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.39215687}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ee9c06a7d1bab9a40bbdb6981731b400, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4542,7 +4529,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.20392159, g: 0.25882354, b: 0.25882354, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4583,7 +4570,7 @@ GameObject:
   - component: {fileID: 1801905944}
   - component: {fileID: 1801905943}
   m_Layer: 5
-  m_Name: Bee (1)
+  m_Name: BR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4622,14 +4609,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.39215687}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ee9c06a7d1bab9a40bbdb6981731b400, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5175,7 +5162,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1232315738527696364, guid: b34227562f681d649a8ca0fd19c3e32a, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1232315738527696364, guid: b34227562f681d649a8ca0fd19c3e32a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5244,11 +5231,11 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 581718048}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2538268837914374462, guid: f455432976e1a7e49a3aa7547a6cb968, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2538268837914374462, guid: f455432976e1a7e49a3aa7547a6cb968, type: 3}
       propertyPath: m_LocalScale.x
@@ -5307,6 +5294,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4665984523751766410, guid: f455432976e1a7e49a3aa7547a6cb968, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665984523751766410, guid: f455432976e1a7e49a3aa7547a6cb968, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665984523751766410, guid: f455432976e1a7e49a3aa7547a6cb968, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4665984523751766410, guid: f455432976e1a7e49a3aa7547a6cb968, type: 3}
       propertyPath: m_SortingOrder
       value: 4
       objectReference: {fileID: 0}
@@ -5322,6 +5321,14 @@ PrefabInstance:
       propertyPath: _maxIntegrity
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 7902886442859103625, guid: f455432976e1a7e49a3aa7547a6cb968, type: 3}
+      propertyPath: _clickedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 01cc97a228ece184990edadfb253e8f2, type: 3}
+    - target: {fileID: 7902886442859103625, guid: f455432976e1a7e49a3aa7547a6cb968, type: 3}
+      propertyPath: _enteredSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 01cc97a228ece184990edadfb253e8f2, type: 3}
     - target: {fileID: 7902886442859103625, guid: f455432976e1a7e49a3aa7547a6cb968, type: 3}
       propertyPath: _integrityText
       value: 
@@ -5393,7 +5400,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6775556506221017049, guid: edeed79c26c2c0249ad381cf4ace951b, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6775556506221017049, guid: edeed79c26c2c0249ad381cf4ace951b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5466,7 +5473,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7568707120079367217, guid: a64c043f5e8613c45b5001071e91df35, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7568707120079367217, guid: a64c043f5e8613c45b5001071e91df35, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5559,7 +5566,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7858914960681557095, guid: b1ee6f912797cb34888572cfd2ea9c03, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7858914960681557095, guid: b1ee6f912797cb34888572cfd2ea9c03, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5628,7 +5635,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7968517747236282802, guid: 480306c36129a514d9bcc5c00a845468, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7968517747236282802, guid: 480306c36129a514d9bcc5c00a845468, type: 3}
       propertyPath: m_LocalPosition.x

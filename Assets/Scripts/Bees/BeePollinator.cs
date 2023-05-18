@@ -20,11 +20,10 @@ public class BeePollinator : Bee
     private Flower _nearestFlower;
 
     private bool _isCollecting;
-    private bool _isCollected;
 
     private float _collectingTime = 0f;
     private int _nectarOccupancy = 0;
-    private Vector2 _targetPos;
+    private Vector2 _targetPosition;
 
     private void Start()
     {
@@ -32,19 +31,24 @@ public class BeePollinator : Bee
         _hive = FindObjectOfType<Hive>();
 
         _isCollecting = false;
-        _isCollected = false;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        if (_isCollecting == false &&  _isCollected == false)
+        if (_nearestFlower == null)
         {
             FindNearestFlower();
         }
 
-        if (_nearestFlower != null && transform.position.Equals(_nearestFlower.transform.position))
+        if (_nearestFlower != null)
         {
-            CollectNectar(_nearestFlower);
+            _nearestFlower.gameObject.tag = "flower_busy";
+
+            float nearestDistance = Vector2.Distance(transform.position, _nearestFlower.transform.position);        
+            if (nearestDistance < 0.1f)
+            {
+                CollectNectar(_nearestFlower);
+            }
         }
 
         Fly();
@@ -53,21 +57,39 @@ public class BeePollinator : Bee
 
     protected override void Fly()
     {
-        if (_nearestFlower != null && _isCollected == false && _isCollecting == false && _nearestFlower.gameObject.tag == "flower")
+        if (_nearestFlower != null && !_isCollecting)
         {
-            _targetPos = _nearestFlower.transform.position;
-        }
-        else if (_nearestFlower == null)
-        {
-            _targetPos = _hive.transform.position;
-            _isCollected = true;
+            //if (_nearestFlower.gameObject.tag == "flower_busy")
+            //{
+            //    _nearestFlower = null;
+            //    return;
+            //}
+
+            //else
+            //{
+            //    _targetPosition = _nearestFlower.transform.position;
+            //}
+            _targetPosition = _nearestFlower.transform.position;
         }
 
-        transform.position = Vector2.MoveTowards(transform.position, _targetPos, _flightSpeed * Time.deltaTime);
+        if (_nearestFlower == null)
+        {
+            if (_nectarOccupancy > 0)
+            {
+                _targetPosition = _hive.transform.position;
+            }
+            else
+            {
+                _targetPosition = transform.position;
+            }
+        }
+
+        transform.position = Vector2.MoveTowards(transform.position, _targetPosition, _flightSpeed * Time.deltaTime);
     }
 
     private void FindNearestFlower()
     {
+
         Flower[] flowers = FindObjectsOfType<Flower>();
 
         float minDistance = Mathf.Infinity;
@@ -76,7 +98,7 @@ public class BeePollinator : Bee
             float distance = Vector2.Distance(transform.position, flower.transform.position);
             int futureNectar = _nectarOccupancy + flower.GetComponent<Flower>().PollenCount;
 
-            if (distance < minDistance && flower.gameObject.tag == "flower" && futureNectar <= _nectarCapacity)
+            if (flower.gameObject.tag == "flower" && futureNectar <= _nectarCapacity && distance < minDistance)
             {
                 minDistance = distance;
                 _nearestFlower = flower;
@@ -97,10 +119,10 @@ public class BeePollinator : Bee
         else
         {
             _nectarOccupancy += _flower.GetComponent<Flower>().PollenCount;
-            Debug.Log(_nectarOccupancy);
 
             Destroy(_flower.gameObject);
             Flower.FlowersCount -= 1;
+            _flower = null;
 
             _collectingTime = 0;
             _isCollecting = false;
@@ -110,11 +132,15 @@ public class BeePollinator : Bee
     private void SpriteController()
     {
         if (_nectarOccupancy > 0)
+        {
             _sr.sprite = _pollinatedSprite;
-        else 
+        }
+        else
+        {
             _sr.sprite = _defaultSprite;
+        }
 
-        _sr.flipX = _targetPos.x >= transform.position.x;
+        _sr.flipX = _targetPosition.x >= transform.position.x;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -123,7 +149,6 @@ public class BeePollinator : Bee
         {
             collision.gameObject.GetComponent<Hive>().AddNectar(_nectarOccupancy);
             _nectarOccupancy = 0;
-            _isCollected = false;
         }
     }
 }

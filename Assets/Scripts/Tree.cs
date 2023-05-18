@@ -5,7 +5,7 @@ public class Tree : StaticObject
 {
     private SpriteRenderer _spriteRenderer;
     private float _defaultTransparency = 1;
-    private float _enteredTransparency = 0.4f;
+    private float _enteredTransparency = 0.5f;
 
     public override void OnPointerClick(PointerEventData eventData)
     {

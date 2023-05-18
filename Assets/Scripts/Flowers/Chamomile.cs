@@ -10,7 +10,8 @@ public class Chamomile : Flower
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _maxPollenCount = 1;
-        SpawnPollens(_pollen);
+        //SpawnPollens(_pollen);
+        InitPollenCount();
     }
 
     // Update is called once per frame

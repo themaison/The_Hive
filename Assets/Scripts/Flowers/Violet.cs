@@ -9,7 +9,8 @@ public class Violet : Flower
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _maxPollenCount = 2;
-        SpawnPollens(_pollen);
+        //SpawnPollens(_pollen);
+        InitPollenCount();
     }
 
     private void Update()

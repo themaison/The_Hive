@@ -58,7 +58,7 @@ public class Wasp : Enemy
 
         else if (collision.gameObject.tag == "bee")
         {
-            Destroy(collision.gameObject, 2);
+            Destroy(collision.gameObject);
         }
     }
 }
