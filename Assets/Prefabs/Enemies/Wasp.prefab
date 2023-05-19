@@ -104,9 +104,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73f4f495db027484ba2243a9f6819f2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthPoints: 0
-  _flightSpeed: 3
-  _damagePoints: 0
+  _healthPoints: 20
+  _flightSpeed: 2
+  _damagePoints: 10
+  _damageFrequency: 1
 --- !u!50 &-4250248868711300511
 Rigidbody2D:
   serializedVersion: 4

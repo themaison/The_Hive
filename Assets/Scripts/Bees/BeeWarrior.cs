@@ -9,94 +9,112 @@ public class BeeWarrior : Bee
         set { _beeWarriorCounter = value; }
     }
 
-    [SerializeField] private int _damagePoints;  // кол-во наносимого урон
-    [SerializeField] private float _detectionRange = 10f;    // радиус обнаружения врагов
+    [SerializeField] private int _damagePoints;
+    [Range(0.1f, 5.0f)]
+    [SerializeField] private float _damageFrequency;
+    [SerializeField] private float _detectionRange;
 
-    private Enemy _enemyTarget;    // ближайший враг
-    private SpriteRenderer _spriteRenderer;
+    private Enemy _nearestEnemy;
     private Hive _hive;
-    private Vector2 targetPos;
 
-    void Start()    // Start is called before the first frame update
+    private SpriteRenderer _spriteRenderer;
+    private Vector2 _targetPosition;
+    private float _damageTime = 0f;
+    private bool _isNearHive;
+
+    void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _hive = FindAnyObjectByType<Hive>();
+        _isNearHive = false;
     }
 
-    void Update()   // Update is called once per frame
+    void Update()
     {
-        Fly();
-        _spriteRenderer.flipX = transform.position.x < targetPos.x;
-    }
-
-
-    public void Bite(Enemy _enemy)
-    {
-        Destroy(_enemy.gameObject);
-    }
-
-    private void SearchTarget()    // Поиск близжайшего врага
-    {
-        Enemy[] enemies = FindObjectsOfType<Enemy>();  // получаем все объекты класса врага
-        //Учесть шершня
-
-
-        float closestDistance = Mathf.Infinity; // начальное значение расстояния до ближайшей осы
-
-        foreach (Enemy et in enemies)
+        if (_nearestEnemy == null)
         {
-            float distance = Vector2.Distance(transform.position, et.transform.position); // расстояние до текущей осы
+            FindNearestEnemy();
+        }
+
+        //if (_nearestEnemy != null)
+        //{
+        //    float enemyDistance = Vector2.Distance(transform.position, _nearestEnemy.transform.position);
+        //    if (enemyDistance <= 0.5)
+        //    {
+        //        Bite(_nearestEnemy);
+        //    }
+        //}
+
+        Fly();
+        _spriteRenderer.flipX = transform.position.x < _targetPosition.x;
+    }
+
+    private void FindNearestEnemy()
+    {
+        Enemy[] enemies = FindObjectsOfType<Enemy>(); 
+
+        float closestDistance = Mathf.Infinity;
+
+        foreach (Enemy enemy in enemies)
+        {
+            float distance = Vector2.Distance(transform.position, enemy.transform.position);
             if (distance < closestDistance && distance <= _detectionRange)
             {
-                closestDistance = distance; // обновляем ближайшее расстояние
-                _enemyTarget = et; // обновляем цель
+                closestDistance = distance;
+                _nearestEnemy = enemy;
             }
         }
     }
 
-    protected override void Fly()  // Лететь к ближайшему врагу
+    protected override void Fly()
     {
-        if (_enemyTarget == null) 
-            SearchTarget();    // поиск новой цели
-
-        // Проверка достижения цели
-        if (_enemyTarget != null)
+        if (_nearestEnemy != null)
         {
-            float distance = Vector2.Distance(transform.position, _enemyTarget.transform.position);  // расстояние до цели
-            if (distance <= 0.5) { Bite(_enemyTarget); }  // уничтожение врага
+            _targetPosition = _nearestEnemy.transform.position;
+        }
+        else if (!_isNearHive)
+        {
+            _targetPosition = _hive.transform.position;
         }
 
-        // выбор направления - к цели или в улей
-        if (_enemyTarget != null)
-        {
-           //_spriteRenderer.flipX = _enemyTarget.transform.position.x >= transform.position.x;
-            targetPos = _enemyTarget.transform.position;
-        }
-        else    // если цели нет - летим в улей
-        {
-            //_spriteRenderer.flipX = transform.position.x <= _hive.transform.position.x;
-            targetPos = _hive.transform.position;
-        }
-
-        // двигаться в направлении цели
-        transform.position = Vector2.MoveTowards(transform.position, targetPos, _flightSpeed * Time.deltaTime);
-        //transform.Translate(targetPos.normalized * _flightSpeed * Time.deltaTime);
-        //_spriteRenderer.flipX = transform.position.x < targetPos.x;
+        transform.position = Vector2.MoveTowards(transform.position, _targetPosition, _flightSpeed * Time.deltaTime);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) // исчезает в улье
+    private void Bite(Enemy enemy)
     {
-        if (collision.gameObject.tag == "hive")
-        {
-            //_spriteRenderer.enabled = false;
-        }
+        enemy.TakeDamage(_damagePoints);
     }
 
-    private void OnTriggerExit2D(Collider2D collision)  // появляется при вылете из улья
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "hive")
+        _targetPosition = transform.position;
+        _isNearHive = true;
+        //if (collision.gameObject.tag == "hive")
+        //{
+        //    _spriteRenderer.enabled = false;
+        //}
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        _isNearHive = false;
+        //if (collision.gameObject.tag == "hive")
+        //{
+        //    _spriteRenderer.enabled = true;
+        //}
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "enemy")
         {
-            //_spriteRenderer.enabled = true;
+            _damageTime += Time.deltaTime;
+            if (_damageTime >= _damageFrequency)
+            {
+                Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+                Bite(enemy);
+                _damageTime = 0f;
+            }
         }
     }
 }

@@ -120,12 +120,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31a24b64851ca6a4da4bdcd8ea3af873, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthPoints: 0
-  _flightSpeed: 3
-  satietyPoints: 0
-  HRR: 0
-  _damagePoints: 1
-  _detectionRange: 8
+  _healthPoints: 20
+  _flightSpeed: 2
+  satietyPoints: 10
+  HRR: 1
+  _damagePoints: 5
+  _damageFrequency: 1
+  _detectionRange: 10
 --- !u!61 &2804287491125845240
 BoxCollider2D:
   m_ObjectHideFlags: 0

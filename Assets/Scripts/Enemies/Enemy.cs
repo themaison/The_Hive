@@ -2,11 +2,13 @@ using UnityEngine;
 
 public abstract class Enemy : FlyingEntity
 {
-    [SerializeField]
-    protected int _damagePoints; // кол-во наносимого урона\
+    [SerializeField] protected int _damagePoints;
+    [Range(0.1f, 5.0f)]
+    [SerializeField] protected float _damageFrequency;
+
     protected GameObject _target;
 
-    public virtual void Bite(Bee bee)
+    protected virtual void Bite(Bee bee)
     {
         bee.TakeDamage(_damagePoints);
     }

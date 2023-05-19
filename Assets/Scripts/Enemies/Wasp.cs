@@ -3,26 +3,23 @@ using UnityEngine;
 
 public class Wasp : Enemy
 {
-    private SpriteRenderer _sr;
+    private SpriteRenderer _spriteRenderer;
     private Hive _hive;
-    private bool _attacked = false;
 
-    [SerializeField] private float _attackTime = 0f;
-    [SerializeField] private float _attackDelay = 5f;
+    private float _damageTime = 0f;
 
     private void Start()
     {
-        _attackTime = _attackDelay;
-        _sr = GetComponent<SpriteRenderer>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
         _hive = FindObjectOfType<Hive>();
+        _damageTime = _damageFrequency;
     }
 
     private void Update()
     {
-        if (_attacked==true) _attackTime += Time.deltaTime;
         FindNearestTarget();
         Fly();
-        _sr.flipX = _target.transform.position.x >= transform.position.x;
+        _spriteRenderer.flipX = _target.transform.position.x >= transform.position.x;
     }
 
     protected override void Fly()
@@ -35,7 +32,6 @@ public class Wasp : Enemy
         Bee[] bees = FindObjectsOfType<Bee>();
 
         float minDistance = Mathf.Infinity;
-
         foreach (Bee bee in bees)
         {
             float distance = Vector2.Distance(transform.position, bee.transform.position);
@@ -54,22 +50,24 @@ public class Wasp : Enemy
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("hive"))
         {
-            Destroy(this.gameObject);
+            Die();
         }
-        if (collision.gameObject.CompareTag("bee"))
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "bee")
         {
-            _attacked = true;
-            Bee bee = collision.gameObject.GetComponent<Bee>();
-            //_attackTime += Time.deltaTime;
-            if (_attackTime >= _attackDelay)
+            _damageTime += Time.deltaTime;
+            if (_damageTime >= _damageFrequency)
             {
+                Bee bee = collision.gameObject.GetComponent<Bee>();
                 Bite(bee);
-                _attackTime = 0f;
-                _attacked = false;
+                _damageTime = 0f;
             }
         }
     }

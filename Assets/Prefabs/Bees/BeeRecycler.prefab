@@ -119,9 +119,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b247e0692bb285e4d98c67b1aa9da866, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthPoints: 0
-  _flightSpeed: 3
-  satietyPoints: 0
-  HRR: 0
+  _healthPoints: 20
+  _flightSpeed: 2
+  satietyPoints: 10
+  HRR: 1
   _productionEfficiency: 0
   _NPR: 0

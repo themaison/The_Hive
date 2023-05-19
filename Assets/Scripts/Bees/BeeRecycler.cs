@@ -12,6 +12,16 @@ public class BeeRecycler : Bee
     [SerializeField] private int _productionEfficiency;
     [SerializeField] private int _NPR; //nectar processing rate
 
+    private void Start()
+    {
+
+    }
+
+    private void Update()
+    {
+
+    }
+
     protected override void Fly()
     {
         // soon
@@ -20,15 +30,5 @@ public class BeeRecycler : Bee
     public void ProcessNectar()
     {
         // soon
-    }
-
-    private void Start()
-    {
-        
-    }
-
-    private void Update()
-    {
-        
     }
 }

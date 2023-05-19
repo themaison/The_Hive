@@ -9,33 +9,16 @@ public abstract class Bee : FlyingEntity
         set { _beeCounter = value; }
     }
 
-    [SerializeField] protected int satietyPoints; // очки сытости
-    [SerializeField] protected int HRR; // health regeneration rate (скорость восстановления здоровья)
+    [SerializeField] protected int satietyPoints;
+    [SerializeField] protected int HRR; // health regeneration rate
 
-    public virtual void TakeDamage(int damage)
+    protected virtual void Eat()
     {
-        _healthPoints -= damage;
-        Debug.Log(_healthPoints);
-        if (_healthPoints <= 0)
-        {
-            Die();
-        }
+       // soon
     }
 
-    protected virtual void Die()
+    protected virtual void Regenerate()
     {
-        Destroy(gameObject);
-    }
-
-
-
-    public virtual void Eat() // кушают по формуле
-    {
-        // РЕАЛИЗОВАТЬ СУЧКИ!
-    }
-
-    public virtual void Regenerate() // восстанавливаются по формуле
-    {
-        // РЕАЛИЗОВАТЬ СУЧКИ!
+        // soon
     }
 }

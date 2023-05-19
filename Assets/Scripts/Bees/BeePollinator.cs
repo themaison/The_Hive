@@ -9,18 +9,20 @@ public class BeePollinator : Bee
         set { _beePollinatorCounter = value; }
     }
 
+    [Range(1, 20)]
     [SerializeField] private int _nectarCapacity;
-    [SerializeField] private int _NCR; // nectar collection rate
+    [Range(0.1f, 10.0f)]
+    [SerializeField] private float _NCR; // nectar collection rate
+
     [SerializeField] private Sprite _defaultSprite;
     [SerializeField] private Sprite _pollinatedSprite;
 
     private SpriteRenderer _sr;
-    private Hive _hive;
 
+    private Hive _hive;
     private Flower _nearestFlower;
 
     private bool _isCollecting;
-
     private float _collectingTime = 0f;
     private int _nectarOccupancy = 0;
     private Vector2 _targetPosition;
@@ -59,16 +61,6 @@ public class BeePollinator : Bee
     {
         if (_nearestFlower != null && !_isCollecting)
         {
-            //if (_nearestFlower.gameObject.tag == "flower_busy")
-            //{
-            //    _nearestFlower = null;
-            //    return;
-            //}
-
-            //else
-            //{
-            //    _targetPosition = _nearestFlower.transform.position;
-            //}
             _targetPosition = _nearestFlower.transform.position;
         }
 
