@@ -6,8 +6,9 @@ public abstract class Enemy : FlyingEntity
     protected int _damagePoints; // кол-во наносимого урона\
     protected GameObject _target;
 
-    public virtual void Bite()
+    public virtual void Bite(Bee bee)
     {
-        // РЕАЛИЗОВАТЬ СУЧКИ!
+        bee.TakeDamage(_damagePoints);
     }
+
 }
