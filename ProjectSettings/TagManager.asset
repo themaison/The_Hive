@@ -10,6 +10,8 @@ TagManager:
   - flower
   - flower_busy
   - tree
+  - barrel
+  - barrel_busy
   layers:
   - Default
   - TransparentFX

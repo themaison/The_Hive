@@ -147,10 +147,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthPoints: 20
-  _flightSpeed: 2
+  _flightSpeed: 3
   satietyPoints: 10
   HRR: 1
   _nectarCapacity: 5
-  _NCR: 3
+  _NCR: 2
   _defaultSprite: {fileID: 21300000, guid: 7d0f0ac9589f48e468aa75d91580582e, type: 3}
   _pollinatedSprite: {fileID: 21300000, guid: 4a6800db4246b974d8c31d9526af6903, type: 3}

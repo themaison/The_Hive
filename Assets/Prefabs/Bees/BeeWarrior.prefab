@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthPoints: 20
-  _flightSpeed: 2
+  _flightSpeed: 3
   satietyPoints: 10
   HRR: 1
   _damagePoints: 5

@@ -54,7 +54,7 @@ public class BeePollinator : Bee
         }
 
         Fly();
-        SpriteController();
+        SpriteRender();
     }
 
     protected override void Fly()
@@ -121,7 +121,7 @@ public class BeePollinator : Bee
         }
     }
 
-    private void SpriteController()
+    private void SpriteRender()
     {
         if (_nectarOccupancy > 0)
         {
@@ -139,7 +139,7 @@ public class BeePollinator : Bee
     {
         if (collision.gameObject.tag == "hive" && _nectarOccupancy>0)
         {
-            collision.gameObject.GetComponent<Hive>().AddNectar(_nectarOccupancy);
+            _hive.AddNectar(_nectarOccupancy);
             _nectarOccupancy = 0;
         }
     }

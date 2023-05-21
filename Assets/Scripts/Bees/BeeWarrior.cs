@@ -36,17 +36,8 @@ public class BeeWarrior : Bee
             FindNearestEnemy();
         }
 
-        //if (_nearestEnemy != null)
-        //{
-        //    float enemyDistance = Vector2.Distance(transform.position, _nearestEnemy.transform.position);
-        //    if (enemyDistance <= 0.5)
-        //    {
-        //        Bite(_nearestEnemy);
-        //    }
-        //}
-
         Fly();
-        _spriteRenderer.flipX = transform.position.x < _targetPosition.x;
+        SpriteRender();
     }
 
     private void FindNearestEnemy()
@@ -116,5 +107,10 @@ public class BeeWarrior : Bee
                 _damageTime = 0f;
             }
         }
+    }
+
+    private void SpriteRender()
+    {
+        _spriteRenderer.flipX = transform.position.x < _targetPosition.x;
     }
 }

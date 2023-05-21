@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class Hive : StaticObject
 {
-    //[SerializeField] private Slider _integrityStateSlider;
-    //[SerializeField] private Text _integrityText;
     [SerializeField] private GameObject _upgradeMenuUI;
 
     [Range(1, 100)]
@@ -21,7 +19,24 @@ public class Hive : StaticObject
     private int _nectarOccupancy = 0;
     private int _honeyOccupancy = 0;
     private int _beeOccupancy = 0;
-    private int _hiveLevel;
+
+    public int NectarOccupancy
+    {
+        get { return _nectarOccupancy; }
+        set { _nectarOccupancy = value; }
+    }
+
+    public int HoneyOccupancy
+    {
+        get { return _honeyOccupancy; }
+        set { _honeyOccupancy = value; }
+    }
+
+    public int BeeOccupancy
+    {
+        get { return _beeOccupancy; }
+        set { _beeOccupancy = value; }
+    }
 
     private void Start()
     {
@@ -29,8 +44,6 @@ public class Hive : StaticObject
 
         _integrityPoints = _maxIntegrity;
         _spriteRenderer = GetComponent<SpriteRenderer>();
-        //_integrityText.text = _maxIntegrity.ToString();
-        //_integrityStateSlider.value = _maxIntegrity;
     }
 
     private void Update()
@@ -46,39 +59,34 @@ public class Hive : StaticObject
     public void AddNectar(int _amount)
     {
         _nectarOccupancy += _amount;
-        Debug.Log("Nectar: " + _nectarOccupancy + " / " + _nectarCapacity);
+        Debug.Log("HIVE:Nectar: " + _nectarOccupancy + " / " + _nectarCapacity);
     }
 
     public void AddHoney(int _amount)
     {
-        Debug.Log("Added new honey");
         _honeyOccupancy += _amount;
+        Debug.Log("HIVE:Honey: " + _honeyOccupancy + " / " + _honeyCapacity);
     }
     public void AddBee(int _amount)
     {
         _beeOccupancy += _amount;
-        Debug.Log("Added new bee");
+        Debug.Log("HIVE:Bees: " + _beeOccupancy + " / " + _beeCapacity);
     }
 
     public override void OnPointerClick(PointerEventData eventData)
     {
-        if (_integrityPoints > 0)
-        {
-            //_integrityStateSlider.value = (float)_integrityPoints / _maxIntegrity;
-            //_integrityText.text = _integrityPoints.ToString();
-            SetHiveMenu();
-        }
-        _spriteRenderer.sprite = _clickedSprite;
+        SetHiveMenu();
+        _borderHint.SetActive(true);
     }
 
     public override void OnPointerEnter(PointerEventData eventData)
     {
-        _spriteRenderer.sprite = _enteredSprite;
+        _borderHint.SetActive(true);
     }
 
     public override void OnPointerExit(PointerEventData eventData)
     {
-        _spriteRenderer.sprite = _defaultSprite;
+        _borderHint.SetActive(false);
     }
 
     public void CancelHiveMenu()

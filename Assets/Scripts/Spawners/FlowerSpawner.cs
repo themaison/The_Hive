@@ -12,7 +12,7 @@ public class FlowerSpawner : MonoBehaviour
     [Range(1f, 10f)]
     [SerializeField] private float _forbiddenSpawnRadius;
     [Range(1f, 20f)]
-    [SerializeField] private float _SpawnRadiusX;
+    [SerializeField] private float _spawnRadiusX;
     [Range(1f, 20f)]
     [SerializeField] private float _SpawnRadiusY;
     [Range(0f, 10f)]
@@ -55,7 +55,7 @@ public class FlowerSpawner : MonoBehaviour
     private void SpawnFlower()
     {
         Flower flower = GetRandFlower();
-        Vector2 _spawnPosition = RandomElipse(transform.position, _SpawnRadiusX, _SpawnRadiusY);
+        Vector2 _spawnPosition = RandomElipse(transform.position, _spawnRadiusX, _SpawnRadiusY);
         
         var obj = Instantiate(flower, _spawnPosition, Quaternion.identity);
         obj.transform.SetParent(transform);
