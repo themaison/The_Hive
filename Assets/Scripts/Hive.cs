@@ -8,7 +8,7 @@ public class Hive : StaticObject
     [SerializeField] private GameObject _upgradeMenuUI;
 
     [Range(1, 100)]
-    [SerializeField] private int _maxIntegrity;
+    [SerializeField] private int _maxIntegrityPoints = 100;
     [SerializeField] private int _beeCapacity; // вместимость пчел
     [SerializeField] private int _nectarCapacity; // вместимость нектара
     [SerializeField] private int _honeyCapacity; // вместимость меда
@@ -20,35 +20,57 @@ public class Hive : StaticObject
     private int _honeyOccupancy = 0;
     private int _beeOccupancy = 0;
 
+    public int MaxIntegrityPoints
+    {
+        get { return _maxIntegrityPoints; }
+    }
+
+    public int BeeCapacity
+    {
+        get { return _beeCapacity; }
+    }
+
+    public int NectarCapacity
+    {
+        get { return _nectarCapacity; }
+    }
+
+    public int IntegrityPoints
+    {
+        get { return _integrityPoints; }
+    }
+
+    public int HoneyCapacity
+    {
+        get { return _honeyCapacity; }
+    }
+
     public int NectarOccupancy
     {
         get { return _nectarOccupancy; }
-        set { _nectarOccupancy = value; }
     }
 
     public int HoneyOccupancy
     {
         get { return _honeyOccupancy; }
-        set { _honeyOccupancy = value; }
     }
 
     public int BeeOccupancy
     {
         get { return _beeOccupancy; }
-        set { _beeOccupancy = value; }
     }
 
     private void Start()
     {
         CancelHiveMenu();
 
-        _integrityPoints = _maxIntegrity;
+        _integrityPoints = _maxIntegrityPoints;
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
     {
-
+        _beeOccupancy = Bee.BeeCounter;
     }
 
     public void Restore()
@@ -56,21 +78,41 @@ public class Hive : StaticObject
         // soon
     }
 
-    public void AddNectar(int _amount)
+    public void AddNectar(int amount)
     {
-        _nectarOccupancy += _amount;
-        Debug.Log("HIVE:Nectar: " + _nectarOccupancy + " / " + _nectarCapacity);
+        _nectarOccupancy += amount;
+        if (_nectarOccupancy > _nectarCapacity)
+        {
+            _nectarOccupancy = _nectarCapacity;
+        }
     }
 
-    public void AddHoney(int _amount)
+    public void AddHoney(int amount)
     {
-        _honeyOccupancy += _amount;
-        Debug.Log("HIVE:Honey: " + _honeyOccupancy + " / " + _honeyCapacity);
+        _honeyOccupancy += amount;
+        if (_honeyOccupancy > _honeyCapacity)
+        {
+            _honeyOccupancy = _honeyCapacity;
+        }
     }
-    public void AddBee(int _amount)
+
+    public void GetNectar(int amount)
     {
-        _beeOccupancy += _amount;
-        Debug.Log("HIVE:Bees: " + _beeOccupancy + " / " + _beeCapacity);
+        if (amount > _nectarOccupancy)
+        {
+            amount = _nectarOccupancy;
+        }
+
+        _nectarOccupancy -= amount;
+    }
+
+    public void TakeDamage(int amount)
+    {
+        _integrityPoints -= amount;
+        if (_integrityPoints < 0)
+        {
+            //GameOver();
+        }
     }
 
     public override void OnPointerClick(PointerEventData eventData)

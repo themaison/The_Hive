@@ -10,9 +10,6 @@ public class BeeRecycler : Bee
         set { _beeRecyclerCounter = value; }
     }
 
-    private Barrel _barrel;
-    private GameObject[] _barrelsObjs;
-
     [Range(1, 50)]
     [SerializeField] private int _productionEfficiency;
     [Range(0.1f, 10.0f)]
@@ -22,15 +19,14 @@ public class BeeRecycler : Bee
     [SerializeField] private Sprite _defaultSprite;
     [SerializeField] private Sprite _honeySprite;
 
+    private Barrel _barrel;
+    private GameObject[] _barrelsObjs;
     private SpriteRenderer _spriteRenderer;
     private Hive _hive;
 
     private Vector2 _targetPosition;
     private bool _isRecycling;
     private bool _isHasHoney;
- 
-    private Vector3 _startPosition;
-    private float _startTime;
 
     private void Start()
     {
@@ -44,6 +40,7 @@ public class BeeRecycler : Bee
 
         _isRecycling = false;
         _isHasHoney = false;
+        _spriteRenderer.enabled = false;
 
         _flightSpeed = (Vector2.Distance(_hive.transform.position, _barrel.transform.position) / _NPR) * 2;
     }
@@ -59,10 +56,11 @@ public class BeeRecycler : Bee
     {
         if (!_isRecycling && _hive.GetComponent<Hive>().NectarOccupancy > 0)
         {
-            _hive.NectarOccupancy--;
+            _hive.GetNectar(1);
 
             _isRecycling = true;
             _isHasHoney = true;
+            _spriteRenderer.enabled = true;
 
             _targetPosition = _barrel.transform.position;
         }
@@ -86,6 +84,7 @@ public class BeeRecycler : Bee
                 if (hiveDistance < 0.1f)
                 {
                     _isRecycling = false;
+                    _spriteRenderer.enabled = false;
                 }
             }
         }

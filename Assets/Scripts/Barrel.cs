@@ -38,7 +38,7 @@ public class Barrel : StaticObject, IPointerDownHandler, IPointerUpHandler
         {
             _honeyOccupancy = _honeyCapacity;
         }
-        Debug.Log("BARREL:Honey: " + _honeyOccupancy + " / " + _honeyCapacity);
+        //Debug.Log("BARREL:Honey: " + _honeyOccupancy + " / " + _honeyCapacity);
     }
 
     public int GetHoney()
