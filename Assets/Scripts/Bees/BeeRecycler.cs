@@ -20,7 +20,6 @@ public class BeeRecycler : Bee
     [SerializeField] private Sprite _honeySprite;
 
     private Barrel _barrel;
-    private GameObject[] _barrelsObjs;
     private SpriteRenderer _spriteRenderer;
     private Hive _hive;
 
@@ -30,12 +29,7 @@ public class BeeRecycler : Bee
 
     private void Start()
     {
-        _barrelsObjs = GameObject.FindGameObjectsWithTag("barrel");
         _hive = FindObjectOfType<Hive>();
-
-        _barrel = _barrelsObjs[0].GetComponent<Barrel>();
-        _barrel.gameObject.tag = "barrel_busy";
-
         _spriteRenderer  = GetComponent<SpriteRenderer>();
 
         _isRecycling = false;
@@ -50,6 +44,11 @@ public class BeeRecycler : Bee
         ProcessNectar();
         Fly();
         SpriteRender();
+    }
+
+    public void InitBarrel(Barrel barrel)
+    {
+        _barrel = barrel;
     }
 
     private void ProcessNectar()
