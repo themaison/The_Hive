@@ -35,8 +35,11 @@ public class BeeRecycler : Bee
         _isRecycling = false;
         _isHasHoney = false;
         _spriteRenderer.enabled = false;
-
+        _currentHealthPoints = _maxHealthPoints;
+        _currentSatietyPoints = _maxSatietyPoints;
         _flightSpeed = (Vector2.Distance(_hive.transform.position, _barrel.transform.position) / _NPR) * 2;
+
+        SetHintPanelSettings();
     }
 
     private void Update()

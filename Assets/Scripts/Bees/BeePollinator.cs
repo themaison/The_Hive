@@ -33,6 +33,10 @@ public class BeePollinator : Bee
         _hive = FindObjectOfType<Hive>();
 
         _isCollecting = false;
+        _currentHealthPoints = _maxHealthPoints;
+        _currentSatietyPoints = _maxSatietyPoints;
+
+        SetHintPanelSettings();
     }
 
     private void Update()

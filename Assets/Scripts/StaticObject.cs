@@ -7,6 +7,7 @@ public abstract class StaticObject : MonoBehaviour, IPointerClickHandler, IPoint
 {
     [SerializeField] protected GameObject _hintPanel;
     [SerializeField] protected Text _nameText;
+
     [SerializeField] protected GameObject _borderHint;
     [SerializeField] protected Sprite _defaultSprite;
     [SerializeField] protected string _name;

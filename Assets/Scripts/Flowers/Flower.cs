@@ -23,11 +23,6 @@ public abstract class Flower : StaticObject
     [SerializeField] protected int _maxPollenCount;
     protected int _pollenCount;
 
-    private void Start()
-    {
-        
-    }
-
     protected void InitPollenCount()
     {
         _pollenCount = Random.Range(1, _maxPollenCount + 1);

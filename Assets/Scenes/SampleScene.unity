@@ -2654,7 +2654,7 @@ MonoBehaviour:
   _spawnRadiusX: 16
   _spawnRadiusY: 10
   _waspSpawnDelay: 0.5
-  _waveDelay: 30
+  _waveDelay: 5
 --- !u!212 &668457649
 SpriteRenderer:
   m_ObjectHideFlags: 0

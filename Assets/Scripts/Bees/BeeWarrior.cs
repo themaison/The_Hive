@@ -26,7 +26,13 @@ public class BeeWarrior : Bee
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _hive = FindAnyObjectByType<Hive>();
+
         _isNearHive = false;
+        _currentHealthPoints = _maxHealthPoints;
+        _currentSatietyPoints = _maxSatietyPoints;
+
+        SetHintPanelSettings();
+
     }
 
     void Update()

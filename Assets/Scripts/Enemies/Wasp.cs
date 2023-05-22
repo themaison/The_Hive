@@ -13,6 +13,10 @@ public class Wasp : Enemy
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _hive = FindObjectOfType<Hive>();
         _damageTime = _damageFrequency;
+
+        _currentHealthPoints = _maxHealthPoints;
+
+        SetHintPanelSettings();
     }
 
     private void Update()
