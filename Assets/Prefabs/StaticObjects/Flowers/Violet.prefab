@@ -126,9 +126,8 @@ MonoBehaviour:
   _nameText: {fileID: 2250852894710752875}
   _borderHint: {fileID: 1118395012917545316}
   _defaultSprite: {fileID: 21300000, guid: f7114effc9867d44e8fc8b5d6c7b95f9, type: 3}
-  _name: "\u0424\u0418\u0410\u041B\u041A\u0410"
   _pollenText: {fileID: 3112955466405760226}
-  _maxPollenCount: 4
+  _flowerData: {fileID: 11400000, guid: 15288503c55d2c9409bd2afe88a81320, type: 2}
 --- !u!61 &9222804240453865973
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -275,7 +274,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -40}
-  m_SizeDelta: {x: 400, y: 60}
+  m_SizeDelta: {x: 400, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6308675685728331226
 CanvasRenderer:
@@ -306,7 +305,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 8b33439243674834e834809649c98417, type: 3}
+    m_Font: {fileID: 12800000, guid: f0143a46aea17db45a71b94536ef45c1, type: 3}
     m_FontSize: 48
     m_FontStyle: 0
     m_BestFit: 0
@@ -386,7 +385,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 8b33439243674834e834809649c98417, type: 3}
+    m_Font: {fileID: 12800000, guid: f0143a46aea17db45a71b94536ef45c1, type: 3}
     m_FontSize: 64
     m_FontStyle: 0
     m_BestFit: 0

@@ -18,9 +18,10 @@ public abstract class Flower : StaticObject
         get { return _pollenCount; }
         set { _pollenCount = value; }
     }
+
     [SerializeField] protected Text _pollenText;
-    [Range(1, 10)]
-    [SerializeField] protected int _maxPollenCount;
+
+    protected int _maxPollenCount;
     protected int _pollenCount;
 
     protected void InitPollenCount()
@@ -51,5 +52,11 @@ public abstract class Flower : StaticObject
     {
         _borderHint.SetActive(false);
         _hintPanel.SetActive(false);
+    }
+
+    protected virtual void SetFlowerData(FlowerData FD)
+    {
+        _name = FD.name;
+        _maxPollenCount = FD.pollenAmount;
     }
 }

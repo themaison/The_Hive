@@ -2,25 +2,22 @@ using UnityEngine;
 
 public class BeePollinator : Bee
 {
-    private static int _beePollinatorCounter;
-    public static int BeePollinatorCounter
-    {
-        get { return _beePollinatorCounter; }
-        set { _beePollinatorCounter = value; }
-    }
+    public static int beePollinatorAmount;
 
-    [Range(1, 20)]
-    [SerializeField] private int _nectarCapacity;
-    [Range(0.1f, 10.0f)]
-    [SerializeField] private float _NCR; // nectar collection rate
+    [SerializeField] private BeePollinatorData _beePollinatorData;
 
     [SerializeField] private Sprite _defaultSprite;
     [SerializeField] private Sprite _pollinatedSprite;
 
-    private SpriteRenderer _sr;
-
+    private SpriteRenderer _spriteRenderer;
     private Hive _hive;
     private Flower _nearestFlower;
+
+    new private static int _maxHealthPoints;
+    new private static int _maxSatietyPoints;
+    new private static float _flightSpeed;
+    private static int _nectarCapacity;
+    private static float _NCR; // nectar collection rate
 
     private bool _isCollecting;
     private float _collectingTime = 0f;
@@ -29,10 +26,13 @@ public class BeePollinator : Bee
 
     private void Start()
     {
-        _sr = GetComponent<SpriteRenderer>();
+        SetBeePollinatorStats(_beePollinatorData);
+
+        _spriteRenderer = GetComponent<SpriteRenderer>();
         _hive = FindObjectOfType<Hive>();
 
         _isCollecting = false;
+
         _currentHealthPoints = _maxHealthPoints;
         _currentSatietyPoints = _maxSatietyPoints;
 
@@ -104,7 +104,7 @@ public class BeePollinator : Bee
 
     private void CollectNectar(Flower _flower)
     {
-        _flower.gameObject.tag = "flower_busy";
+        //_flower.gameObject.tag = "flower_busy";
         _isCollecting = true;
 
         if (_collectingTime < _NCR)
@@ -129,19 +129,39 @@ public class BeePollinator : Bee
     {
         if (_nectarOccupancy > 0)
         {
-            _sr.sprite = _pollinatedSprite;
+            _spriteRenderer.sprite = _pollinatedSprite;
         }
         else
         {
-            _sr.sprite = _defaultSprite;
+            _spriteRenderer.sprite = _defaultSprite;
         }
 
-        _sr.flipX = _targetPosition.x >= transform.position.x;
+        _spriteRenderer.flipX = _targetPosition.x >= transform.position.x;
+    }
+
+    private void SetBeePollinatorStats(BeePollinatorData BPD)
+    {
+        _name = BPD.name;
+        _maxHealthPoints = BPD.healthPoints;
+        _maxSatietyPoints  = BPD.satietyPoints;
+        _flightSpeed = BPD.flightSpeed;
+        _HRR = BPD.HRR;
+        _NCR = BPD.NCR;
+        _nectarCapacity = BPD.nectarCapacity;
+    }
+
+    public static void UpdateBeePollinatorStats(BeePollinatorData BPD)
+    {
+        _maxHealthPoints = BPD.healthPoints;
+        _maxSatietyPoints = BPD.satietyPoints;
+        _flightSpeed = BPD.flightSpeed;
+        _NCR = BPD.NCR;
+        _nectarCapacity = BPD.nectarCapacity;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "hive" && _nectarOccupancy>0)
+        if (collision.gameObject.tag == "hive" && _nectarOccupancy > 0)
         {
             _hive.AddNectar(_nectarOccupancy);
             _nectarOccupancy = 0;

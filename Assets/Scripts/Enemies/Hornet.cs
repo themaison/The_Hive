@@ -2,11 +2,14 @@ using UnityEngine;
 
 public class Hornet : Enemy
 {
-    private SpriteRenderer _spriteRenderer;
+    [SerializeField] protected EnemyData _enemyData;
 
+    private SpriteRenderer _spriteRenderer;
 
     private void Start()
     {
+        SetEnemyData(_enemyData);
+
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _target = FindObjectOfType<Hive>().gameObject;
 

@@ -2,17 +2,13 @@ using UnityEngine;
 
 public class BeeWarrior : Bee
 {
-    private static int _beeWarriorCounter;
-    public static int BeeWarriorCounter
-    {
-        get { return _beeWarriorCounter; }
-        set { _beeWarriorCounter = value; }
-    }
+    public static int beeWarriorAmount;
 
-    [SerializeField] private int _damagePoints;
-    [Range(0.1f, 5.0f)]
-    [SerializeField] private float _damageFrequency;
-    [SerializeField] private float _detectionRange;
+    [SerializeField] private BeeWarriorData _beeWarriorData;
+
+    private int _damagePoints;
+    private float _damageFrequency;
+    private float _detectionRange;
 
     private Enemy _nearestEnemy;
     private Hive _hive;
@@ -24,6 +20,8 @@ public class BeeWarrior : Bee
 
     void Start()
     {
+        SetBeeWarriorStats(_beeWarriorData);
+
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _hive = FindAnyObjectByType<Hive>();
 
@@ -86,19 +84,19 @@ public class BeeWarrior : Bee
     {
         _targetPosition = transform.position;
         _isNearHive = true;
-        //if (collision.gameObject.tag == "hive")
-        //{
-        //    _spriteRenderer.enabled = false;
-        //}
+        if (collision.gameObject.tag == "hive")
+        {
+            _spriteRenderer.enabled = false;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         _isNearHive = false;
-        //if (collision.gameObject.tag == "hive")
-        //{
-        //    _spriteRenderer.enabled = true;
-        //}
+        if (collision.gameObject.tag == "hive")
+        {
+            _spriteRenderer.enabled = true;
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -118,5 +116,16 @@ public class BeeWarrior : Bee
     private void SpriteRender()
     {
         _spriteRenderer.flipX = transform.position.x < _targetPosition.x;
+    }
+
+    public void SetBeeWarriorStats(BeeWarriorData BWD)
+    {
+        _name = BWD.name;
+        _maxHealthPoints = BWD.healthPoints;
+        _maxSatietyPoints = BWD.satietyPoints;
+        _flightSpeed = BWD.flightSpeed;
+        _damagePoints = BWD.damagePoints;
+        _damageFrequency = BWD.damageFrequency;
+        _detectionRange = BWD.detectionRange;
     }
 }

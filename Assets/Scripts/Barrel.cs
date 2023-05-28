@@ -4,12 +4,14 @@ using UnityEngine.UI;
 
 public class Barrel : StaticObject, IPointerDownHandler, IPointerUpHandler
 {
+    [SerializeField] private BarellData _barellData;
+
     [SerializeField] private Text _honeyText;
+
     [SerializeField] private Sprite _honeyBarrelSprite;
     [SerializeField] private Sprite _openedBarrelSprite;
 
-    [Range(1, 100)]
-    [SerializeField] private int _honeyCapacity;
+    private int _honeyCapacity;
     private int _honeyOccupancy = 0;
 
     public int HoneyCapacity
@@ -24,6 +26,8 @@ public class Barrel : StaticObject, IPointerDownHandler, IPointerUpHandler
 
     void Start()
     {
+        SetBarellStats(_barellData);
+
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _hive = FindObjectOfType<Hive>();
 
@@ -107,5 +111,11 @@ public class Barrel : StaticObject, IPointerDownHandler, IPointerUpHandler
     {
         _nameText.text = _name;
         _honeyText.text = _honeyOccupancy.ToString() + " / " + _honeyCapacity.ToString();
+    }
+
+    private void SetBarellStats(BarellData barellData)
+    {
+        _name = barellData.name;
+        _honeyCapacity = barellData.honeyCapacity;
     }
 }

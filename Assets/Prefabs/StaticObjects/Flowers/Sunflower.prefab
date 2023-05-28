@@ -37,8 +37,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000415802, y: 0.79999924}
-  m_SizeDelta: {x: 0.00082964357, y: 81.6}
+  m_AnchoredPosition: {x: 0, y: 0.79999924}
+  m_SizeDelta: {x: -0.00000032782555, y: 81.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6005491924529547921
 CanvasRenderer:
@@ -198,7 +198,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -40}
-  m_SizeDelta: {x: 500, y: 60}
+  m_SizeDelta: {x: 500, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4151872423891087811
 CanvasRenderer:
@@ -229,7 +229,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 8b33439243674834e834809649c98417, type: 3}
+    m_Font: {fileID: 12800000, guid: f0143a46aea17db45a71b94536ef45c1, type: 3}
     m_FontSize: 48
     m_FontStyle: 0
     m_BestFit: 0
@@ -278,7 +278,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.0000038146973, y: 30}
-  m_SizeDelta: {x: 500, y: 100}
+  m_SizeDelta: {x: 600, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3872646405428205938
 CanvasRenderer:
@@ -309,7 +309,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 8b33439243674834e834809649c98417, type: 3}
+    m_Font: {fileID: 12800000, guid: f0143a46aea17db45a71b94536ef45c1, type: 3}
     m_FontSize: 64
     m_FontStyle: 0
     m_BestFit: 0
@@ -321,7 +321,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u041F\u041E\u0414\u0421\u041E\u041B\u041D\u0415\u0427\u041D\u0418\u041A"
+  m_Text: "\u041F\u041E\u0414\u0421\u041E\u041B\u041D\u0423\u0425"
 --- !u!1 &8323888060126118480
 GameObject:
   m_ObjectHideFlags: 0
@@ -448,9 +448,8 @@ MonoBehaviour:
   _nameText: {fileID: 5646079677410907033}
   _borderHint: {fileID: 2066107019869338684}
   _defaultSprite: {fileID: 21300000, guid: e9782b9580257aa4485c37337857f4e4, type: 3}
-  _name: "\u041F\u041E\u0414\u0421\u041E\u041B\u041D\u0415\u0427\u041D\u0418\u041A"
   _pollenText: {fileID: 6896871537736739962}
-  _maxPollenCount: 6
+  _flowerData: {fileID: 11400000, guid: d0bce107ed4f3f0429a71d714ae329b7, type: 2}
 --- !u!61 &2461430187949300111
 BoxCollider2D:
   m_ObjectHideFlags: 0

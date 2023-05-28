@@ -12,6 +12,7 @@ TagManager:
   - tree
   - barrel
   - barrel_busy
+  - invisible_bee
   layers:
   - Default
   - TransparentFX

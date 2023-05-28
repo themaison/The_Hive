@@ -22,7 +22,7 @@ public class BeeSpawner : MonoBehaviour
 
     private Bee SpawnBee(Bee _bee)
     {
-        Bee.BeeCounter += 1;
+        Bee.beeAmount += 1;
 
         _spawnPos = this.transform.position + Random.insideUnitSphere * _spawnRadius;
         Bee bee = Instantiate(_bee, _spawnPos, Quaternion.identity);
@@ -33,21 +33,21 @@ public class BeeSpawner : MonoBehaviour
 
     public void SpawnPollinator()
     {
-        BeePollinator.BeePollinatorCounter += 1;
+        BeePollinator.beePollinatorAmount += 1;
 
         SpawnBee(_pollinator);
     }
 
     public void SpawnWarrior()
     {
-        BeeWarrior.BeeWarriorCounter += 1;
+        BeeWarrior.beeWarriorAmount += 1;
   
         SpawnBee(_warrior);
     }
 
     public void SpawnRecycler()
     {
-        BeeRecycler.BeeRecyclerCounter += 1;
+        BeeRecycler.beeRecyclerAmount += 1;
 
         Barrel barrel = GetComponent<BarrelSpawner>().SpawnBarrel();
         Bee beeRecycler =  SpawnBee(_recycler);

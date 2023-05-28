@@ -3,17 +3,12 @@ using UnityEngine.UI;
 
 public abstract class Bee : FlyingEntity
 {
-    protected static int _beeCounter = 0;
-    public static int BeeCounter
-    {
-        get { return _beeCounter; }
-        set { _beeCounter = value; }
-    }
+    public static int beeAmount = 0;
 
     [SerializeField] private Slider _satietyPointsSlider;
 
-    [SerializeField] protected int _maxSatietyPoints;
-    [SerializeField] protected int _HRR; // health regeneration rate
+    protected int _maxSatietyPoints;
+    protected int _HRR; // health regeneration rate
 
     protected int _currentSatietyPoints;
 

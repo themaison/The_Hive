@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class Wasp : Enemy
 {
+    [SerializeField] protected EnemyData _enemyData;
+
     private SpriteRenderer _spriteRenderer;
     private Hive _hive;
 
@@ -10,6 +12,8 @@ public class Wasp : Enemy
 
     private void Start()
     {
+        SetEnemyData(_enemyData);
+
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _hive = FindObjectOfType<Hive>();
         _damageTime = _damageFrequency;

@@ -7,70 +7,42 @@ public class Hive : StaticObject
 {
     [SerializeField] private GameObject _upgradeMenuUI;
 
-    [Range(1, 100)]
-    [SerializeField] private int _maxIntegrityPoints = 100;
-    [SerializeField] private int _beeCapacity; // вместимость пчел
-    [SerializeField] private int _nectarCapacity; // вместимость нектара
-    [SerializeField] private int _honeyCapacity; // вместимость меда
-
     private SpriteRenderer _spriteRenderer;
 
-    private int _integrityPoints; // целостность улья
+    [SerializeField] private int _maxIntegrityPoints;
+    [SerializeField] private int _beeCapacity;
+    [SerializeField] private int _nectarCapacity;
+    [SerializeField] private int _honeyCapacity;
+
+    private int _currentIntegrityPoints;
     private int _nectarOccupancy = 0;
     private int _honeyOccupancy = 0;
     private int _beeOccupancy = 0;
 
-    public int MaxIntegrityPoints
-    {
-        get { return _maxIntegrityPoints; }
-    }
+    public int CurrentIntegrityPoints => _currentIntegrityPoints;
+    public int NectarOccupancy => _nectarOccupancy;
+    public int HoneyOccupancy => _honeyOccupancy;
+    public int BeeOccupancy => _beeOccupancy;
 
-    public int BeeCapacity
-    {
-        get { return _beeCapacity; }
-    }
+    public int BeeCapacity => _beeCapacity;
+    public int NectarCapacity => _nectarCapacity;
+    public int HoneyCapacity => _honeyCapacity;
+    public int MaxIntegrityPoints => _maxIntegrityPoints;
 
-    public int NectarCapacity
-    {
-        get { return _nectarCapacity; }
-    }
-
-    public int IntegrityPoints
-    {
-        get { return _integrityPoints; }
-    }
-
-    public int HoneyCapacity
-    {
-        get { return _honeyCapacity; }
-    }
-
-    public int NectarOccupancy
-    {
-        get { return _nectarOccupancy; }
-    }
-
-    public int HoneyOccupancy
-    {
-        get { return _honeyOccupancy; }
-    }
-
-    public int BeeOccupancy
-    {
-        get { return _beeOccupancy; }
-    }
 
     private void Start()
     {
         CancelHiveMenu();
 
-        _integrityPoints = _maxIntegrityPoints;
+        _currentIntegrityPoints = _maxIntegrityPoints;
         _spriteRenderer = GetComponent<SpriteRenderer>();
+
+        _hintPanel.SetActive(false);
     }
 
     private void Update()
     {
-        _beeOccupancy = Bee.BeeCounter;
+        _beeOccupancy = Bee.beeAmount;
     }
 
     public void Restore()
@@ -108,8 +80,8 @@ public class Hive : StaticObject
 
     public void TakeDamage(int amount)
     {
-        _integrityPoints -= amount;
-        if (_integrityPoints < 0)
+        _currentIntegrityPoints -= amount;
+        if (_currentIntegrityPoints < 0)
         {
             //GameOver();
         }
@@ -119,27 +91,39 @@ public class Hive : StaticObject
     {
         SetHiveMenu();
         _borderHint.SetActive(true);
+        _hintPanel.SetActive(true);
     }
 
     public override void OnPointerEnter(PointerEventData eventData)
     {
         _borderHint.SetActive(true);
+        _hintPanel.SetActive(true);
     }
 
     public override void OnPointerExit(PointerEventData eventData)
     {
         _borderHint.SetActive(false);
+        _hintPanel.SetActive(false);
     }
 
     public void CancelHiveMenu()
     {
-        Time.timeScale = 1;
+        ContinueTime();
         _upgradeMenuUI.SetActive(false);
     }
 
     public void SetHiveMenu()
     {
-        Time.timeScale = 0;
+        TimePause();
         _upgradeMenuUI.SetActive(true);
+    }
+
+    public void TimePause()
+    {
+        Time.timeScale = 0;
+    }
+    public void ContinueTime()
+    {
+        Time.timeScale = 1;
     }
 }

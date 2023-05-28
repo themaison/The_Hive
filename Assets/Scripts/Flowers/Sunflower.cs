@@ -3,10 +3,14 @@ using UnityEngine.EventSystems;
 
 public class Sunflower : Flower
 {
+    [SerializeField] private FlowerData _flowerData;
+
     private SpriteRenderer _spriteRenderer;
 
     private void Start()
     {
+        SetFlowerData(_flowerData);
+
         _spriteRenderer = GetComponent<SpriteRenderer>();
 
         InitPollenCount();
@@ -14,10 +18,5 @@ public class Sunflower : Flower
 
         _borderHint.SetActive(false);
         _hintPanel.SetActive(false);
-    }
-
-    private void Update()
-    {
-        
     }
 }

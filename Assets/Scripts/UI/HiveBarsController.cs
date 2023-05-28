@@ -32,8 +32,8 @@ public class HiveBarsController : MonoBehaviour
 
     private void SetIntegritySlider()
     {
-        _integritySlider.value = (float)_hive.IntegrityPoints / _hive.MaxIntegrityPoints;
-        _integrityText.text = "жекнярмнярэ " + _hive.IntegrityPoints.ToString() + " / " + _hive.MaxIntegrityPoints.ToString();
+        _integritySlider.value = (float)_hive.CurrentIntegrityPoints / _hive.MaxIntegrityPoints;
+        _integrityText.text = "жекнярмнярэ " + _hive.CurrentIntegrityPoints.ToString() + " / " + _hive.MaxIntegrityPoints.ToString();
     }
 
     private void SetBeeSlider()

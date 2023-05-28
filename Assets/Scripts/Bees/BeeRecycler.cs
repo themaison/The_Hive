@@ -3,17 +3,12 @@ using static UnityEngine.GraphicsBuffer;
 
 public class BeeRecycler : Bee
 {
-    private  static int _beeRecyclerCounter;
-    public static int BeeRecyclerCounter
-    {
-        get { return _beeRecyclerCounter; }
-        set { _beeRecyclerCounter = value; }
-    }
+    public static int beeRecyclerAmount;
 
-    [Range(1, 50)]
-    [SerializeField] private int _productionEfficiency;
-    [Range(0.1f, 10.0f)]
-    [SerializeField] private float _NPR; //nectar processing rate
+    [SerializeField] private BeeRecyclerData _beeRecyclerData;
+
+    private int _productionEfficiency;
+    private float _NPR; //nectar processing rate
 
 
     [SerializeField] private Sprite _defaultSprite;
@@ -29,6 +24,8 @@ public class BeeRecycler : Bee
 
     private void Start()
     {
+        SetBeeRecyclerStats(_beeRecyclerData);
+
         _hive = FindObjectOfType<Hive>();
         _spriteRenderer  = GetComponent<SpriteRenderer>();
 
@@ -100,6 +97,12 @@ public class BeeRecycler : Bee
         }
     }
 
+    protected override void Die()
+    {
+        base.Die();
+        Destroy(_barrel.gameObject);
+    }
+
     private void SpriteRender()
     {
         if (_isHasHoney)
@@ -112,5 +115,16 @@ public class BeeRecycler : Bee
         }
 
         _spriteRenderer.flipX = _targetPosition.x >= transform.position.x;
+    }
+
+    public void SetBeeRecyclerStats(BeeRecyclerData BRD)
+    {
+        _name = BRD.name;
+        _maxHealthPoints = BRD.healthPoints;
+        _maxSatietyPoints = BRD.satietyPoints;
+        _flightSpeed = BRD.flightSpeed;
+        _HRR = BRD.HRR;
+        _NPR = BRD._NPR;
+        _productionEfficiency = BRD.productionEfficiency;
     }
 }

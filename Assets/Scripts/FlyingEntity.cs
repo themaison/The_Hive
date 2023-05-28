@@ -5,12 +5,12 @@ using UnityEngine.UI;
 public abstract class FlyingEntity : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] protected GameObject _hintPanel;
-    [SerializeField] private Slider _healthPointsSlider;
     [SerializeField] protected Text _nameText;
+    [SerializeField] private Slider _healthPointsSlider;
 
-    [SerializeField] protected int _maxHealthPoints;
-    [SerializeField] protected float _flightSpeed;
-    [SerializeField] protected string _name;
+    protected int _maxHealthPoints;
+    protected float _flightSpeed;
+    protected string _name;
 
     protected int _currentHealthPoints;
 
@@ -19,6 +19,7 @@ public abstract class FlyingEntity : MonoBehaviour, IPointerEnterHandler, IPoint
     protected virtual void Die()
     {
         Destroy(gameObject);
+        Bee.beeAmount -= 1;
     }
 
     public virtual void TakeDamage(int damage)

@@ -43,6 +43,7 @@ public class FlowerSpawner : MonoBehaviour
     {
         if (Flower.FlowersCount < _spawnLimit)
         {
+            //InvokeRepeating("SpawnFlower", 0, _spawnDelay);
             _nextSpawnTime += Time.deltaTime;
             if (_nextSpawnTime >= _spawnDelay)
             {

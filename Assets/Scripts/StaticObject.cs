@@ -10,7 +10,7 @@ public abstract class StaticObject : MonoBehaviour, IPointerClickHandler, IPoint
 
     [SerializeField] protected GameObject _borderHint;
     [SerializeField] protected Sprite _defaultSprite;
-    [SerializeField] protected string _name;
+    protected string _name;
 
     public abstract void OnPointerClick(PointerEventData eventData);
     public abstract void OnPointerEnter(PointerEventData eventData);
