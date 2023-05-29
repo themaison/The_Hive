@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -32,25 +33,25 @@ public class HiveBarsController : MonoBehaviour
 
     private void SetIntegritySlider()
     {
-        _integritySlider.value = (float)_hive.CurrentIntegrityPoints / _hive.MaxIntegrityPoints;
-        _integrityText.text = "жекнярмнярэ " + _hive.CurrentIntegrityPoints.ToString() + " / " + _hive.MaxIntegrityPoints.ToString();
+        _integritySlider.value = (float)Hive.currentIntegrityPoints / Hive.maxIntegrityPoints;
+        _integrityText.text = "жекнярмнярэ " + Hive.currentIntegrityPoints.ToString() + " / " + Hive.maxIntegrityPoints.ToString();
     }
 
     private void SetBeeSlider()
     {
-        _beeSlider.value = (float)_hive.BeeOccupancy / _hive.BeeCapacity;
-        _beeText.text = "ов╗кш " + _hive.BeeOccupancy.ToString() + " / " + _hive.BeeCapacity.ToString();
+        _beeSlider.value = (float)Hive.beeOccupancy / Hive.beeCapacity;
+        _beeText.text = "ов╗кш " + Hive.beeOccupancy.ToString() + " / " + Hive.beeCapacity.ToString();
     }
 
     private void SetHoneySlider()
     {
-        _honeySlider.value = (float)_hive.HoneyOccupancy / _hive.HoneyCapacity;
-        _honeyText.text = "л╗д " + _hive.HoneyOccupancy.ToString() + " / " + _hive.HoneyCapacity.ToString();
+        _honeySlider.value = (float)Hive.honeyOccupancy / Hive.honeyCapacity;
+        _honeyText.text = "л╗д " + Hive.honeyOccupancy.ToString() + " / " + Hive.honeyCapacity.ToString();
     }
 
     private void SetNectarSlider()
     {
-        _nectarSlider.value = (float)_hive.NectarOccupancy / _hive.NectarCapacity;
-        _nectarText.text = "мейрюп " + _hive.NectarOccupancy.ToString() + " / " + _hive.NectarCapacity.ToString();
+        _nectarSlider.value = (float)Hive.nectarOccupancy / Hive.nectarCapacity;
+        _nectarText.text = "мейрюп " + Hive.nectarOccupancy.ToString() + " / " + Hive.nectarCapacity.ToString();
     }
 }

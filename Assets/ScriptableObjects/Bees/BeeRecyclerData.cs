@@ -10,6 +10,6 @@ public class BeeRecyclerData : ScriptableObject
     public int satietyPoints;
     public float flightSpeed;
     public int HRR;
-    public float _NPR;
+    public float NPR;
     public int productionEfficiency;
 }

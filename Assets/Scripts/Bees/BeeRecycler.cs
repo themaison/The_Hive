@@ -7,8 +7,11 @@ public class BeeRecycler : Bee
 
     [SerializeField] private BeeRecyclerData _beeRecyclerData;
 
-    private int _productionEfficiency;
-    private float _NPR; //nectar processing rate
+    new private static int _maxHealthPoints;
+    new private static int _maxSatietyPoints;
+    new private static float _flightSpeed;
+    private static int _productionEfficiency;
+    private static float _NPR; //nectar processing rate
 
 
     [SerializeField] private Sprite _defaultSprite;
@@ -53,7 +56,7 @@ public class BeeRecycler : Bee
 
     private void ProcessNectar()
     {
-        if (!_isRecycling && _hive.GetComponent<Hive>().NectarOccupancy > 0)
+        if (!_isRecycling && Hive.nectarOccupancy > 0)
         {
             _hive.GetNectar(1);
 
@@ -117,14 +120,23 @@ public class BeeRecycler : Bee
         _spriteRenderer.flipX = _targetPosition.x >= transform.position.x;
     }
 
-    public void SetBeeRecyclerStats(BeeRecyclerData BRD)
+    public void SetBeeRecyclerStats(BeeRecyclerData data)
     {
-        _name = BRD.name;
-        _maxHealthPoints = BRD.healthPoints;
-        _maxSatietyPoints = BRD.satietyPoints;
-        _flightSpeed = BRD.flightSpeed;
-        _HRR = BRD.HRR;
-        _NPR = BRD._NPR;
-        _productionEfficiency = BRD.productionEfficiency;
+        _name = data.name;
+        _maxHealthPoints = data.healthPoints;
+        _maxSatietyPoints = data.satietyPoints;
+        _flightSpeed = data.flightSpeed;
+        _HRR = data.HRR;
+        _NPR = data.NPR;
+        _productionEfficiency = data.productionEfficiency;
+    }
+
+    public static void UpdateBeeRecyclerStats(BeeRecyclerData data)
+    {
+        _maxHealthPoints = data.healthPoints;
+        _maxSatietyPoints = data.satietyPoints;
+        _flightSpeed = data.flightSpeed;
+        _productionEfficiency = data.productionEfficiency;
+        _NPR = data.NPR;
     }
 }

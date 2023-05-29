@@ -5,85 +5,81 @@ using UnityEngine.UI;
 
 public class Hive : StaticObject
 {
+    [SerializeField] private HiveData _hiveData;
+
     [SerializeField] private GameObject _upgradeMenuUI;
+    [SerializeField] private GameObject _exitPanel;
 
     private SpriteRenderer _spriteRenderer;
 
-    [SerializeField] private int _maxIntegrityPoints;
-    [SerializeField] private int _beeCapacity;
-    [SerializeField] private int _nectarCapacity;
-    [SerializeField] private int _honeyCapacity;
+    public static int maxIntegrityPoints;
+    public static int beeCapacity;
+    public static int nectarCapacity;
+    public static int honeyCapacity;
 
-    private int _currentIntegrityPoints;
-    private int _nectarOccupancy = 0;
-    private int _honeyOccupancy = 0;
-    private int _beeOccupancy = 0;
-
-    public int CurrentIntegrityPoints => _currentIntegrityPoints;
-    public int NectarOccupancy => _nectarOccupancy;
-    public int HoneyOccupancy => _honeyOccupancy;
-    public int BeeOccupancy => _beeOccupancy;
-
-    public int BeeCapacity => _beeCapacity;
-    public int NectarCapacity => _nectarCapacity;
-    public int HoneyCapacity => _honeyCapacity;
-    public int MaxIntegrityPoints => _maxIntegrityPoints;
-
+    public static int currentIntegrityPoints;
+    public static int nectarOccupancy = 0;
+    public static int honeyOccupancy = 0;
+    public static int beeOccupancy = 0;
 
     private void Start()
     {
-        CancelHiveMenu();
-
-        _currentIntegrityPoints = _maxIntegrityPoints;
         _spriteRenderer = GetComponent<SpriteRenderer>();
 
+        CancelHiveMenu();
         _hintPanel.SetActive(false);
+        _exitPanel.SetActive(false);
+
+        maxIntegrityPoints = 100;
+        beeCapacity = 10;
+        nectarCapacity = 100;
+        honeyCapacity = 500;
+
+        currentIntegrityPoints = maxIntegrityPoints;
+        nectarOccupancy = 0;
+        honeyOccupancy = 500;
+        beeOccupancy = 0;
     }
 
     private void Update()
     {
-        _beeOccupancy = Bee.beeAmount;
-    }
-
-    public void Restore()
-    {
-        // soon
+        beeOccupancy = Bee.beeAmount;
     }
 
     public void AddNectar(int amount)
     {
-        _nectarOccupancy += amount;
-        if (_nectarOccupancy > _nectarCapacity)
+        nectarOccupancy += amount;
+        if (nectarOccupancy > nectarCapacity)
         {
-            _nectarOccupancy = _nectarCapacity;
+            nectarOccupancy = nectarCapacity;
         }
     }
 
     public void AddHoney(int amount)
     {
-        _honeyOccupancy += amount;
-        if (_honeyOccupancy > _honeyCapacity)
+        honeyOccupancy += amount;
+        if (honeyOccupancy > honeyCapacity)
         {
-            _honeyOccupancy = _honeyCapacity;
+            honeyOccupancy = honeyCapacity;
         }
     }
 
     public void GetNectar(int amount)
     {
-        if (amount > _nectarOccupancy)
+        if (amount > nectarOccupancy)
         {
-            amount = _nectarOccupancy;
+            amount = nectarOccupancy;
         }
 
-        _nectarOccupancy -= amount;
+        nectarOccupancy -= amount;
     }
 
     public void TakeDamage(int amount)
     {
-        _currentIntegrityPoints -= amount;
-        if (_currentIntegrityPoints < 0)
+        currentIntegrityPoints -= amount;
+        if (currentIntegrityPoints < 0)
         {
-            //GameOver();
+            _exitPanel.SetActive(true);
         }
     }
 
@@ -108,13 +104,11 @@ public class Hive : StaticObject
 
     public void CancelHiveMenu()
     {
-        ContinueTime();
         _upgradeMenuUI.SetActive(false);
     }
 
     public void SetHiveMenu()
     {
-        TimePause();
         _upgradeMenuUI.SetActive(true);
     }
 
@@ -125,5 +119,22 @@ public class Hive : StaticObject
     public void ContinueTime()
     {
         Time.timeScale = 1;
+    }
+
+    private void SetHiveStats(HiveData data)
+    {
+        _name = data.name;
+        maxIntegrityPoints = data.maxIntegrityPoints;
+        beeCapacity = data.beeCapacity;
+        honeyCapacity = data.honeyCapacity;
+        nectarCapacity = data.nectarCapacity;
+    }
+
+    public static void UpdateHiveStats(HiveData data)
+    {
+        maxIntegrityPoints = data.maxIntegrityPoints;
+        beeCapacity = data.beeCapacity;
+        honeyCapacity = data.honeyCapacity;
+        nectarCapacity = data.nectarCapacity;
     }
 }

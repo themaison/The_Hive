@@ -6,9 +6,12 @@ public class BeeWarrior : Bee
 
     [SerializeField] private BeeWarriorData _beeWarriorData;
 
-    private int _damagePoints;
-    private float _damageFrequency;
-    private float _detectionRange;
+    new private static int _maxHealthPoints;
+    new private static int _maxSatietyPoints;
+    new private static float _flightSpeed;
+    private static int _damagePoints;
+    private static float _detectionRange;
+    private static float _damageFrequency;
 
     private Enemy _nearestEnemy;
     private Hive _hive;
@@ -127,5 +130,14 @@ public class BeeWarrior : Bee
         _damagePoints = BWD.damagePoints;
         _damageFrequency = BWD.damageFrequency;
         _detectionRange = BWD.detectionRange;
+    }
+
+    public static void UpdateBeeWarriorStats(BeeWarriorData data)
+    {
+        _maxHealthPoints = data.healthPoints;
+        _maxSatietyPoints = data.satietyPoints;
+        _flightSpeed = data.flightSpeed;
+        _damagePoints = data.damagePoints;
+        _detectionRange = data.detectionRange;
     }
 }

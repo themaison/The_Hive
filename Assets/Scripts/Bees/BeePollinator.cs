@@ -139,24 +139,24 @@ public class BeePollinator : Bee
         _spriteRenderer.flipX = _targetPosition.x >= transform.position.x;
     }
 
-    private void SetBeePollinatorStats(BeePollinatorData BPD)
+    private void SetBeePollinatorStats(BeePollinatorData data)
     {
-        _name = BPD.name;
-        _maxHealthPoints = BPD.healthPoints;
-        _maxSatietyPoints  = BPD.satietyPoints;
-        _flightSpeed = BPD.flightSpeed;
-        _HRR = BPD.HRR;
-        _NCR = BPD.NCR;
-        _nectarCapacity = BPD.nectarCapacity;
+        _name = data.name;
+        _maxHealthPoints = data.healthPoints;
+        _maxSatietyPoints  = data.satietyPoints;
+        _flightSpeed = data.flightSpeed;
+        _HRR = data.HRR;
+        _NCR = data.NCR;
+        _nectarCapacity = data.nectarCapacity;
     }
 
-    public static void UpdateBeePollinatorStats(BeePollinatorData BPD)
+    public static void UpdateBeePollinatorStats(BeePollinatorData data)
     {
-        _maxHealthPoints = BPD.healthPoints;
-        _maxSatietyPoints = BPD.satietyPoints;
-        _flightSpeed = BPD.flightSpeed;
-        _NCR = BPD.NCR;
-        _nectarCapacity = BPD.nectarCapacity;
+        _maxHealthPoints = data.healthPoints;
+        _maxSatietyPoints = data.satietyPoints;
+        _flightSpeed = data.flightSpeed;
+        _NCR = data.NCR;
+        _nectarCapacity = data.nectarCapacity;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

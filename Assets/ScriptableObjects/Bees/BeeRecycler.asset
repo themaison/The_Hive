@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: BeeRecycler
   m_EditorClassIdentifier: 
   name: "\u041F\u0415\u0420\u0415\u0420\u0410\u0411\u041E\u0422\u0427\u0418\u041A"
-  healthPoints: 100
-  satietyPoints: 100
+  healthPoints: 1
+  satietyPoints: 1
   flightSpeed: 1
   HRR: 1
-  _NPR: 1
+  _NPR: 3
   productionEfficiency: 1

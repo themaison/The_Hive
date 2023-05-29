@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "BeeWarriorData", menuName = "Bee/Bee Warrior Data")]
+[CreateAssetMenu(fileName = "BeeWarriorData", menuName = "Bee/Bee Warrior")]
 public class BeeWarriorData : ScriptableObject
 {
     public string name;

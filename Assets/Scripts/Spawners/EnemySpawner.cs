@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,21 +18,28 @@ public class EnemySpawner : MonoBehaviour
     [Range(5.0f, 120.0f)]
     [SerializeField] private float _waveDelay;
 
-    [System.Serializable]
-    public class Wave
+    [Serializable]
+    private class Wave
     {
         public Enemy enemy;
         public int count;
     }
 
+    [SerializeField]
     private Wave[] _waves;
-    private Wave _currentWave;
 
-    //private float _nextWaspTime = 0f;
-    //private int _currentWaspNum = 0;
+    private Wave _currentWave;
 
     private float _nextWaveTime = 0f;
     private int _currentWaveIndex = 0;
+
+    private float _nextSpawnTime = 0f;
+    private int _currentSpawnCount = 0;
+
+    private bool _isPreparing = true;
+    private bool _isWaveActive = false;
+
+
 
     private void Awake()
     {
@@ -60,17 +68,22 @@ public class EnemySpawner : MonoBehaviour
         }
 
         float timeLeft = Mathf.Clamp(_nextWaveTime - Time.time, 0f, _waveDelay);
-        _waveTimerText.text = "Õ¿◊¿ÀŒ ◊≈–≈« " + Mathf.CeilToInt(timeLeft).ToString() + " —≈ ";
+        _waveTimerText.text = "—À≈ƒ. ¬ŒÀÕ¿ ◊≈–≈« " + Mathf.CeilToInt(timeLeft).ToString() + " —≈ ";
 
-        if (_currentWaveIndex >= _waves.Length - 1)
+        if (_isPreparing)
         {
-            _waveCountText.text = "¡Œ——";
-            _waveTimerText.enabled = false;
+            _waveCountText.text = "œŒƒ√Œ“Œ¬ ¿";
+            _waveTimerText.enabled = true;
         }
-        else
+        else if (_isWaveActive)
         {
             _waveCountText.text = "¬ŒÀÕ¿ " + (_currentWaveIndex + 1).ToString();
             _waveTimerText.enabled = true;
+        }
+        else if (_currentWaveIndex >= _waves.Length - 1)
+        {
+            _waveCountText.text = "¡Œ——";
+            _waveTimerText.enabled = false;
         }
     }
 
@@ -82,13 +95,28 @@ public class EnemySpawner : MonoBehaviour
         }
 
         _currentWave = _waves[_currentWaveIndex];
+        _currentSpawnCount = 0;
+        _nextSpawnTime = Time.time;
 
-        for (int i = 0; i < _currentWave.count; i++)
+        _isPreparing = false;
+        _isWaveActive = true;
+        SpawnNextEnemy();
+    }
+
+    private void SpawnNextEnemy()
+    {
+        if (_currentSpawnCount < _currentWave.count)
         {
             SpawnEnemy(_currentWave.enemy);
+            _currentSpawnCount++;
+            _nextSpawnTime += _waspSpawnDelay;
+            Invoke("SpawnNextEnemy", _waspSpawnDelay);
         }
-
-        _currentWaveIndex++;
+        else
+        {
+            _currentWaveIndex++;
+            _isWaveActive = false;
+        }
     }
 
     private void SpawnEnemy(Enemy enemy)
@@ -101,7 +129,7 @@ public class EnemySpawner : MonoBehaviour
 
     private Vector2 RandomEllipse(Vector2 center, float radiusX, float radiusY)
     {
-        float angle = Random.value * 360;
+        float angle = UnityEngine.Random.value * 360;
 
         Vector2 position;
         position.x = center.x + radiusX * Mathf.Sin(angle * Mathf.Deg2Rad);
