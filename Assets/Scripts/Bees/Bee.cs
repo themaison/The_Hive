@@ -14,13 +14,13 @@ public abstract class Bee : FlyingEntity
     protected const float _hungerDelayBoost = 3;
 
     protected const int _hungerDamage = 1;
-    protected const int _hungerHealthDamage = 1; 
+    protected const int _hungerHealthDamage = 1;
 
     protected const float _regenerateInterval = 1;
     protected const int _regenerateValue = 1;   
-    protected float _lastRegenerateTime;     
-    
-    protected const float _eatDelay = 2;     
+    protected float _lastRegenerateTime;
+
+    protected const float _eatDelay = 2;
     protected const int _nectarToSatiety = 2;   
 
     protected Hive _hive;

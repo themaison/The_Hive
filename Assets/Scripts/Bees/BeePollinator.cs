@@ -169,9 +169,16 @@ public class BeePollinator : Bee
     private void LoadData(BeePollinatorData data)
     {
         _name = data.name;
+
         _maxHealthPoints = Mathf.Max(_maxHealthPoints, data.healthPoints);
-        _maxSatietyPoints  = Mathf.Max(_maxSatietyPoints, data.satietyPoints);
+        base._maxHealthPoints = _maxHealthPoints;
+
+        _maxSatietyPoints = Mathf.Max(_maxSatietyPoints, data.satietyPoints);
+        base._maxSatietyPoints = _maxSatietyPoints;
+
         _flightSpeed = Mathf.Max(_flightSpeed, data.flightSpeed);
+        base._flightSpeed = _flightSpeed;
+
         _NCR = Mathf.Max(_NCR, data.NCR);
         _nectarCapacity = Mathf.Max(_nectarCapacity, data.nectarCapacity);
     }

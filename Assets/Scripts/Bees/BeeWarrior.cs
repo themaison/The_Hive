@@ -127,14 +127,21 @@ public class BeeWarrior : Bee
         _spriteRenderer.flipX = transform.position.x < _targetPosition.x;
     }
 
-    public void SetBeeWarriorStats(BeeWarriorData BWD)
+    public void SetBeeWarriorStats(BeeWarriorData data)
     {
-        _name = BWD.name;
-        _maxHealthPoints = BWD.healthPoints;
-        _maxSatietyPoints = BWD.satietyPoints;
-        _flightSpeed = BWD.flightSpeed;
-        _damagePoints = BWD.damagePoints;
-        _detectionRange = BWD.detectionRange;
+        _name = data.name;
+
+        _maxHealthPoints = Mathf.Max(_maxHealthPoints, data.healthPoints);
+        base._maxHealthPoints = _maxHealthPoints;
+
+        _maxSatietyPoints = Mathf.Max(_maxSatietyPoints, data.satietyPoints);
+        base._maxSatietyPoints = _maxSatietyPoints;
+
+        _flightSpeed = Mathf.Max(_flightSpeed, data.flightSpeed);
+        base._flightSpeed = _flightSpeed;
+
+        _damagePoints = data.damagePoints;
+        _detectionRange = data.detectionRange;
     }
 
     public static void UpdateBeeWarriorStats(BeeWarriorData data)
