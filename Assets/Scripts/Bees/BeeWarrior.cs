@@ -6,11 +6,39 @@ public class BeeWarrior : Bee
 
     [SerializeField] private BeeWarriorData _beeWarriorData;
 
-    new private static int _maxHealthPoints;
-    new private static int _maxSatietyPoints;
-    new private static float _flightSpeed;
-    private static int _damagePoints;
-    private static float _detectionRange;
+    new private static int _maxHealthPoints = 0;
+    new private static int _maxSatietyPoints = 0;
+    new private static float _flightSpeed = 0;
+    private static int _damagePoints = 0;
+    private static float _detectionRange = 0;
+
+    public static int MaxHealthPoints
+    {
+        get { return _maxHealthPoints; }
+        set { _maxHealthPoints = value; }
+    }
+    public static int MaxSatietyPoints
+    {
+        get { return _maxSatietyPoints; }
+        set { _maxSatietyPoints = value; }
+    }
+    public static float FlightSpeed
+    {
+        get { return _flightSpeed; }
+        set { _flightSpeed = value; }
+    }
+
+    public static int DamagePoints
+    {
+        get { return _damagePoints; }
+        set { _damagePoints = value; }
+    }
+
+    public static float DetectionRange
+    {
+        get { return _detectionRange; }
+        set { _detectionRange = value; }
+    }
 
     private const float _damageFrequency = 1;
 
@@ -23,7 +51,7 @@ public class BeeWarrior : Bee
 
     void Start()
     {
-        SetBeeWarriorStats(_beeWarriorData);
+        LoadData(_beeWarriorData);
 
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _hive = FindAnyObjectByType<Hive>();
@@ -85,6 +113,28 @@ public class BeeWarrior : Bee
         enemy.TakeDamage(_damagePoints);
     }
 
+    private void SpriteRender()
+    {
+        _spriteRenderer.flipX = transform.position.x < _targetPosition.x;
+    }
+
+    public void LoadData(BeeWarriorData data)
+    {
+        _name = data.name;
+
+        _maxHealthPoints = Mathf.Max(_maxHealthPoints, data.healthPoints);
+        base._maxHealthPoints = _maxHealthPoints;
+
+        _maxSatietyPoints = Mathf.Max(_maxSatietyPoints, data.satietyPoints);
+        base._maxSatietyPoints = _maxSatietyPoints;
+
+        _flightSpeed = Mathf.Max(_flightSpeed, data.flightSpeed);
+        base._flightSpeed = _flightSpeed;
+
+        _damagePoints = Mathf.Max(_damagePoints, data.damagePoints);
+        _detectionRange = Mathf.Max(_detectionRange, data.detectionRange);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "hive")
@@ -120,36 +170,5 @@ public class BeeWarrior : Bee
                 _damageTime = 0f;
             }
         }
-    }
-
-    private void SpriteRender()
-    {
-        _spriteRenderer.flipX = transform.position.x < _targetPosition.x;
-    }
-
-    public void SetBeeWarriorStats(BeeWarriorData data)
-    {
-        _name = data.name;
-
-        _maxHealthPoints = Mathf.Max(_maxHealthPoints, data.healthPoints);
-        base._maxHealthPoints = _maxHealthPoints;
-
-        _maxSatietyPoints = Mathf.Max(_maxSatietyPoints, data.satietyPoints);
-        base._maxSatietyPoints = _maxSatietyPoints;
-
-        _flightSpeed = Mathf.Max(_flightSpeed, data.flightSpeed);
-        base._flightSpeed = _flightSpeed;
-
-        _damagePoints = data.damagePoints;
-        _detectionRange = data.detectionRange;
-    }
-
-    public static void UpdateBeeWarriorStats(BeeWarriorData data)
-    {
-        _maxHealthPoints = data.healthPoints;
-        _maxSatietyPoints = data.satietyPoints;
-        _flightSpeed = data.flightSpeed;
-        _damagePoints = data.damagePoints;
-        _detectionRange = data.detectionRange;
     }
 }

@@ -9,12 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7db22d119f8fca7479c14440f8f8c463, type: 3}
-  m_Name: BeeRecycler
+  m_Script: {fileID: 11500000, guid: 2aedec23ed5fe6e4cba5ef574d641e68, type: 3}
+  m_Name: Hive
   m_EditorClassIdentifier: 
-  name: "\u041F\u0415\u0420\u0415\u0420\u0410\u0411\u041E\u0422\u0427\u0418\u041A"
-  healthPoints: 10
-  satietyPoints: 10
-  flightSpeed: 1
-  NPR: 5
-  productionEfficiency: 1
+  name: "\u0423\u041B\u0415\u0419"
+  maxIntegrityPoints: 25
+  beeCapacity: 5
+  nectarCapacity: 15
+  honeyCapacity: 15

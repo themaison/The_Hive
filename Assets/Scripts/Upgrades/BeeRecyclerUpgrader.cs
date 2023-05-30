@@ -3,33 +3,40 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static BeePollinatorUpgrader;
 
 public class BeeRecyclerUpgrader : Upgrader
 {
-    [SerializeField] private BeeRecyclerData _beeRecyclerData;
+    [SerializeField] private BeeRecyclerData _data;
     [SerializeField] private BeeRecyclerUIPanelController _beeRecyclerUIPanel;
 
-    [Serializable]
-    private class BeeRecyclerStats
+    [Serializable] public class BeeRecyclerStats
     {
         public int maxHealthPoints;
         public int maxSatietyPoints;
-        public int flightSpeed;
+        public float flightSpeed;
         public int productionEfficiency;
-        public int NPR;
+        public float NPR;
     }
 
     [SerializeField] private BeeRecyclerStats[] _upgrades;
     [SerializeField] private int[] _upgradePrices;
 
-    private BeeRecyclerStats _upgrade;
+    private BeeRecyclerStats _currentStats;
 
     private void Start()
     {
+        _currentStats = new BeeRecyclerStats();
+        _currentStats.maxHealthPoints = _data.healthPoints;
+        _currentStats.maxSatietyPoints = _data.satietyPoints;
+        _currentStats.flightSpeed = _data.flightSpeed;
+        _currentStats.productionEfficiency = _data.productionEfficiency;
+        _currentStats.NPR = _data.NPR;
+
         _maxLevel = _upgrades.Length + 1;
         _level = 1;
 
-        _beeRecyclerUIPanel.UpdateBeeRecyclerUIPanel(_beeRecyclerData, _level, GetUpgradePrice(_level - 1));
+        _beeRecyclerUIPanel.UpdateBeeRecyclerUIPanel(_currentStats, _level, GetUpgradePrice(_level - 1));
     }
 
     private void Update()
@@ -49,16 +56,15 @@ public class BeeRecyclerUpgrader : Upgrader
         Hive.HoneyOccupancy -= GetUpgradePrice(_level - 1);
 
         _level += 1;
-        _upgrade = _upgrades[_level - 2];
+        _currentStats = _upgrades[_level - 2];
 
-        _beeRecyclerData.healthPoints = _upgrade.maxHealthPoints;
-        _beeRecyclerData.satietyPoints = _upgrade.maxSatietyPoints;
-        _beeRecyclerData.flightSpeed = _upgrade.flightSpeed;
-        _beeRecyclerData.productionEfficiency = _upgrade.productionEfficiency;
-        _beeRecyclerData.NPR = _upgrade.NPR;
-        BeeRecycler.UpdateBeeRecyclerStats(_beeRecyclerData);
+        BeeRecycler.MaxHealthPoints = _currentStats.maxHealthPoints;
+        BeeRecycler.MaxSatietyPoints = _currentStats.maxSatietyPoints;
+        BeeRecycler.FlightSpeed = _currentStats.flightSpeed;
+        BeeRecycler.ProductionEfficiency = _currentStats.productionEfficiency;
+        BeeRecycler.NPR = _currentStats.NPR;
 
-        _beeRecyclerUIPanel.UpdateBeeRecyclerUIPanel(_beeRecyclerData, _level, GetUpgradePrice(Math.Min(_level - 1, _maxLevel - 2)));
+        _beeRecyclerUIPanel.UpdateBeeRecyclerUIPanel(_currentStats, _level, GetUpgradePrice(Math.Min(_level - 1, _maxLevel - 2)));
 
         if (_level == _maxLevel)
         {

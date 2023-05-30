@@ -35,14 +35,14 @@ public class HiveUIPanelController : MonoBehaviour
         _upgradePriceText.text = "-/-";
     }
 
-    public void UpdateHiveUIPanel(HiveData data, int level, int price)
+    public void UpdateHiveUIPanel(HiveUpgrader.HiveStats stats, int level, int price)
     {
         _levelText.text = "спнбемэ " + level.ToString();
         _upgradePriceText.text = price.ToString();
 
-        _maxIntegrityPointsText.text = data.maxIntegrityPoints.ToString();
-        _beeCapacityText.text = data.beeCapacity.ToString();
-        _nectarCapacityText.text = data.nectarCapacity.ToString();
-        _honeyCapacityText.text = data.honeyCapacity.ToString();
+        _maxIntegrityPointsText.text = stats.maxIntegrityPoints.ToString();
+        _beeCapacityText.text = stats.beeCapacity.ToString();
+        _nectarCapacityText.text = stats.nectarCapacity.ToString();
+        _honeyCapacityText.text = stats.honeyCapacity.ToString();
     }
 }

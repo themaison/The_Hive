@@ -8,15 +8,15 @@ public class BeeRecyclerUIPanelController : BeeUIPanelController
     [SerializeField] private Text _productionEfficiencyText;
     [SerializeField] private Text _NPRText;
 
-    public void UpdateBeeRecyclerUIPanel(BeeRecyclerData data, int level, int price)
+    public void UpdateBeeRecyclerUIPanel(BeeRecyclerUpgrader.BeeRecyclerStats stats, int level, int price)
     {
         UpdateLevelUI(level);
         UpdateUpgradePriceUI(price);
 
-        _healthPointsText.text = data.healthPoints.ToString();
-        _satietyPointsText.text = data.satietyPoints.ToString();
-        _flightSpeedText.text = data.flightSpeed.ToString();
-        _productionEfficiencyText.text = data.productionEfficiency.ToString();
-        _NPRText.text = data.NPR.ToString();
+        _healthPointsText.text = stats.maxHealthPoints.ToString();
+        _satietyPointsText.text = stats.maxSatietyPoints.ToString();
+        _flightSpeedText.text = stats.flightSpeed.ToString();
+        _productionEfficiencyText.text = stats.productionEfficiency.ToString();
+        _NPRText.text = stats.NPR.ToString();
     }
 }

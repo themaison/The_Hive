@@ -8,15 +8,15 @@ public class BeeWarriorUIPanelController : BeeUIPanelController
     [SerializeField] private Text _damagePointsText;
     [SerializeField] private Text _detectionRangeText;
 
-    public void UpdateBeeWarriorUIPanel(BeeWarriorData data, int level, int price)
+    public void UpdateBeeWarriorUIPanel(BeeWarriorUpgrader.BeeWarriorStats stats, int level, int price)
     {
         UpdateLevelUI(level);
         UpdateUpgradePriceUI(price);
 
-        _healthPointsText.text = data.healthPoints.ToString();
-        _satietyPointsText.text = data.satietyPoints.ToString();
-        _flightSpeedText.text = data.flightSpeed.ToString();
-        _damagePointsText.text = data.damagePoints.ToString();
-        _detectionRangeText.text = data.detectionRange.ToString();
+        _healthPointsText.text = stats.maxHealthPoints.ToString();
+        _satietyPointsText.text = stats.maxSatietyPoints.ToString();
+        _flightSpeedText.text = stats.flightSpeed.ToString();
+        _damagePointsText.text = stats.damagePoints.ToString();
+        _detectionRangeText.text = stats.detectionRange.ToString();
     }
 }

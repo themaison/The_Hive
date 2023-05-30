@@ -6,18 +6,21 @@ public class BeeSpawner : MonoBehaviour
     [SerializeField] private Bee _warrior;
     [SerializeField] private Bee _recycler;
 
-    [Range(1.0f, 10.0f)]
+    [SerializeField] private int _startPollinatorsAmount;
+    [SerializeField] private int _startRecyclersAmount;
+    [SerializeField] private int _startWarriorsAmount;
+
     [SerializeField] private float _spawnRadius = 1f;
     private Vector2 _spawnPos;
 
     private void Start()
     {
-
-    }
-
-    private void Update()
-    {
-
+        for (int i = 0; i < _startPollinatorsAmount; ++i)
+            SpawnPollinator();
+        for (int i = 0; i < _startRecyclersAmount; ++i)
+            SpawnRecycler();
+        for (int i = 0; i < _startWarriorsAmount; ++i)
+            SpawnWarrior();
     }
 
     private Bee SpawnBee(Bee _bee)

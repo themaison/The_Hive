@@ -18,24 +18,20 @@ public class Hive : StaticObject
     public static int HoneyCapacity;
 
     public static int CurrentIntegrityPoints;
-    public static int NectarOccupancy = 0;
-    public static int HoneyOccupancy = 0;
-    public static int BeeOccupancy = 0;
+    public static int NectarOccupancy;
+    public static int HoneyOccupancy;
+    public static int BeeOccupancy;
 
     private void Start()
     {
+        LoadData(_hiveData);
+
         _spriteRenderer = GetComponent<SpriteRenderer>();
 
         _hintPanel.SetActive(false);
         _exitPanel.SetActive(false);
 
-        MaxIntegrityPoints = 100;
-        BeeCapacity = 10;
-        NectarCapacity = 100;
-        HoneyCapacity = 500;
-
         CurrentIntegrityPoints = MaxIntegrityPoints;
-        HoneyOccupancy = 500;
     }
 
     private void Update()
@@ -102,6 +98,7 @@ public class Hive : StaticObject
 
     public void SetHiveMenu()
     {
+        TimePause();
         _upgradeMenuUI.SetActive(true);
     }
 
@@ -114,17 +111,9 @@ public class Hive : StaticObject
         Time.timeScale = 1;
     }
 
-    private void SetHiveStats(HiveData data)
+    private void LoadData(HiveData data)
     {
         _name = data.name;
-        MaxIntegrityPoints = data.maxIntegrityPoints;
-        BeeCapacity = data.beeCapacity;
-        HoneyCapacity = data.honeyCapacity;
-        NectarCapacity = data.nectarCapacity;
-    }
-
-    public static void UpdateHiveStats(HiveData data)
-    {
         MaxIntegrityPoints = data.maxIntegrityPoints;
         BeeCapacity = data.beeCapacity;
         HoneyCapacity = data.honeyCapacity;

@@ -15,6 +15,6 @@ MonoBehaviour:
   name: "\u041E\u041F\u042B\u041B\u0418\u0422\u0415\u041B\u042C"
   healthPoints: 10
   satietyPoints: 10
-  flightSpeed: 1
-  NCR: 1
-  nectarCapacity: 1
+  flightSpeed: 1.5
+  NCR: 3
+  nectarCapacity: 2

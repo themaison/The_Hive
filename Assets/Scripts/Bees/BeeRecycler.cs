@@ -7,11 +7,41 @@ public class BeeRecycler : Bee
 
     [SerializeField] private BeeRecyclerData _beeRecyclerData;
 
-    new private static int _maxHealthPoints;
-    new private static int _maxSatietyPoints;
-    new private static float _flightSpeed;
-    private static int _productionEfficiency;
-    private static float _NPR; //nectar processing rate
+    new private static int _maxHealthPoints = 0;
+    new private static int _maxSatietyPoints = 0;
+    new private static float _flightSpeed = 0;
+    private static int _productionEfficiency = 0;
+    private static float _NPR = 0; //nectar processing rate
+
+    public static int MaxHealthPoints
+    {
+        get { return _maxHealthPoints; }
+        set { _maxHealthPoints = value; }
+    }
+
+    public static int MaxSatietyPoints
+    {
+        get { return _maxSatietyPoints; }
+        set { _maxSatietyPoints = value; }
+    }
+
+    public static float FlightSpeed
+    {
+        get { return _flightSpeed; }
+        set { _flightSpeed = value; }
+    }
+
+    public static int ProductionEfficiency
+    {
+        get { return _productionEfficiency; }
+        set { _productionEfficiency = value; }
+    }
+
+    public static float NPR
+    {
+        get { return _NPR; }
+        set { _NPR = value; }
+    }
 
 
     [SerializeField] private Sprite _defaultSprite;
@@ -26,7 +56,7 @@ public class BeeRecycler : Bee
 
     private void Start()
     {
-        SetBeeRecyclerStats(_beeRecyclerData);
+        LoadData(_beeRecyclerData);
 
         _hive = FindObjectOfType<Hive>();
         _spriteRenderer  = GetComponent<SpriteRenderer>();
@@ -122,7 +152,7 @@ public class BeeRecycler : Bee
         _spriteRenderer.flipX = _targetPosition.x >= transform.position.x;
     }
 
-    public void SetBeeRecyclerStats(BeeRecyclerData data)
+    public void LoadData(BeeRecyclerData data)
     {
         _name = data.name;
 
@@ -135,16 +165,7 @@ public class BeeRecycler : Bee
         _flightSpeed = Mathf.Max(_flightSpeed, data.flightSpeed);
         base._flightSpeed = _flightSpeed;
 
-        _NPR = data.NPR;
-        _productionEfficiency = data.productionEfficiency;
-    }
-
-    public static void UpdateBeeRecyclerStats(BeeRecyclerData data)
-    {
-        _maxHealthPoints = data.healthPoints;
-        _maxSatietyPoints = data.satietyPoints;
-        _flightSpeed = data.flightSpeed;
-        _productionEfficiency = data.productionEfficiency;
-        _NPR = data.NPR;
+        _NPR = Mathf.Max(_NPR, data.NPR);
+        _productionEfficiency = Mathf.Max(_productionEfficiency, data.productionEfficiency);
     }
 }

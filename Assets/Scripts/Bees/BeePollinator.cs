@@ -12,11 +12,11 @@ public class BeePollinator : Bee
     private SpriteRenderer _spriteRenderer;
     private Flower _nearestFlower;
 
-    new private static int _maxHealthPoints;
-    new private static int _maxSatietyPoints;
-    new private static float _flightSpeed;
-    private static int _nectarCapacity;
-    private static float _NCR; // nectar collection rate
+    new private static int _maxHealthPoints = 0;
+    new private static int _maxSatietyPoints = 0;
+    new private static float _flightSpeed = 0;
+    private static int _nectarCapacity = 0;
+    private static float _NCR = 0; // nectar collection rate
 
     public static int MaxHealthPoints
     {

@@ -25,7 +25,6 @@ public class BeePollinatorUpgrader : Upgrader
     private void Start()
     {
         _currentStats = new BeePollinatorStats();
-
         _currentStats.maxHealthPoints = _data.healthPoints;
         _currentStats.maxSatietyPoints = _data.satietyPoints;
         _currentStats.flightSpeed = _data.flightSpeed;

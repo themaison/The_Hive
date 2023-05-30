@@ -20,8 +20,8 @@ public abstract class Bee : FlyingEntity
     protected const int _regenerateValue = 1;   
     protected float _lastRegenerateTime;
 
-    protected const float _eatDelay = 2;
-    protected const int _nectarToSatiety = 2;   
+    protected const float _eatDelay = 7;
+    protected const int _nectarToSatiety = 3;   
 
     protected Hive _hive;
 
