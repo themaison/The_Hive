@@ -355,7 +355,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &20911492
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1199,7 +1199,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 240, y: -127}
+  m_AnchoredPosition: {x: 240, y: -126.999985}
   m_SizeDelta: {x: 100, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &101363136
@@ -2121,7 +2121,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &287512978
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2153,7 +2153,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 940, y: -2385}
+  m_AnchoredPosition: {x: 940, y: -1430}
   m_SizeDelta: {x: 1880, y: 950}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &287512979
@@ -2206,7 +2206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b086cd6522cc8eb41b42f858b6d370de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _beeWarriorData: {fileID: 11400000, guid: f44a2ad23da9d5e4e98f330f6207195c, type: 2}
+  _beeWarriorData: {fileID: 0}
   _beeWarriorUIPanel: {fileID: 287512982}
   _upgrades:
   - maxHealthPoints: 0
@@ -2684,7 +2684,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -90, y: -87}
+  m_AnchoredPosition: {x: -90, y: -86.999985}
   m_SizeDelta: {x: 400, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &370271271
@@ -2843,7 +2843,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 240, y: -167}
+  m_AnchoredPosition: {x: 240, y: -166.99998}
   m_SizeDelta: {x: 100, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &382494848
@@ -3301,6 +3301,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1983683870}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &468904999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3556,10 +3568,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2608684637391112931}
-        m_TargetAssemblyTypeName: Hive, Assembly-CSharp
-        m_MethodName: CancelHiveMenu
-        m_Mode: 1
+      - m_Target: {fileID: 1983683870}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5157,7 +5169,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -90, y: -167}
+  m_AnchoredPosition: {x: -90, y: -166.99998}
   m_SizeDelta: {x: 400, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &748767642
@@ -5726,7 +5738,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 596.104, y: -174.93509}
+  m_AnchoredPosition: {x: 596.104, y: -174.93506}
   m_SizeDelta: {x: -1232.21, y: -735.85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &858266724
@@ -5878,7 +5890,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 240, y: -87}
+  m_AnchoredPosition: {x: 240, y: -86.999985}
   m_SizeDelta: {x: 100, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &879468746
@@ -6371,7 +6383,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 930388306}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
   m_Name: 
@@ -6933,29 +6945,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af898a6abc801414fa69d8a819f7f778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _beePollinatorData: {fileID: 11400000, guid: a015223b0401a024b84770c9459533d0, type: 2}
-  _beePollinatorUIPanel: {fileID: 0}
-  _upgrades:
-  - maxHealthPoints: 10
-    maxSatietyPoints: 10
-    flightSpeed: 1
-    NCR: 5
-    nectarCapacity: 5
+  _data: {fileID: 11400000, guid: a015223b0401a024b84770c9459533d0, type: 2}
+  _beePollinatorUIPanel: {fileID: 986088099}
+  _upgradeStats:
   - maxHealthPoints: 15
     maxSatietyPoints: 15
     flightSpeed: 2
-    NCR: 4
-    nectarCapacity: 10
+    NCR: 5
+    nectarCapacity: 2
   - maxHealthPoints: 20
     maxSatietyPoints: 20
     flightSpeed: 3
-    NCR: 3
-    nectarCapacity: 20
+    NCR: 4
+    nectarCapacity: 3
   - maxHealthPoints: 25
     maxSatietyPoints: 25
     flightSpeed: 4
+    NCR: 3
+    nectarCapacity: 4
+  - maxHealthPoints: 30
+    maxSatietyPoints: 30
+    flightSpeed: 5
     NCR: 2
-    nectarCapacity: 25
+    nectarCapacity: 5
   _upgradePrices: 05000000140000003200000064000000
 --- !u!1 &996587666
 GameObject:
@@ -9636,6 +9648,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1983683870}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1398910750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10344,7 +10368,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1503123513
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10429,7 +10453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b6e3d630072d6c4ba58fbdfa639aca4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _beeRecyclerData: {fileID: 11400000, guid: 81bd7272b3559b44c9c98037e0428f45, type: 2}
+  _beeRecyclerData: {fileID: 0}
   _beeRecyclerUIPanel: {fileID: 1503123517}
   _upgrades:
   - maxHealthPoints: 0
@@ -15707,7 +15731,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -90, y: -127}
+  m_AnchoredPosition: {x: -90, y: -126.999985}
   m_SizeDelta: {x: 400, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2132113137

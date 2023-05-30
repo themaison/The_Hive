@@ -10,7 +10,6 @@ public class BeePollinator : Bee
     [SerializeField] private Sprite _pollinatedSprite;
 
     private SpriteRenderer _spriteRenderer;
-    private Hive _hive;
     private Flower _nearestFlower;
 
     new private static int _maxHealthPoints;
@@ -19,6 +18,32 @@ public class BeePollinator : Bee
     private static int _nectarCapacity;
     private static float _NCR; // nectar collection rate
 
+    public static int MaxHealthPoints
+    {
+        get { return _maxHealthPoints; }
+        set { _maxHealthPoints = value; }
+    }
+    public static int MaxSatietyPoints
+    {
+        get { return _maxSatietyPoints; }
+        set { _maxSatietyPoints = value; }
+    }
+    public static float FlightSpeed
+    {
+        get { return _flightSpeed; }
+        set { _flightSpeed = value; }
+    }
+    public static int NectarCapacity
+    {
+        get { return _nectarCapacity; }
+        set { _nectarCapacity = value; }
+    }
+    public static float NCR
+    {
+        get { return _NCR; }
+        set { _NCR = value; }
+    }
+
     private bool _isCollecting;
     private float _collectingTime = 0f;
     private int _nectarOccupancy = 0;
@@ -26,7 +51,7 @@ public class BeePollinator : Bee
 
     private void Start()
     {
-        SetBeePollinatorStats(_beePollinatorData);
+        LoadData(_beePollinatorData);
 
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _hive = FindObjectOfType<Hive>();
@@ -37,6 +62,8 @@ public class BeePollinator : Bee
         _currentSatietyPoints = _maxSatietyPoints;
 
         SetHintPanelSettings();
+        UpdateHungerProcess(_hungerDelay);
+        UpdateEatingProcess(_eatDelay);
     }
 
     private void Update()
@@ -58,6 +85,7 @@ public class BeePollinator : Bee
         }
 
         Fly();
+        Regenerate();
         SpriteRender();
     }
 
@@ -104,7 +132,6 @@ public class BeePollinator : Bee
 
     private void CollectNectar(Flower _flower)
     {
-        //_flower.gameObject.tag = "flower_busy";
         _isCollecting = true;
 
         if (_collectingTime < _NCR)
@@ -139,24 +166,14 @@ public class BeePollinator : Bee
         _spriteRenderer.flipX = _targetPosition.x >= transform.position.x;
     }
 
-    private void SetBeePollinatorStats(BeePollinatorData data)
+    private void LoadData(BeePollinatorData data)
     {
         _name = data.name;
-        _maxHealthPoints = data.healthPoints;
-        _maxSatietyPoints  = data.satietyPoints;
-        _flightSpeed = data.flightSpeed;
-        _HRR = data.HRR;
-        _NCR = data.NCR;
-        _nectarCapacity = data.nectarCapacity;
-    }
-
-    public static void UpdateBeePollinatorStats(BeePollinatorData data)
-    {
-        _maxHealthPoints = data.healthPoints;
-        _maxSatietyPoints = data.satietyPoints;
-        _flightSpeed = data.flightSpeed;
-        _NCR = data.NCR;
-        _nectarCapacity = data.nectarCapacity;
+        _maxHealthPoints = Mathf.Max(_maxHealthPoints, data.healthPoints);
+        _maxSatietyPoints  = Mathf.Max(_maxSatietyPoints, data.satietyPoints);
+        _flightSpeed = Mathf.Max(_flightSpeed, data.flightSpeed);
+        _NCR = Mathf.Max(_NCR, data.NCR);
+        _nectarCapacity = Mathf.Max(_nectarCapacity, data.nectarCapacity);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

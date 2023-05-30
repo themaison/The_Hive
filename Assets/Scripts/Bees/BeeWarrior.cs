@@ -11,10 +11,10 @@ public class BeeWarrior : Bee
     new private static float _flightSpeed;
     private static int _damagePoints;
     private static float _detectionRange;
-    private static float _damageFrequency;
+
+    private const float _damageFrequency = 1;
 
     private Enemy _nearestEnemy;
-    private Hive _hive;
 
     private SpriteRenderer _spriteRenderer;
     private Vector2 _targetPosition;
@@ -33,7 +33,8 @@ public class BeeWarrior : Bee
         _currentSatietyPoints = _maxSatietyPoints;
 
         SetHintPanelSettings();
-
+        UpdateHungerProcess(_hungerDelay);
+        UpdateEatingProcess(_eatDelay);
     }
 
     void Update()
@@ -44,6 +45,7 @@ public class BeeWarrior : Bee
         }
 
         Fly();
+        Regenerate();
         SpriteRender();
     }
 
@@ -85,20 +87,24 @@ public class BeeWarrior : Bee
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        _targetPosition = transform.position;
-        _isNearHive = true;
         if (collision.gameObject.tag == "hive")
         {
             _spriteRenderer.enabled = false;
+            _isNearHive = true;
+            _targetPosition = transform.position; 
+
+            UpdateHungerProcess(_hungerDelay + _hungerDelayBoost);  // slower speed hunger process
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        _isNearHive = false;
-        if (collision.gameObject.tag == "hive")
+        if (collision.CompareTag("hive"))
         {
             _spriteRenderer.enabled = true;
+            _isNearHive = false;
+
+             UpdateHungerProcess(_hungerDelay);  // faster speed hunger process
         }
     }
 
@@ -128,7 +134,6 @@ public class BeeWarrior : Bee
         _maxSatietyPoints = BWD.satietyPoints;
         _flightSpeed = BWD.flightSpeed;
         _damagePoints = BWD.damagePoints;
-        _damageFrequency = BWD.damageFrequency;
         _detectionRange = BWD.detectionRange;
     }
 

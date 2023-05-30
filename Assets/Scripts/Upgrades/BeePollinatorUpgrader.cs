@@ -6,33 +6,41 @@ using UnityEngine;
 
 public class BeePollinatorUpgrader : Upgrader
 {
-    [SerializeField] private BeePollinatorData _beePollinatorData;
+    [SerializeField] private BeePollinatorData _data;
     [SerializeField] private BeePollinatorUIPanelController _beePollinatorUIPanel;
-    [Serializable] private class BeePollinatorStats
+    [Serializable] public class BeePollinatorStats
     {
         public int maxHealthPoints;
         public int maxSatietyPoints;
-        public int flightSpeed;
-        public int NCR;
+        public float flightSpeed;
+        public float NCR;
         public int nectarCapacity;
     }
 
-    [SerializeField] private BeePollinatorStats[] _upgrades;
+    [SerializeField] private BeePollinatorStats[] _upgradeStats;
     [SerializeField] private int[] _upgradePrices;
-    
-    private BeePollinatorStats _upgrade;
+
+    private BeePollinatorStats _currentStats;
 
     private void Start()
     {
-        _maxLevel = _upgrades.Length + 1;
+        _currentStats = new BeePollinatorStats();
+
+        _currentStats.maxHealthPoints = _data.healthPoints;
+        _currentStats.maxSatietyPoints = _data.satietyPoints;
+        _currentStats.flightSpeed = _data.flightSpeed;
+        _currentStats.NCR = _data.NCR;
+        _currentStats.nectarCapacity = _data.nectarCapacity;
+
+        _maxLevel = _upgradeStats.Length + 1;
         _level = 1;
 
-        _beePollinatorUIPanel.UpdateBeePollinatorUIPanel(_beePollinatorData, _level, GetUpgradePrice(_level - 1));
+        _beePollinatorUIPanel.UpdateBeePollinatorUIPanel(_currentStats, _level, GetUpgradePrice(_level - 1));
     }
 
     private void Update()
     {
-        if (_level < _maxLevel &&  Hive.honeyOccupancy >= GetUpgradePrice(_level - 1))
+        if (_level < _maxLevel &&  Hive.HoneyOccupancy >= GetUpgradePrice(_level - 1))
         {
             _beePollinatorUIPanel.EnableUpgradeButton();
         }
@@ -44,19 +52,18 @@ public class BeePollinatorUpgrader : Upgrader
 
     public override void Upgrade()
     {
-        Hive.honeyOccupancy -= GetUpgradePrice(_level - 1);
+        Hive.HoneyOccupancy -= GetUpgradePrice(_level - 1);
 
         _level += 1;
-        _upgrade = _upgrades[_level - 2];
+        _currentStats = _upgradeStats[_level - 2];
 
-        _beePollinatorData.healthPoints = _upgrade.maxHealthPoints;
-        _beePollinatorData.satietyPoints = _upgrade.maxSatietyPoints;
-        _beePollinatorData.flightSpeed = _upgrade.flightSpeed;
-        _beePollinatorData.NCR = _upgrade.NCR;
-        _beePollinatorData.nectarCapacity = _upgrade.nectarCapacity;
-        BeePollinator.UpdateBeePollinatorStats(_beePollinatorData);
+        BeePollinator.MaxHealthPoints = _currentStats.maxHealthPoints;
+        BeePollinator.MaxSatietyPoints = _currentStats.maxSatietyPoints;
+        BeePollinator.FlightSpeed = _currentStats.flightSpeed;
+        BeePollinator.NCR = _currentStats.NCR;
+        BeePollinator.NectarCapacity = _currentStats.nectarCapacity;
 
-        _beePollinatorUIPanel.UpdateBeePollinatorUIPanel(_beePollinatorData, _level, GetUpgradePrice(Math.Min(_level - 1, _maxLevel - 2)));
+        _beePollinatorUIPanel.UpdateBeePollinatorUIPanel(_currentStats, _level, GetUpgradePrice(Math.Min(_level - 1, _maxLevel - 2)));
 
         if (_level == _maxLevel)
         {

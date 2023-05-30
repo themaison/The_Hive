@@ -6,7 +6,9 @@ public abstract class FlyingEntity : MonoBehaviour, IPointerEnterHandler, IPoint
 {
     [SerializeField] protected GameObject _hintPanel;
     [SerializeField] protected Text _nameText;
+
     [SerializeField] private Slider _healthPointsSlider;
+    //Text HP TextAmount
 
     protected int _maxHealthPoints;
     protected float _flightSpeed;
@@ -24,10 +26,12 @@ public abstract class FlyingEntity : MonoBehaviour, IPointerEnterHandler, IPoint
 
     public virtual void TakeDamage(int damage)
     {
-        _maxHealthPoints -= damage;
+        _currentHealthPoints -= damage;
+        _currentHealthPoints = Mathf.Clamp(_currentHealthPoints, 0, _maxHealthPoints);
+
         UpdateHealthPointsSlider();
 
-        if (_maxHealthPoints <= 0)
+        if (_currentHealthPoints <= 0)
         {
             Die();
         }
@@ -42,6 +46,7 @@ public abstract class FlyingEntity : MonoBehaviour, IPointerEnterHandler, IPoint
 
     protected void UpdateHealthPointsSlider()
     {
+        //Change Text
         _healthPointsSlider.value = (float)_currentHealthPoints / _maxHealthPoints;
     }
 

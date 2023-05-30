@@ -18,11 +18,6 @@ public class HiveBarsController : MonoBehaviour
     [SerializeField] private Text _honeyText;
     [SerializeField] private Text _nectarText;
 
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         SetIntegritySlider();
@@ -33,25 +28,25 @@ public class HiveBarsController : MonoBehaviour
 
     private void SetIntegritySlider()
     {
-        _integritySlider.value = (float)Hive.currentIntegrityPoints / Hive.maxIntegrityPoints;
-        _integrityText.text = "жекнярмнярэ " + Hive.currentIntegrityPoints.ToString() + " / " + Hive.maxIntegrityPoints.ToString();
+        _integritySlider.value = (float)Hive.CurrentIntegrityPoints / Hive.MaxIntegrityPoints;
+        _integrityText.text = "жекнярмнярэ " + Hive.CurrentIntegrityPoints.ToString() + " / " + Hive.MaxIntegrityPoints.ToString();
     }
 
     private void SetBeeSlider()
     {
-        _beeSlider.value = (float)Hive.beeOccupancy / Hive.beeCapacity;
-        _beeText.text = "ов╗кш " + Hive.beeOccupancy.ToString() + " / " + Hive.beeCapacity.ToString();
+        _beeSlider.value = (float)Hive.BeeOccupancy / Hive.BeeCapacity;
+        _beeText.text = "ов╗кш " + Hive.BeeOccupancy.ToString() + " / " + Hive.BeeCapacity.ToString();
     }
 
     private void SetHoneySlider()
     {
-        _honeySlider.value = (float)Hive.honeyOccupancy / Hive.honeyCapacity;
-        _honeyText.text = "л╗д " + Hive.honeyOccupancy.ToString() + " / " + Hive.honeyCapacity.ToString();
+        _honeySlider.value = (float)Hive.HoneyOccupancy / Hive.HoneyCapacity;
+        _honeyText.text = "л╗д " + Hive.HoneyOccupancy.ToString() + " / " + Hive.HoneyCapacity.ToString();
     }
 
     private void SetNectarSlider()
     {
-        _nectarSlider.value = (float)Hive.nectarOccupancy / Hive.nectarCapacity;
-        _nectarText.text = "мейрюп " + Hive.nectarOccupancy.ToString() + " / " + Hive.nectarCapacity.ToString();
+        _nectarSlider.value = (float)Hive.NectarOccupancy / Hive.NectarCapacity;
+        _nectarText.text = "мейрюп " + Hive.NectarOccupancy.ToString() + " / " + Hive.NectarCapacity.ToString();
     }
 }

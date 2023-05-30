@@ -19,7 +19,6 @@ public class BeeRecycler : Bee
 
     private Barrel _barrel;
     private SpriteRenderer _spriteRenderer;
-    private Hive _hive;
 
     private Vector2 _targetPosition;
     private bool _isRecycling;
@@ -40,12 +39,15 @@ public class BeeRecycler : Bee
         _flightSpeed = (Vector2.Distance(_hive.transform.position, _barrel.transform.position) / _NPR) * 2;
 
         SetHintPanelSettings();
+        UpdateHungerProcess(_hungerDelay);
+        UpdateEatingProcess(_eatDelay);
     }
 
     private void Update()
     {
         ProcessNectar();
         Fly();
+        Regenerate();
         SpriteRender();
     }
 
@@ -56,7 +58,7 @@ public class BeeRecycler : Bee
 
     private void ProcessNectar()
     {
-        if (!_isRecycling && Hive.nectarOccupancy > 0)
+        if (!_isRecycling && Hive.NectarOccupancy > 0)
         {
             _hive.GetNectar(1);
 
@@ -126,7 +128,6 @@ public class BeeRecycler : Bee
         _maxHealthPoints = data.healthPoints;
         _maxSatietyPoints = data.satietyPoints;
         _flightSpeed = data.flightSpeed;
-        _HRR = data.HRR;
         _NPR = data.NPR;
         _productionEfficiency = data.productionEfficiency;
     }

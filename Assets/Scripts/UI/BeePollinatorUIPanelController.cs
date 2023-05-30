@@ -8,15 +8,15 @@ public class BeePollinatorUIPanelController : BeeUIPanelController
     [SerializeField] private Text _NCRText;
     [SerializeField] private Text _nectarCapacityText;
 
-    public void UpdateBeePollinatorUIPanel(BeePollinatorData data, int level, int price)
+    public void UpdateBeePollinatorUIPanel(BeePollinatorUpgrader.BeePollinatorStats stats, int level, int price)
     {
         UpdateLevelUI(level);
         UpdateUpgradePriceUI(price);
 
-        _healthPointsText.text = data.healthPoints.ToString();
-        _satietyPointsText.text = data.satietyPoints.ToString();
-        _flightSpeedText.text = data.flightSpeed.ToString();
-        _NCRText.text = data.NCR.ToString();
-        _nectarCapacityText.text = data.nectarCapacity.ToString();
+        _healthPointsText.text = stats.maxHealthPoints.ToString();
+        _satietyPointsText.text = stats.maxSatietyPoints.ToString();
+        _flightSpeedText.text = stats.flightSpeed.ToString();
+        _NCRText.text = stats.NCR.ToString();
+        _nectarCapacityText.text = stats.nectarCapacity.ToString();
     }
 }

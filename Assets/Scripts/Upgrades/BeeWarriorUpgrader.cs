@@ -32,7 +32,7 @@ public class BeeWarriorUpgrader : Upgrader
 
     private void Update()
     {
-        if (_level < _maxLevel && Hive.honeyOccupancy >= GetUpgradePrice(_level - 1))
+        if (_level < _maxLevel && Hive.HoneyOccupancy >= GetUpgradePrice(_level - 1))
         {
             _beeWarriorUIPanel.EnableUpgradeButton();
         }
@@ -44,7 +44,7 @@ public class BeeWarriorUpgrader : Upgrader
 
     public override void Upgrade()
     {
-        Hive.honeyOccupancy -= GetUpgradePrice(_level - 1);
+        Hive.HoneyOccupancy -= GetUpgradePrice(_level - 1);
 
         _level += 1;
         _upgrade = _upgrades[_level - 2];
