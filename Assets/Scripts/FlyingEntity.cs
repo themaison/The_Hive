@@ -8,7 +8,6 @@ public abstract class FlyingEntity : MonoBehaviour, IPointerEnterHandler, IPoint
     [SerializeField] protected Text _nameText;
 
     [SerializeField] private Slider _healthPointsSlider;
-    //Text HP TextAmount
 
     protected int _maxHealthPoints;
     protected float _flightSpeed;

@@ -4,9 +4,6 @@ using UnityEngine.UI;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private Wasp _wasp;
-    [SerializeField] private Hornet _hornet;
-
     [SerializeField] private Text _waveCountText;
     [SerializeField] private Text _waveTimerText;
 
@@ -22,7 +19,7 @@ public class EnemySpawner : MonoBehaviour
     private class Wave
     {
         public Enemy enemy;
-        public int count;
+        public int amount;
     }
 
     [SerializeField]
@@ -39,20 +36,6 @@ public class EnemySpawner : MonoBehaviour
     private bool _isPreparing = true;
     private bool _isWaveActive = false;
 
-
-
-    private void Awake()
-    {
-        _waves = new Wave[]
-        {
-            new Wave { enemy = _wasp, count = 1 },
-            new Wave { enemy = _wasp, count = 1 },
-            new Wave { enemy = _wasp, count = 1 },
-            new Wave { enemy = _wasp, count = 1 },
-            new Wave { enemy = _wasp, count = 1 },
-            new Wave { enemy = _hornet, count = 1 },
-        };
-    }
 
     private void Start()
     {
@@ -105,7 +88,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnNextEnemy()
     {
-        if (_currentSpawnCount < _currentWave.count)
+        if (_currentSpawnCount < _currentWave.amount)
         {
             SpawnEnemy(_currentWave.enemy);
             _currentSpawnCount++;
@@ -123,7 +106,7 @@ public class EnemySpawner : MonoBehaviour
     {
         Vector2 spawnPosition = RandomEllipse(transform.position, _spawnRadiusX, _spawnRadiusY);
 
-        var obj = Instantiate(enemy, spawnPosition, Quaternion.identity);
+        var obj = Instantiate(enemy.gameObject, spawnPosition, Quaternion.identity);
         obj.transform.SetParent(transform);
     }
 

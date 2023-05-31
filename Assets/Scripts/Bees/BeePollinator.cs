@@ -101,7 +101,7 @@ public class BeePollinator : Bee
 
     protected override void Fly()
     {
-        if (_nearestFlower != null && !_isCollecting)
+        if (_nectarOccupancy < _nectarCapacity && _nearestFlower != null && !_isCollecting)
         {
             _targetPosition = _nearestFlower.transform.position;
         }

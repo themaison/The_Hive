@@ -135,18 +135,6 @@ public class BeeWarrior : Bee
         _detectionRange = Mathf.Max(_detectionRange, data.detectionRange);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "hive")
-        {
-            _spriteRenderer.enabled = false;
-            _isNearHive = true;
-            _targetPosition = transform.position; 
-
-            UpdateHungerProcess(_hungerDelay + _hungerDelayBoost);  // slower speed hunger process
-        }
-    }
-
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("hive"))
@@ -169,6 +157,15 @@ public class BeeWarrior : Bee
                 Bite(enemy);
                 _damageTime = 0f;
             }
+        }
+
+        if (collision.CompareTag("hive"))
+        {
+            _spriteRenderer.enabled = false;
+            _isNearHive = true;
+            _targetPosition = transform.position;
+
+            UpdateHungerProcess(_hungerDelay + _hungerDelayBoost);  // slower speed hunger process
         }
     }
 }
