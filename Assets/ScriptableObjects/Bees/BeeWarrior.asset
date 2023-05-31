@@ -17,4 +17,4 @@ MonoBehaviour:
   satietyPoints: 10
   flightSpeed: 1
   damagePoints: 1
-  detectionRange: 1
+  detectionRange: 100

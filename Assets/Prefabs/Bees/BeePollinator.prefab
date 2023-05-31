@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 8014893392637867206}
   - component: {fileID: 8170525291073433960}
   - component: {fileID: 4161084318368288721}
+  - component: {fileID: 8055762727109849393}
   m_Layer: 0
   m_Name: BeePollinator
   m_TagString: bee
@@ -234,6 +235,27 @@ MonoBehaviour:
   _beePollinatorData: {fileID: 11400000, guid: a015223b0401a024b84770c9459533d0, type: 2}
   _defaultSprite: {fileID: 21300000, guid: 7d0f0ac9589f48e468aa75d91580582e, type: 3}
   _pollinatedSprite: {fileID: 21300000, guid: 4a6800db4246b974d8c31d9526af6903, type: 3}
+--- !u!95 &8055762727109849393
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1218327582983902297}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c3cb0d6204df99e4784ce1ddf85ef563, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1815251884195989782
 GameObject:
   m_ObjectHideFlags: 0

@@ -1126,9 +1126,9 @@ MonoBehaviour:
   _pollinator: {fileID: 4161084318368288721, guid: eec7255db063e224e8f99e4614fd0ba4, type: 3}
   _warrior: {fileID: 8976756718585932945, guid: 42f8f3980a0e6b9479cf54a6632aeb9c, type: 3}
   _recycler: {fileID: 7418267069638195618, guid: 6d0c1fca15638ad4aa2164f954309126, type: 3}
-  _startPollinatorsAmount: 3
+  _startPollinatorsAmount: 5
   _startRecyclersAmount: 1
-  _startWarriorsAmount: 0
+  _startWarriorsAmount: 1
   _spawnRadius: 1
 --- !u!212 &101273697
 SpriteRenderer:
@@ -2014,7 +2014,7 @@ PrefabInstance:
       objectReference: {fileID: 519420031}
     - target: {fileID: 4016265097212525365, guid: 0197c97572ac0f84fa817f008c19b249, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4016265097212525365, guid: 0197c97572ac0f84fa817f008c19b249, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4564,7 +4564,7 @@ Transform:
   - {fileID: 111624713}
   - {fileID: 1006008337}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &601283896
 GameObject:
@@ -4949,6 +4949,7 @@ GameObject:
   - component: {fileID: 668457650}
   - component: {fileID: 668457649}
   - component: {fileID: 668457648}
+  - component: {fileID: 668457651}
   m_Layer: 0
   m_Name: EnemySpawner
   m_TagString: Untagged
@@ -4963,7 +4964,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 668457647}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 637ff721feeeb834997569c2bfe15934, type: 3}
   m_Name: 
@@ -4975,7 +4976,7 @@ MonoBehaviour:
   _spawnRadiusX: 16
   _spawnRadiusY: 10
   _waspSpawnDelay: 1
-  _waveDelay: 20
+  _waveDelay: 5
   _waves: []
 --- !u!212 &668457649
 SpriteRenderer:
@@ -5044,6 +5045,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &668457651
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668457647}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: be706a60ea3c5bc409039638cf1a9276, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &729594037 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7858914960681557095, guid: b1ee6f912797cb34888572cfd2ea9c03, type: 3}
@@ -5154,7 +5176,7 @@ RectTransform:
   - {fileID: 376199361}
   - {fileID: 915784466}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -16181,7 +16203,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2538268837914374462, guid: f455432976e1a7e49a3aa7547a6cb968, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2538268837914374462, guid: f455432976e1a7e49a3aa7547a6cb968, type: 3}
       propertyPath: m_LocalScale.x

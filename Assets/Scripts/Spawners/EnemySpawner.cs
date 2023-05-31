@@ -45,11 +45,11 @@ public class EnemySpawner : MonoBehaviour
     {
         _waves = new Wave[]
         {
-            new Wave { enemy = _wasp, count = 2 },
-            new Wave { enemy = _wasp, count = 4 },
-            new Wave { enemy = _wasp, count = 7 },
-            new Wave { enemy = _wasp, count = 11 },
-            new Wave { enemy = _wasp, count = 15 },
+            new Wave { enemy = _wasp, count = 1 },
+            new Wave { enemy = _wasp, count = 1 },
+            new Wave { enemy = _wasp, count = 1 },
+            new Wave { enemy = _wasp, count = 1 },
+            new Wave { enemy = _wasp, count = 1 },
             new Wave { enemy = _hornet, count = 1 },
         };
     }

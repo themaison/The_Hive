@@ -1,13 +1,12 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class BeePollinator : Bee
 {
     public static int beePollinatorAmount;
 
     [SerializeField] private BeePollinatorData _beePollinatorData;
-
-    [SerializeField] private Sprite _defaultSprite;
-    [SerializeField] private Sprite _pollinatedSprite;
 
     private SpriteRenderer _spriteRenderer;
     private Flower _nearestFlower;
@@ -18,6 +17,7 @@ public class BeePollinator : Bee
     private static int _nectarCapacity = 0;
     private static float _NCR = 0; // nectar collection rate
 
+    private Animator anim;
     public static int MaxHealthPoints
     {
         get { return _maxHealthPoints; }
@@ -64,6 +64,8 @@ public class BeePollinator : Bee
         SetHintPanelSettings();
         UpdateHungerProcess(_hungerDelay);
         UpdateEatingProcess(_eatDelay);
+
+        anim = GetComponent<Animator>();
     }
 
     private void Update()
@@ -82,6 +84,14 @@ public class BeePollinator : Bee
             {
                 CollectNectar(_nearestFlower);
             }
+        }
+        if (_nectarOccupancy > 0)
+        {
+            anim.SetBool("isPollen", true);
+        }
+        else
+        {
+            anim.SetBool("isPollen", false);
         }
 
         Fly();
@@ -154,15 +164,6 @@ public class BeePollinator : Bee
 
     private void SpriteRender()
     {
-        if (_nectarOccupancy > 0)
-        {
-            _spriteRenderer.sprite = _pollinatedSprite;
-        }
-        else
-        {
-            _spriteRenderer.sprite = _defaultSprite;
-        }
-
         _spriteRenderer.flipX = _targetPosition.x >= transform.position.x;
     }
 

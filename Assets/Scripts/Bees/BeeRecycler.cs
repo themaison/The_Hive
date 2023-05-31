@@ -43,9 +43,7 @@ public class BeeRecycler : Bee
         set { _NPR = value; }
     }
 
-
-    [SerializeField] private Sprite _defaultSprite;
-    [SerializeField] private Sprite _honeySprite;
+    private Animator anim;
 
     private Barrel _barrel;
     private SpriteRenderer _spriteRenderer;
@@ -71,10 +69,20 @@ public class BeeRecycler : Bee
         SetHintPanelSettings();
         UpdateHungerProcess(_hungerDelay);
         UpdateEatingProcess(_eatDelay);
+
+        anim = GetComponent<Animator>();
     }
 
     private void Update()
     {
+        if (_isHasHoney)
+        {
+            anim.SetBool("isHoney", true);
+        }
+        else
+        {
+            anim.SetBool("isHoney", false);
+        }
         ProcessNectar();
         Fly();
         Regenerate();
@@ -140,15 +148,6 @@ public class BeeRecycler : Bee
 
     private void SpriteRender()
     {
-        if (_isHasHoney)
-        {
-            _spriteRenderer.sprite = _honeySprite;
-        }
-        else
-        {
-            _spriteRenderer.sprite = _defaultSprite;
-        }
-
         _spriteRenderer.flipX = _targetPosition.x >= transform.position.x;
     }
 
