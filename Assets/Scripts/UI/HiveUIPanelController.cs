@@ -55,20 +55,17 @@ public class HiveUIPanelController : MonoBehaviour
     {
         _restoreButton.interactable = false;
         _restoreButtonText.text = "Ã¿ —.";
-        _restoreButtonText.color = _maxValueColor;
     }
 
     public void EnableRestoreButton()
     {
         _restoreButton.interactable = true;
-        _restoreButtonText.color = _defaultTextColor;
         _restoreButtonText.text = "œŒ◊»Õ»“‹";
     }
 
     public void DisableRestoreButton()
     {
         _restoreButton.interactable = false;
-        _restoreButtonText.color = _defaultTextColor;
         _restoreButtonText.text = "œŒ◊»Õ»“‹";
     }
 
