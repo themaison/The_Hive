@@ -14,7 +14,7 @@ public class EnemySpawner : MonoBehaviour
 
     [Range(0.1f, 5.0f)]
     [SerializeField] private float _waspSpawnDelay;
-    [Range(5.0f, 120.0f)]
+    [Range(1.0f, 120.0f)]
     [SerializeField] private float _waveDelay;
 
     [Serializable]
@@ -46,11 +46,25 @@ public class EnemySpawner : MonoBehaviour
 
     private void Update()
     {
-        if (Time.time >= _nextWaveTime)
+        if (Time.time >= _nextWaveTime && !_isWaveActive)
         {
             _waspUpgrader.Upgrade();
             WaveProcess();
             _nextWaveTime = Time.time + _waveDelay;
+        }
+
+        if (!_isWaveActive)
+        {
+            Enemy[] enemies = FindObjectsOfType<Enemy>();
+            if (enemies.Length > 0)
+            {
+                _nextWaveTime = Time.time + _waveDelay;
+            }
+            else
+            {
+                _waveCountText.text = "œŒƒ√Œ“Œ¬ ¿";
+                _waveTimerText.enabled = true;
+            }
         }
 
         float timeLeft = Mathf.Clamp(_nextWaveTime - Time.time, 0f, _waveDelay);
@@ -61,17 +75,21 @@ public class EnemySpawner : MonoBehaviour
             _waveCountText.text = "œŒƒ√Œ“Œ¬ ¿";
             _waveTimerText.enabled = true;
         }
-        else if (_isWaveActive)
+
+        if (_isWaveActive)
         {
             _waveCountText.text = "¬ŒÀÕ¿ " + (_currentWaveIndex + 1).ToString();
-            _waveTimerText.enabled = true;
+            _waveTimerText.enabled = false;
         }
-        else if (_currentWaveIndex >= _waves.Length - 1)
+
+
+        if (_currentWaveIndex >= _waves.Length - 1)
         {
             _waveCountText.text = "¡Œ——";
             _waveTimerText.enabled = false;
         }
     }
+
 
     private void WaveProcess()
     {

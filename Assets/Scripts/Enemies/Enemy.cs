@@ -12,7 +12,7 @@ public abstract class Enemy : FlyingEntity
         bee.TakeDamage(_damagePoints);
     }
 
-    public virtual void SetEnemyData(EnemyData ED)
+    public virtual void SetEnemyData(EnemyData ED)  // для Шершня (временно)
     {
         _name = ED.name;
         _maxHealthPoints = ED.healthPoints;

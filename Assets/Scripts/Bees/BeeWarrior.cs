@@ -46,7 +46,7 @@ public class BeeWarrior : Bee
 
     private SpriteRenderer _spriteRenderer;
     private Vector2 _targetPosition;
-    private float _damageTime = 0f;
+    private float _damageTime = _damageFrequency;
     private bool _isNearHive;
 
     void Start()
@@ -139,7 +139,7 @@ public class BeeWarrior : Bee
     {
         if (collision.CompareTag("hive"))
         {
-            _spriteRenderer.enabled = true;
+            //_spriteRenderer.enabled = true;
             _isNearHive = false;
 
              UpdateHungerProcess(_hungerDelay);  // faster speed hunger process
@@ -161,7 +161,7 @@ public class BeeWarrior : Bee
 
         if (collision.CompareTag("hive"))
         {
-            _spriteRenderer.enabled = false;
+            //_spriteRenderer.enabled = false;
             _isNearHive = true;
             _targetPosition = transform.position;
 

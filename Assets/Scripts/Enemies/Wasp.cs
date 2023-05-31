@@ -8,6 +8,7 @@ public class Wasp : Enemy
     new private static int _maxHealthPoints;
     new private static float _flightSpeed;
     new private static int _damagePoints;
+    new private static float _damageFrequency;
 
     public static int MaxHealthPoints
     {
@@ -27,6 +28,12 @@ public class Wasp : Enemy
         set { _damagePoints = value; }
     }
 
+    public static float damageFrequency
+    {
+        get { return _damageFrequency; }
+        set { _damageFrequency = value; }
+    }
+
     private SpriteRenderer _spriteRenderer;
     private Hive _hive;
 
@@ -38,8 +45,8 @@ public class Wasp : Enemy
 
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _hive = FindObjectOfType<Hive>();
-        _damageTime = _damageFrequency;
 
+        _damageTime = _damageFrequency;
         _currentHealthPoints = _maxHealthPoints;
 
         SetHintPanelSettings();
@@ -49,12 +56,12 @@ public class Wasp : Enemy
     {
         FindNearestTarget();
         Fly();
-        _spriteRenderer.flipX = _target.transform.position.x >= transform.position.x;
     }
 
     protected override void Fly()
     {
         transform.position = Vector2.MoveTowards(transform.position, _target.transform.position, _flightSpeed * Time.deltaTime);
+        _spriteRenderer.flipX = _target.transform.position.x >= transform.position.x;
     }
 
     private void FindNearestTarget()
@@ -93,7 +100,8 @@ public class Wasp : Enemy
         _damagePoints = Mathf.Max(_damagePoints, data.damagePoints);
         base._damagePoints = _damagePoints;
 
-        _damageFrequency = data.damageFrequency;
+        _damageFrequency = Mathf.Max(_damageFrequency, data.damageFrequency);
+        base._damageFrequency = _damageFrequency;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
