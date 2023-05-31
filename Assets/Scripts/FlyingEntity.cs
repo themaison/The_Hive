@@ -20,7 +20,6 @@ public abstract class FlyingEntity : MonoBehaviour, IPointerEnterHandler, IPoint
     protected virtual void Die()
     {
         Destroy(gameObject);
-        Bee.beeAmount -= 1;
     }
 
     public virtual void TakeDamage(int damage)

@@ -61,6 +61,7 @@ public class HiveUpgrader : Upgrader
         Hive.BeeCapacity = _currentStats.beeCapacity;
         Hive.HoneyCapacity = _currentStats.honeyCapacity;
         Hive.NectarCapacity = _currentStats.nectarCapacity;
+        Hive.CurrentIntegrityPoints = Hive.MaxIntegrityPoints;
 
         _hiveUIPanel.UpdateHiveUIPanel(_currentStats, _level, GetUpgradePrice(Math.Min(_level - 1, _maxLevel - 2)));
 

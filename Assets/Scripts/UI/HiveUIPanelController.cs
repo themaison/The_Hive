@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class HiveUIPanelController : MonoBehaviour
 {
-    [SerializeField] private Color _indicatorMaxValue;
+    [SerializeField] private Color _maxValueColor;
+    [SerializeField] private Color _defaultTextColor;
 
     [SerializeField] private Text _levelText;
 
@@ -17,6 +18,10 @@ public class HiveUIPanelController : MonoBehaviour
     [SerializeField] private Text _beeCapacityText;
     [SerializeField] private Text _nectarCapacityText;
     [SerializeField] private Text _honeyCapacityText;
+
+    [SerializeField] private Button _restoreButton;
+    [SerializeField] private Text _restoreButtonText;
+    [SerializeField] private Text _restorePriceText;
 
     public virtual void DisableUpgradeButton()
     {
@@ -30,8 +35,8 @@ public class HiveUIPanelController : MonoBehaviour
 
     public void SetMaxUpgradeUI()
     {
-        _upgradeButtonText.text = "Ã‡ÍÒ. Û.";
-        _upgradeButtonText.color = _indicatorMaxValue;
+        _upgradeButtonText.text = "Ã¿ —.";
+        _upgradeButtonText.color = _maxValueColor;
         _upgradePriceText.text = "-/-";
     }
 
@@ -44,5 +49,31 @@ public class HiveUIPanelController : MonoBehaviour
         _beeCapacityText.text = stats.beeCapacity.ToString();
         _nectarCapacityText.text = stats.nectarCapacity.ToString();
         _honeyCapacityText.text = stats.honeyCapacity.ToString();
+    }
+
+    public void SetVoidRestore()
+    {
+        _restoreButton.interactable = false;
+        _restoreButtonText.text = "Ã¿ —.";
+        _restoreButtonText.color = _maxValueColor;
+    }
+
+    public void EnableRestoreButton()
+    {
+        _restoreButton.interactable = true;
+        _restoreButtonText.color = _defaultTextColor;
+        _restoreButtonText.text = "œŒ◊»Õ»“‹";
+    }
+
+    public void DisableRestoreButton()
+    {
+        _restoreButton.interactable = false;
+        _restoreButtonText.color = _defaultTextColor;
+        _restoreButtonText.text = "œŒ◊»Õ»“‹";
+    }
+
+    public void UpdatePriceText(int price)
+    {
+        _restorePriceText.text = price.ToString();
     }
 }

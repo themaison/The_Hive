@@ -129,13 +129,18 @@ public class BeePollinator : Bee
         float minDistance = Mathf.Infinity;
         foreach (Flower flower in flowers)
         {
-            float distance = Vector2.Distance(transform.position, flower.transform.position);
-            int futureNectar = _nectarOccupancy + flower.GetComponent<Flower>().PollenCount;
+            int flowerPollenAmount = flower.GetComponent<Flower>().PollenCount;
 
-            if (flower.gameObject.tag == "flower" && futureNectar <= _nectarCapacity && distance < minDistance)
+            if (flowerPollenAmount != 0)
             {
-                minDistance = distance;
-                _nearestFlower = flower;
+                float distance = Vector2.Distance(transform.position, flower.transform.position);
+                int futureNectar = _nectarOccupancy + flowerPollenAmount;
+
+                if (flower.gameObject.tag == "flower" && futureNectar <= _nectarCapacity && distance < minDistance)
+                {
+                    minDistance = distance;
+                    _nearestFlower = flower;
+                }
             }
         }
     }

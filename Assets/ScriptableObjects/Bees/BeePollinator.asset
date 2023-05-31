@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: BeePollinator
   m_EditorClassIdentifier: 
   name: "\u041E\u041F\u042B\u041B\u0418\u0422\u0415\u041B\u042C"
-  healthPoints: 10
+  healthPoints: 20
   satietyPoints: 10
-  flightSpeed: 1.5
+  flightSpeed: 1
   NCR: 3
-  nectarCapacity: 2
+  nectarCapacity: 1

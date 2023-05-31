@@ -96,4 +96,10 @@ public abstract class Bee : FlyingEntity
         base.SetHintPanelSettings();
         UpdateSatietyPointsSlider();
     }
+
+    protected override void Die()
+    {
+        base.Die();
+        beeAmount -= 1;
+    }
 }

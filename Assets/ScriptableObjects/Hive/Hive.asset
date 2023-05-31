@@ -15,5 +15,5 @@ MonoBehaviour:
   name: "\u0423\u041B\u0415\u0419"
   maxIntegrityPoints: 25
   beeCapacity: 5
-  nectarCapacity: 15
-  honeyCapacity: 15
+  nectarCapacity: 25
+  honeyCapacity: 10

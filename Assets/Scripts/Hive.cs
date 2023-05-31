@@ -7,7 +7,7 @@ public class Hive : StaticObject
 {
     [SerializeField] private HiveData _hiveData;
 
-    [SerializeField] private GameObject _upgradeMenuUI;
+    [SerializeField] private GameObject _hiveOptionsUIPanel;
     [SerializeField] private GameObject _exitPanel;
 
     private SpriteRenderer _spriteRenderer;
@@ -99,7 +99,7 @@ public class Hive : StaticObject
     public void SetHiveMenu()
     {
         TimePause();
-        _upgradeMenuUI.SetActive(true);
+        _hiveOptionsUIPanel.SetActive(true);
     }
 
     public void TimePause()

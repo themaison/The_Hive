@@ -7,7 +7,7 @@ public abstract class BeeBuyingSystem : MonoBehaviour, IBuyable
     [SerializeField] protected BeeUIPanelController _beePanel;
     [SerializeField] protected BeeSpawner _beeSpawner;
     [SerializeField] protected int _price;
-    [SerializeField] protected float inflationaryGrowth;
+    [SerializeField] protected float _inflationaryGrowth;
 
     private void Start()
     {
@@ -43,6 +43,6 @@ public abstract class BeeBuyingSystem : MonoBehaviour, IBuyable
     }
     protected virtual void UpdatePrice()
     {
-        _price = (int)(_price * inflationaryGrowth);
+        _price = (int)(_price * _inflationaryGrowth);
     }
 }

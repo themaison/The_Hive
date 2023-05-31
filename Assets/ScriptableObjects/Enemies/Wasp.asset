@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Wasp
   m_EditorClassIdentifier: 
   name: "\u041E\u0421\u0410"
-  healthPoints: 10
+  healthPoints: 25
   flightSpeed: 1
-  damagePoints: 5
+  damagePoints: 2
   damageFrequency: 1

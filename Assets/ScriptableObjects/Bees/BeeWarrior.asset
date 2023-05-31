@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: BeeWarrior
   m_EditorClassIdentifier: 
   name: "\u0412\u041E\u0418\u041D"
-  healthPoints: 10
+  healthPoints: 20
   satietyPoints: 10
   flightSpeed: 1
   damagePoints: 1
-  detectionRange: 100
+  detectionRange: 5
