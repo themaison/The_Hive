@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class Barrel : StaticObject, IPointerDownHandler, IPointerUpHandler
 {
+    [SerializeField] private Texture2D _clickedCursorTexture;
+
     [SerializeField] private BarellData _barellData;
 
     [SerializeField] private Text _honeyText;
@@ -63,12 +65,14 @@ public class Barrel : StaticObject, IPointerDownHandler, IPointerUpHandler
         _isOpened = true;
         _borderHint.SetActive(false);
         _spriteRenderer.sprite = _openedBarrelSprite;
+        Cursor.SetCursor(_clickedCursorTexture, Vector2.zero, CursorMode.Auto);
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
         _isOpened = false;
         _borderHint.SetActive(true);
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
     }
 
     public override void OnPointerClick(PointerEventData eventData)

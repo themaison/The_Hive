@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class EnemySpawner : MonoBehaviour
 {
+    [SerializeField] private WaspUpgrader _waspUpgrader;
+
     [SerializeField] private Text _waveCountText;
     [SerializeField] private Text _waveTimerText;
 
@@ -46,6 +48,7 @@ public class EnemySpawner : MonoBehaviour
     {
         if (Time.time >= _nextWaveTime)
         {
+            _waspUpgrader.Upgrade();
             WaveProcess();
             _nextWaveTime = Time.time + _waveDelay;
         }

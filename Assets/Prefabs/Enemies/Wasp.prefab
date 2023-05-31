@@ -371,7 +371,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4238665527326117931}
+  - component: {fileID: 3197160634194010363}
   - component: {fileID: 8339045346598863343}
   - component: {fileID: -6811798146704725045}
   - component: {fileID: -4250248868711300511}
@@ -384,8 +384,8 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &4238665527326117931
-RectTransform:
+--- !u!4 &3197160634194010363
+Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -400,11 +400,6 @@ RectTransform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0.625, y: 0.625}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &8339045346598863343
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -472,7 +467,7 @@ MonoBehaviour:
   _hintPanel: {fileID: 6215822569700508118}
   _nameText: {fileID: 2634867521936787292}
   _healthPointsSlider: {fileID: 5821065466693203168}
-  _enemyData: {fileID: 11400000, guid: ad828f2653014854498b7bf20c2661d2, type: 2}
+  _waspData: {fileID: 11400000, guid: ad828f2653014854498b7bf20c2661d2, type: 2}
 --- !u!50 &-4250248868711300511
 Rigidbody2D:
   serializedVersion: 4
@@ -573,7 +568,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6055930200631297224}
-  m_Father: {fileID: 4238665527326117931}
+  m_Father: {fileID: 3197160634194010363}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}

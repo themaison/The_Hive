@@ -253,6 +253,7 @@ MonoBehaviour:
   _nameText: {fileID: 2729596177021388949}
   _borderHint: {fileID: 7143493957107912847}
   _defaultSprite: {fileID: 21300000, guid: ba2d330f16c858547861293a6a2a50c9, type: 3}
+  _clickedCursorTexture: {fileID: 2800000, guid: 01e2bb31225d5864aa2ade0afa580f8c, type: 3}
   _barellData: {fileID: 11400000, guid: 8e4d15714a1e95046bd7e3820adebed2, type: 2}
   _honeyText: {fileID: 9041054207427751714}
   _honeyBarrelSprite: {fileID: 21300000, guid: a3492a4e56e99414d94f78b27c66082b, type: 3}

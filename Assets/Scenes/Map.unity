@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6994930
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1126,9 +1126,9 @@ MonoBehaviour:
   _pollinator: {fileID: 4161084318368288721, guid: eec7255db063e224e8f99e4614fd0ba4, type: 3}
   _warrior: {fileID: 8976756718585932945, guid: 42f8f3980a0e6b9479cf54a6632aeb9c, type: 3}
   _recycler: {fileID: 7418267069638195618, guid: 6d0c1fca15638ad4aa2164f954309126, type: 3}
-  _startPollinatorsAmount: 1
+  _startPollinatorsAmount: 5
   _startRecyclersAmount: 1
-  _startWarriorsAmount: 1
+  _startWarriorsAmount: 2
   _spawnRadius: 1
 --- !u!212 &101273697
 SpriteRenderer:
@@ -4949,6 +4949,7 @@ GameObject:
   - component: {fileID: 668457650}
   - component: {fileID: 668457649}
   - component: {fileID: 668457648}
+  - component: {fileID: 668457651}
   m_Layer: 0
   m_Name: EnemySpawner
   m_TagString: Untagged
@@ -4963,17 +4964,18 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 668457647}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 637ff721feeeb834997569c2bfe15934, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _waspUpgrader: {fileID: 668457651}
   _waveCountText: {fileID: 1997827180}
   _waveTimerText: {fileID: 1226986646}
   _spawnRadiusX: 16
   _spawnRadiusY: 10
   _waspSpawnDelay: 1
-  _waveDelay: 5
+  _waveDelay: 10
   _waves:
   - enemy: {fileID: -6811798146704725045, guid: f4814613917565643816e3a629149ca0, type: 3}
     amount: 2
@@ -5054,6 +5056,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &668457651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668457647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24253896bfe8586418711d526d253b42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: ad828f2653014854498b7bf20c2661d2, type: 2}
+  _gainHealthPoints: 1.5
+  _gainDamagePoints: 1.5
+  _gainFlightSpeed: 1.5
 --- !u!4 &729594037 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7858914960681557095, guid: b1ee6f912797cb34888572cfd2ea9c03, type: 3}
@@ -7239,7 +7257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.95294124, b: 0.5176471, a: 0.19607843}
+  m_Color: {r: 1, g: 0.95294124, b: 0.5176471, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -7290,7 +7308,7 @@ MonoBehaviour:
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 5
+    m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
@@ -7311,7 +7329,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0.1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -7434,7 +7452,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1036229902
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8967,7 +8985,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1265277365
 RectTransform:
   m_ObjectHideFlags: 0

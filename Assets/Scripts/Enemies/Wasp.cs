@@ -3,7 +3,29 @@ using UnityEngine;
 
 public class Wasp : Enemy
 {
-    [SerializeField] protected EnemyData _enemyData;
+    [SerializeField] protected EnemyData _waspData;
+
+    new private static int _maxHealthPoints;
+    new private static float _flightSpeed;
+    new private static int _damagePoints;
+
+    public static int MaxHealthPoints
+    {
+        get { return _maxHealthPoints; }
+        set { _maxHealthPoints = value; }
+    }
+
+    public static float FlightSpeed
+    {
+        get { return _flightSpeed; }
+        set { _flightSpeed = value; }
+    }
+
+    public static int damagePoints
+    {
+        get { return _damagePoints; }
+        set { _damagePoints = value; }
+    }
 
     private SpriteRenderer _spriteRenderer;
     private Hive _hive;
@@ -12,7 +34,7 @@ public class Wasp : Enemy
 
     private void Start()
     {
-        SetEnemyData(_enemyData);
+        LoadData(_waspData);
 
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _hive = FindObjectOfType<Hive>();
@@ -56,6 +78,22 @@ public class Wasp : Enemy
             minDistance = hiveDistance;
             _target = _hive.gameObject;
         }
+    }
+
+    private void LoadData(EnemyData data)
+    {
+        _name = data.name;
+
+        _maxHealthPoints = Mathf.Max(_maxHealthPoints, data.healthPoints);
+        base._maxHealthPoints = _maxHealthPoints;
+
+        _flightSpeed = Mathf.Max(_flightSpeed, data.flightSpeed);
+        base._flightSpeed = _flightSpeed;
+
+        _damagePoints = Mathf.Max(_damagePoints, data.damagePoints);
+        base._damagePoints = _damagePoints;
+
+        _damageFrequency = data.damageFrequency;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
