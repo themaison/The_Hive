@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class BeeWarrior : Bee
 {
@@ -40,13 +41,14 @@ public class BeeWarrior : Bee
         set { _detectionRange = value; }
     }
 
-    private const float _damageFrequency = 1;
+    private const float _damageFrequency = 1.0f;
 
     private Enemy _nearestEnemy;
 
     private SpriteRenderer _spriteRenderer;
     private Vector2 _targetPosition;
-    private float _damageTime = _damageFrequency;
+    [SerializeField]    // временно
+    private float _damageTime;
     private bool _isNearHive;
 
     void Start()
@@ -72,9 +74,10 @@ public class BeeWarrior : Bee
             FindNearestEnemy();
         }
 
-        Fly();
+        ChooseTarget();
+
+        Fly();        
         Regenerate();
-        SpriteRender();
     }
 
     private void FindNearestEnemy()
@@ -94,28 +97,45 @@ public class BeeWarrior : Bee
         }
     }
 
-    protected override void Fly()
+    protected void ChooseTarget()
     {
         if (_nearestEnemy != null)
         {
             _targetPosition = _nearestEnemy.transform.position;
+
         }
         else if (!_isNearHive)
         {
             _targetPosition = _hive.transform.position;
         }
+    }
 
-        transform.position = Vector2.MoveTowards(transform.position, _targetPosition, _flightSpeed * Time.deltaTime);
+    protected override void Fly()
+    {
+        float distance = Vector2.Distance(transform.position, _targetPosition);
+        if (distance > 0.4 || _nearestEnemy == null)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, _targetPosition, _flightSpeed * Time.deltaTime);
+            _spriteRenderer.flipX = transform.position.x < _targetPosition.x;
+        }
+        else
+        {
+            Fight();
+        }
+    }
+
+    protected void Fight()
+    {
+        if (Time.time - _damageTime > _damageFrequency)
+        {
+            Bite(_nearestEnemy);
+            _damageTime = Time.time;
+        }
     }
 
     private void Bite(Enemy enemy)
     {
         enemy.TakeDamage(_damagePoints);
-    }
-
-    private void SpriteRender()
-    {
-        _spriteRenderer.flipX = transform.position.x < _targetPosition.x;
     }
 
     public void LoadData(BeeWarriorData data)
@@ -146,19 +166,8 @@ public class BeeWarrior : Bee
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "enemy")
-        {
-            _damageTime += Time.deltaTime;
-            if (_damageTime >= _damageFrequency)
-            {
-                Enemy enemy = collision.gameObject.GetComponent<Enemy>();
-                Bite(enemy);
-                _damageTime = 0f;
-            }
-        }
-
         if (collision.CompareTag("hive"))
         {
             //_spriteRenderer.enabled = false;
