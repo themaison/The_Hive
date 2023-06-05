@@ -10,6 +10,8 @@ public class Wasp : Enemy
     new private static int _damagePoints;
     new private static float _damageFrequency;
 
+    private Animator _takeDamageAnim;
+
     public static int MaxHealthPoints
     {
         get { return _maxHealthPoints; }
@@ -44,6 +46,7 @@ public class Wasp : Enemy
     {
         LoadData(_waspData);
 
+        _takeDamageAnim = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _hive = FindObjectOfType<Hive>();
 
@@ -66,19 +69,37 @@ public class Wasp : Enemy
             transform.position = Vector2.MoveTowards(transform.position, _target.transform.position, _flightSpeed * Time.deltaTime);
             _spriteRenderer.flipX = _target.transform.position.x >= transform.position.x;
         }
-        else 
+        else if (_target.CompareTag("bee"))
         {
             Fight();
+        }
+        else if (_target.CompareTag("hive"))
+        {
+            Breaking();
         }
     }
 
     protected void Fight()
     {
+        _takeDamageAnim.SetBool("TakeDamageWasp", true);
         if (Time.time - _damageTime > _damageFrequency)
         {
             if (_target.CompareTag("bee"))
             {
                 Bite(_target.GetComponent<Bee>());
+                _damageTime = Time.time;
+            }
+        }
+        _takeDamageAnim.SetBool("TakeDamageWasp", false);
+    }
+
+    protected void Breaking()
+    {
+        if (Time.time - _damageTime > _damageFrequency)
+        {
+            if (_target.CompareTag("hive"))
+            {
+                Break(_target.GetComponent<Hive>());
                 _damageTime = Time.time;
             }
         }
@@ -124,17 +145,4 @@ public class Wasp : Enemy
         _damageFrequency = Mathf.Max(_damageFrequency, data.damageFrequency);
         base._damageFrequency = _damageFrequency;
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("hive"))
-        {
-            Die();
-        }
-    }
-
-    //private void OnTriggerStay2D(Collider2D collision)
-    //{
-        
-    //}
 }

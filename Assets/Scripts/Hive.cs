@@ -10,6 +10,8 @@ public class Hive : StaticObject
     [SerializeField] private GameObject _hiveOptionsUIPanel;
     [SerializeField] private GameObject _exitPanel;
 
+    [SerializeField] private Slider _integrityPointsSlider;
+
     private SpriteRenderer _spriteRenderer;
 
     public static int MaxIntegrityPoints;
@@ -22,10 +24,13 @@ public class Hive : StaticObject
     public static int HoneyOccupancy;
     public static int BeeOccupancy;
 
+    private Animator _takeDamage;
+
     private void Start()
     {
         LoadData(_hiveData);
 
+        _takeDamage = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
 
         _hintPanel.SetActive(false);
@@ -37,6 +42,32 @@ public class Hive : StaticObject
     private void Update()
     {
         BeeOccupancy = Bee.beeAmount;
+    }
+
+    public virtual void TakeDamage(int damage)
+    {
+        _takeDamage.SetBool("TakeDamage", true);
+        CurrentIntegrityPoints -= damage;
+        CurrentIntegrityPoints = Mathf.Clamp(CurrentIntegrityPoints, 0, MaxIntegrityPoints);
+        UpdateHealthPointsSlider();
+
+        if (CurrentIntegrityPoints <= 0)
+        {
+            //код при поломке
+        }
+        _takeDamage.SetBool("TakeDamage", false);
+    }
+
+    protected virtual void SetHintPanelSettings()
+    {
+        _nameText.text = _name;
+        _hintPanel.SetActive(false);
+        UpdateHealthPointsSlider();
+    }
+
+    protected void UpdateHealthPointsSlider()
+    {
+        _integrityPointsSlider.value = (float)CurrentIntegrityPoints / MaxIntegrityPoints;
     }
 
     public void AddNectar(int amount)
@@ -66,15 +97,6 @@ public class Hive : StaticObject
 
         NectarOccupancy -= amount;
         return amount;
-    }
-
-    public void TakeDamage(int amount)
-    {
-        CurrentIntegrityPoints -= amount;
-        if (CurrentIntegrityPoints < 0)
-        {
-            _exitPanel.SetActive(true);
-        }
     }
 
     public override void OnPointerClick(PointerEventData eventData)

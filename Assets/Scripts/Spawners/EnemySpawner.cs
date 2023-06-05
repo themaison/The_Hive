@@ -38,7 +38,6 @@ public class EnemySpawner : MonoBehaviour
     private bool _isPreparing = true;
     private bool _isWaveActive = false;
 
-
     private void Start()
     {
         _nextWaveTime = _waveDelay;
@@ -50,6 +49,11 @@ public class EnemySpawner : MonoBehaviour
         {
             _waspUpgrader.Upgrade();
             WaveProcess();
+            _nextWaveTime = Time.time + _waveDelay;
+        }
+
+        if (_isWaveActive)
+        {
             _nextWaveTime = Time.time + _waveDelay;
         }
 
@@ -76,32 +80,23 @@ public class EnemySpawner : MonoBehaviour
             _waveTimerText.enabled = true;
         }
 
-        if (_isWaveActive)
-        {
-            _waveCountText.text = "ÂÎËÍÀ " + (_currentWaveIndex + 1).ToString();
-            _waveTimerText.enabled = false;
-        }
-
-
-        if (_currentWaveIndex >= _waves.Length - 1)
+        if ((_currentWaveIndex >= _waves.Length - 1) && (_isWaveActive))
         {
             _waveCountText.text = "ÁÎÑÑ";
             _waveTimerText.enabled = false;
         }
+        else if (_isWaveActive)
+        {
+            _waveCountText.text = "ÂÎËÍÀ " + (_currentWaveIndex + 1).ToString();
+            _waveTimerText.enabled = false;
+        }
     }
-
 
     private void WaveProcess()
     {
-        if (_currentWaveIndex >= _waves.Length)
-        {
-            return;
-        }
-
         _currentWave = _waves[_currentWaveIndex];
         _currentSpawnCount = 0;
         _nextSpawnTime = Time.time;
-
         _isPreparing = false;
         _isWaveActive = true;
         SpawnNextEnemy();

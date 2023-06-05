@@ -11,6 +11,10 @@ public abstract class Enemy : FlyingEntity
     {
         bee.TakeDamage(_damagePoints);
     }
+    protected virtual void Break(Hive hive)
+    {
+        hive.TakeDamage(_damagePoints);
+    }
 
     public virtual void SetEnemyData(EnemyData ED)  // для Шершня (временно)
     {
