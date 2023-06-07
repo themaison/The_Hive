@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: "\u0423\u041B\u0415\u0419"
   maxIntegrityPoints: 25
-  beeCapacity: 5
-  nectarCapacity: 25
-  honeyCapacity: 15
+  beeCapacity: 7
+  nectarCapacity: 17
+  honeyCapacity: 25

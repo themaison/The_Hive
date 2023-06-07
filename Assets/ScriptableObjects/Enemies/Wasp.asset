@@ -16,4 +16,4 @@ MonoBehaviour:
   healthPoints: 25
   flightSpeed: 1
   damagePoints: 2
-  damageFrequency: 1
+  damageFrequency: 2

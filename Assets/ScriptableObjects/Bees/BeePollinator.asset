@@ -16,5 +16,5 @@ MonoBehaviour:
   healthPoints: 20
   satietyPoints: 10
   flightSpeed: 1.5
-  NCR: 2.5
+  NCR: 2
   nectarCapacity: 2

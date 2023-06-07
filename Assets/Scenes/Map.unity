@@ -292,8 +292,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -1.2987633, y: -707.79224}
-  m_SizeDelta: {x: 100, y: 60}
+  m_AnchoredPosition: {x: 24.999952, y: -707.79224}
+  m_SizeDelta: {x: 152.59, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &20103370
 MonoBehaviour:
@@ -461,21 +461,21 @@ MonoBehaviour:
   _upgrades:
   - maxIntegrityPoints: 35
     beeCapacity: 12
-    nectarCapacity: 85
+    nectarCapacity: 45
     honeyCapacity: 60
   - maxIntegrityPoints: 50
     beeCapacity: 18
-    nectarCapacity: 250
-    honeyCapacity: 175
+    nectarCapacity: 100
+    honeyCapacity: 180
   - maxIntegrityPoints: 80
     beeCapacity: 25
-    nectarCapacity: 900
-    honeyCapacity: 650
+    nectarCapacity: 150
+    honeyCapacity: 340
   - maxIntegrityPoints: 100
     beeCapacity: 35
-    nectarCapacity: 1500
-    honeyCapacity: 1000
-  _upgradePrices: 0f0000003200000096000000f4010000
+    nectarCapacity: 210
+    honeyCapacity: 500
+  _upgradePrices: 0f00000032000000960000005e010000
 --- !u!114 &20911497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -922,8 +922,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -1.2987633, y: -514.93506}
-  m_SizeDelta: {x: 100, y: 60}
+  m_AnchoredPosition: {x: 24.999952, y: -514.93506}
+  m_SizeDelta: {x: 152.59, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &87811956
 MonoBehaviour:
@@ -2551,7 +2551,7 @@ MonoBehaviour:
     flightSpeed: 4
     damagePoints: 4
     detectionRange: 16
-  _upgradePrices: 0a000000240000004e00000096000000
+  _upgradePrices: 0a00000024000000450000006e000000
 --- !u!114 &287512982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2591,8 +2591,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _beePanel: {fileID: 287512982}
   _beeSpawner: {fileID: 101273696}
-  _price: 10
-  _inflationaryGrowth: 2.5
+  _price: 9
+  _inflationaryGrowth: 1.4
 --- !u!1 &288004767
 GameObject:
   m_ObjectHideFlags: 0
@@ -3493,8 +3493,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -1.2987595, y: -707.79224}
-  m_SizeDelta: {x: 100, y: 60}
+  m_AnchoredPosition: {x: 24.999956, y: -707.79224}
+  m_SizeDelta: {x: 152.59, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &411415347
 MonoBehaviour:
@@ -4039,7 +4039,7 @@ MonoBehaviour:
   _forbiddenSpawnRadius: 3
   _spawnRadiusX: 14
   _SpawnRadiusY: 7
-  _spawnDelay: 3
+  _spawnDelay: 1
 --- !u!4 &493805444
 Transform:
   m_ObjectHideFlags: 0
@@ -5556,15 +5556,15 @@ MonoBehaviour:
   _waveDelay: 45
   _waves:
   - enemy: {fileID: -6811798146704725045, guid: f4814613917565643816e3a629149ca0, type: 3}
-    amount: 2
+    amount: 1
   - enemy: {fileID: -6811798146704725045, guid: f4814613917565643816e3a629149ca0, type: 3}
-    amount: 4
+    amount: 3
+  - enemy: {fileID: -6811798146704725045, guid: f4814613917565643816e3a629149ca0, type: 3}
+    amount: 5
   - enemy: {fileID: -6811798146704725045, guid: f4814613917565643816e3a629149ca0, type: 3}
     amount: 7
   - enemy: {fileID: -6811798146704725045, guid: f4814613917565643816e3a629149ca0, type: 3}
     amount: 10
-  - enemy: {fileID: -6811798146704725045, guid: f4814613917565643816e3a629149ca0, type: 3}
-    amount: 12
   - enemy: {fileID: 54563566628176786, guid: 8a9ab225588556c458603e154909c044, type: 3}
     amount: 1
 --- !u!212 &668457649
@@ -7817,24 +7817,24 @@ MonoBehaviour:
   _upgradeStats:
   - maxHealthPoints: 25
     maxSatietyPoints: 15
-    flightSpeed: 1.7
-    NCR: 2.2
+    flightSpeed: 2
+    NCR: 1.7
     nectarCapacity: 2
   - maxHealthPoints: 30
     maxSatietyPoints: 20
     flightSpeed: 2.5
-    NCR: 2
+    NCR: 1.2
     nectarCapacity: 3
   - maxHealthPoints: 35
     maxSatietyPoints: 25
     flightSpeed: 4
-    NCR: 1.5
-    nectarCapacity: 4
+    NCR: 1
+    nectarCapacity: 3
   - maxHealthPoints: 40
     maxSatietyPoints: 30
     flightSpeed: 5
-    NCR: 1
-    nectarCapacity: 5
+    NCR: 0.5
+    nectarCapacity: 4
   _upgradePrices: 05000000140000003200000064000000
 --- !u!114 &986088101
 MonoBehaviour:
@@ -7851,7 +7851,7 @@ MonoBehaviour:
   _beePanel: {fileID: 986088099}
   _beeSpawner: {fileID: 101273696}
   _price: 10
-  _inflationaryGrowth: 1.8
+  _inflationaryGrowth: 1.5
 --- !u!1 &996587666
 GameObject:
   m_ObjectHideFlags: 0
@@ -8181,7 +8181,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1036229902
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9872,7 +9872,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1265277365
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11761,24 +11761,24 @@ MonoBehaviour:
   - maxHealthPoints: 25
     maxSatietyPoints: 15
     flightSpeed: 1
-    productionEfficiency: 2
-    NPR: 3.2
+    productionEfficiency: 5
+    NPR: 3.5
   - maxHealthPoints: 30
     maxSatietyPoints: 20
     flightSpeed: 2
-    productionEfficiency: 4
-    NPR: 2.9
+    productionEfficiency: 8
+    NPR: 3
   - maxHealthPoints: 35
     maxSatietyPoints: 25
     flightSpeed: 3
-    productionEfficiency: 7
-    NPR: 2.3
+    productionEfficiency: 12
+    NPR: 2
   - maxHealthPoints: 40
     maxSatietyPoints: 30
     flightSpeed: 4
-    productionEfficiency: 9
+    productionEfficiency: 18
     NPR: 1.5
-  _upgradePrices: 070000001c0000003f0000007d000000
+  _upgradePrices: 07000000110000002e00000069000000
 --- !u!114 &1503123517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11819,7 +11819,7 @@ MonoBehaviour:
   _beePanel: {fileID: 1503123517}
   _beeSpawner: {fileID: 101273696}
   _price: 10
-  _inflationaryGrowth: 2.2
+  _inflationaryGrowth: 1.5
 --- !u!1 &1507542341
 GameObject:
   m_ObjectHideFlags: 0
@@ -12816,8 +12816,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -1.2987633, y: -707.79224}
-  m_SizeDelta: {x: 100, y: 60}
+  m_AnchoredPosition: {x: 24.999952, y: -707.79224}
+  m_SizeDelta: {x: 152.59, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1622937982
 MonoBehaviour:
@@ -13699,8 +13699,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -1.2987633, y: -514.93506}
-  m_SizeDelta: {x: 100, y: 60}
+  m_AnchoredPosition: {x: 24.999952, y: -514.93506}
+  m_SizeDelta: {x: 152.59, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1709655448
 MonoBehaviour:
@@ -14069,8 +14069,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -1.2987633, y: -514.93506}
-  m_SizeDelta: {x: 100, y: 60}
+  m_AnchoredPosition: {x: 24.999952, y: -514.93506}
+  m_SizeDelta: {x: 152.59, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1733558509
 MonoBehaviour:

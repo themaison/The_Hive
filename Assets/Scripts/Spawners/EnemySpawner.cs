@@ -39,6 +39,8 @@ public class EnemySpawner : MonoBehaviour
     private bool _isPreparing = true;
     private bool _isWaveActive = false;
 
+    private float _lastUpdateTime = 0f;
+
     private void Start()
     {
         _nextWaveTime = _waveDelay;
@@ -46,16 +48,20 @@ public class EnemySpawner : MonoBehaviour
 
     private void Update()
     {
-        if (Time.time >= _nextWaveTime && !_isWaveActive)
+        float deltaTime = Time.deltaTime;
+        _lastUpdateTime += deltaTime;
+
+        if (_lastUpdateTime >= _nextWaveTime && !_isWaveActive)
         {
             _waspUpgrader.Upgrade();
             WaveProcess();
-            _nextWaveTime = Time.time + _waveDelay;
+            _lastUpdateTime = 0f;
+            _nextWaveTime = _waveDelay;
         }
 
         if (_isWaveActive)
         {
-            _nextWaveTime = Time.time + _waveDelay;
+            _nextWaveTime = _waveDelay;
         }
 
         if (!_isWaveActive)
@@ -63,7 +69,7 @@ public class EnemySpawner : MonoBehaviour
             Enemy[] enemies = FindObjectsOfType<Enemy>();
             if (enemies.Length > 0)
             {
-                _nextWaveTime = Time.time + _waveDelay;
+                _nextWaveTime = _waveDelay;
             }
             else
             {
@@ -79,7 +85,7 @@ public class EnemySpawner : MonoBehaviour
             }
         }
 
-        float timeLeft = Mathf.Clamp(_nextWaveTime - Time.time, 0f, _waveDelay);
+        float timeLeft = Mathf.Clamp(_nextWaveTime - _lastUpdateTime, 0f, _waveDelay);
         _waveTimerText.text = "якед. бнкмю вепег " + Mathf.CeilToInt(timeLeft).ToString() + " яей";
 
         if (_isPreparing)
@@ -105,7 +111,7 @@ public class EnemySpawner : MonoBehaviour
     {
         _currentWave = _waves[_currentWaveIndex];
         _currentSpawnCount = 0;
-        _nextSpawnTime = Time.time;
+        _nextSpawnTime = _lastUpdateTime;
         _isPreparing = false;
         _isWaveActive = true;
         SpawnNextEnemy();

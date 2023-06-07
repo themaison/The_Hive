@@ -11,7 +11,7 @@ public class BeeRecycler : Bee
     new private static int _maxSatietyPoints = 0;
     new private static float _flightSpeed = 0;
     private static int _productionEfficiency = 0;
-    private static float _NPR = 0; //nectar processing rate
+    private static float _NPR = 0;
 
     public static int MaxHealthPoints
     {
@@ -75,14 +75,8 @@ public class BeeRecycler : Bee
 
     private void Update()
     {
-        if (_isHasHoney)
-        {
-            anim.SetBool("isHoney", true);
-        }
-        else
-        {
-            anim.SetBool("isHoney", false);
-        }
+        anim.SetBool("isHoney", _isHasHoney);
+
         ProcessNectar();
         Fly();
         Regenerate();
@@ -103,7 +97,6 @@ public class BeeRecycler : Bee
             _isRecycling = true;
             _isHasHoney = true;
             _spriteRenderer.enabled = true;
-
             _targetPosition = _barrel.transform.position;
         }
 
@@ -165,6 +158,7 @@ public class BeeRecycler : Bee
         base._flightSpeed = _flightSpeed;
 
         _NPR = Mathf.Max(_NPR, data.NPR);
+
         _productionEfficiency = Mathf.Max(_productionEfficiency, data.productionEfficiency);
     }
 }
