@@ -8,8 +8,7 @@ public class Hive : StaticObject
     [SerializeField] private HiveData _hiveData;
 
     [SerializeField] private GameObject _hiveOptionsUIPanel;
-    [SerializeField] private GameObject _exitPanel;
-
+    [SerializeField] private ExitPanelController _exitPanel;
     [SerializeField] private Slider _integrityPointsSlider;
 
     private SpriteRenderer _spriteRenderer;
@@ -32,9 +31,8 @@ public class Hive : StaticObject
 
         _takeDamage = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
-
+   
         _hintPanel.SetActive(false);
-        _exitPanel.SetActive(false);
 
         CurrentIntegrityPoints = MaxIntegrityPoints;
     }
@@ -53,7 +51,7 @@ public class Hive : StaticObject
 
         if (CurrentIntegrityPoints <= 0)
         {
-            //êîä ïðè ïîëîìêå
+            _exitPanel.ShowResultPanel("ÏÎÐÀÆÅÍÈÅ!");
         }
         _takeDamage.SetBool("TakeDamage", false);
     }

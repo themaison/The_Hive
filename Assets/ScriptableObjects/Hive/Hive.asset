@@ -16,4 +16,4 @@ MonoBehaviour:
   maxIntegrityPoints: 25
   beeCapacity: 5
   nectarCapacity: 25
-  honeyCapacity: 10
+  honeyCapacity: 15

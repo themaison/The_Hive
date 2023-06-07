@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class EnemySpawner : MonoBehaviour
 {
+    [SerializeField] private ExitPanelController _exitPanel;
     [SerializeField] private WaspUpgrader _waspUpgrader;
 
     [SerializeField] private Text _waveCountText;
@@ -66,8 +67,15 @@ public class EnemySpawner : MonoBehaviour
             }
             else
             {
-                _waveCountText.text = "ондцнрнбйю";
-                _waveTimerText.enabled = true;
+                if (_currentWaveIndex == _waves.Length)
+                {
+                    _exitPanel.ShowResultPanel("онаедю!");
+                }
+                else
+                {
+                    _waveCountText.text = "ондцнрнбйю";
+                    _waveTimerText.enabled = true;
+                }
             }
         }
 
@@ -84,6 +92,7 @@ public class EnemySpawner : MonoBehaviour
         {
             _waveCountText.text = "аняя";
             _waveTimerText.enabled = false;
+
         }
         else if (_isWaveActive)
         {

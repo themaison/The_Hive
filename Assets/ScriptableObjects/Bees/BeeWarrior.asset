@@ -15,6 +15,6 @@ MonoBehaviour:
   name: "\u0412\u041E\u0418\u041D"
   healthPoints: 20
   satietyPoints: 10
-  flightSpeed: 1
+  flightSpeed: 1.5
   damagePoints: 1
-  detectionRange: 5
+  detectionRange: 7

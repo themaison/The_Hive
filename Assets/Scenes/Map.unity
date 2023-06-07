@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6994930
 RectTransform:
   m_ObjectHideFlags: 0
@@ -460,22 +460,22 @@ MonoBehaviour:
   _hiveUIPanel: {fileID: 20911495}
   _upgrades:
   - maxIntegrityPoints: 35
-    beeCapacity: 8
-    nectarCapacity: 35
-    honeyCapacity: 50
-  - maxIntegrityPoints: 50
     beeCapacity: 12
-    nectarCapacity: 50
-    honeyCapacity: 125
+    nectarCapacity: 85
+    honeyCapacity: 60
+  - maxIntegrityPoints: 50
+    beeCapacity: 18
+    nectarCapacity: 250
+    honeyCapacity: 175
   - maxIntegrityPoints: 80
-    beeCapacity: 20
-    nectarCapacity: 100
-    honeyCapacity: 300
+    beeCapacity: 25
+    nectarCapacity: 900
+    honeyCapacity: 650
   - maxIntegrityPoints: 100
     beeCapacity: 35
-    nectarCapacity: 250
-    honeyCapacity: 500
-  _upgradePrices: 0f0000002800000069000000fa000000
+    nectarCapacity: 1500
+    honeyCapacity: 1000
+  _upgradePrices: 0f0000003200000096000000f4010000
 --- !u!114 &20911497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -489,8 +489,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hiveUIPanel: {fileID: 20911495}
-  _price: 2
-  _inflationaryGrowth: 1.5
+  _price: 5
+  _inflationaryGrowth: 1.3
 --- !u!1 &34103574
 GameObject:
   m_ObjectHideFlags: 0
@@ -967,6 +967,83 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 87811954}
   m_CullTransparentMesh: 1
+--- !u!1 &95761846
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 95761847}
+  - component: {fileID: 95761849}
+  - component: {fileID: 95761848}
+  m_Layer: 5
+  m_Name: Panel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &95761847
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95761846}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1636426203}
+  m_Father: {fileID: 915784466}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -259.48053}
+  m_SizeDelta: {x: 797.92004, y: 203.37}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &95761848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95761846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.5882353}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &95761849
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95761846}
+  m_CullTransparentMesh: 1
 --- !u!1 &96962212
 GameObject:
   m_ObjectHideFlags: 0
@@ -1146,9 +1223,9 @@ MonoBehaviour:
   _pollinator: {fileID: 4161084318368288721, guid: eec7255db063e224e8f99e4614fd0ba4, type: 3}
   _warrior: {fileID: 8976756718585932945, guid: 42f8f3980a0e6b9479cf54a6632aeb9c, type: 3}
   _recycler: {fileID: 7418267069638195618, guid: 6d0c1fca15638ad4aa2164f954309126, type: 3}
-  _startPollinatorsAmount: 0
-  _startRecyclersAmount: 0
-  _startWarriorsAmount: 0
+  _startPollinatorsAmount: 3
+  _startRecyclersAmount: 1
+  _startWarriorsAmount: 1
   _spawnRadius: 1
 --- !u!212 &101273697
 SpriteRenderer:
@@ -2454,27 +2531,27 @@ MonoBehaviour:
   _data: {fileID: 11400000, guid: f44a2ad23da9d5e4e98f330f6207195c, type: 2}
   _beeWarriorUIPanel: {fileID: 287512982}
   _upgrades:
-  - maxHealthPoints: 15
+  - maxHealthPoints: 25
     maxSatietyPoints: 15
-    flightSpeed: 1
+    flightSpeed: 1.7
     damagePoints: 1
-    detectionRange: 5
-  - maxHealthPoints: 20
+    detectionRange: 9
+  - maxHealthPoints: 30
     maxSatietyPoints: 20
     flightSpeed: 2
     damagePoints: 2
-    detectionRange: 7
-  - maxHealthPoints: 25
+    detectionRange: 12
+  - maxHealthPoints: 35
     maxSatietyPoints: 25
     flightSpeed: 3
     damagePoints: 3
-    detectionRange: 10
-  - maxHealthPoints: 30
+    detectionRange: 14
+  - maxHealthPoints: 40
     maxSatietyPoints: 30
     flightSpeed: 4
     damagePoints: 4
-    detectionRange: 12
-  _upgradePrices: 05000000140000003200000064000000
+    detectionRange: 16
+  _upgradePrices: 0a000000240000004e00000096000000
 --- !u!114 &287512982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2515,7 +2592,7 @@ MonoBehaviour:
   _beePanel: {fileID: 287512982}
   _beeSpawner: {fileID: 101273696}
   _price: 10
-  _inflationaryGrowth: 0
+  _inflationaryGrowth: 2.5
 --- !u!1 &288004767
 GameObject:
   m_ObjectHideFlags: 0
@@ -5469,13 +5546,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 637ff721feeeb834997569c2bfe15934, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _exitPanel: {fileID: 915784469}
   _waspUpgrader: {fileID: 668457651}
   _waveCountText: {fileID: 1997827180}
   _waveTimerText: {fileID: 1226986646}
   _spawnRadiusX: 16
   _spawnRadiusY: 10
   _waspSpawnDelay: 1
-  _waveDelay: 20
+  _waveDelay: 45
   _waves:
   - enemy: {fileID: -6811798146704725045, guid: f4814613917565643816e3a629149ca0, type: 3}
     amount: 2
@@ -5486,7 +5564,7 @@ MonoBehaviour:
   - enemy: {fileID: -6811798146704725045, guid: f4814613917565643816e3a629149ca0, type: 3}
     amount: 10
   - enemy: {fileID: -6811798146704725045, guid: f4814613917565643816e3a629149ca0, type: 3}
-    amount: 15
+    amount: 12
   - enemy: {fileID: 54563566628176786, guid: 8a9ab225588556c458603e154909c044, type: 3}
     amount: 1
 --- !u!212 &668457649
@@ -6904,6 +6982,7 @@ GameObject:
   - component: {fileID: 915784466}
   - component: {fileID: 915784468}
   - component: {fileID: 915784467}
+  - component: {fileID: 915784469}
   m_Layer: 5
   m_Name: ExitPanel
   m_TagString: Untagged
@@ -6928,6 +7007,7 @@ RectTransform:
   - {fileID: 96962213}
   - {fileID: 1747080319}
   - {fileID: 1882273591}
+  - {fileID: 95761847}
   m_Father: {fileID: 739858095}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6974,6 +7054,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 915784465}
   m_CullTransparentMesh: 1
+--- !u!114 &915784469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 915784465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b78108619893f61469914fac6516c656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _panel: {fileID: 915784465}
+  _titleText: {fileID: 1636426204}
+  _closeButton: {fileID: 1839676811}
 --- !u!1 &926165175
 GameObject:
   m_ObjectHideFlags: 0
@@ -7720,22 +7815,22 @@ MonoBehaviour:
   _data: {fileID: 11400000, guid: a015223b0401a024b84770c9459533d0, type: 2}
   _beePollinatorUIPanel: {fileID: 986088099}
   _upgradeStats:
-  - maxHealthPoints: 15
+  - maxHealthPoints: 25
     maxSatietyPoints: 15
-    flightSpeed: 2
-    NCR: 3
+    flightSpeed: 1.7
+    NCR: 2.2
     nectarCapacity: 2
-  - maxHealthPoints: 20
+  - maxHealthPoints: 30
     maxSatietyPoints: 20
-    flightSpeed: 3
+    flightSpeed: 2.5
     NCR: 2
     nectarCapacity: 3
-  - maxHealthPoints: 25
+  - maxHealthPoints: 35
     maxSatietyPoints: 25
     flightSpeed: 4
-    NCR: 2
+    NCR: 1.5
     nectarCapacity: 4
-  - maxHealthPoints: 30
+  - maxHealthPoints: 40
     maxSatietyPoints: 30
     flightSpeed: 5
     NCR: 1
@@ -7756,7 +7851,7 @@ MonoBehaviour:
   _beePanel: {fileID: 986088099}
   _beeSpawner: {fileID: 101273696}
   _price: 10
-  _inflationaryGrowth: 0
+  _inflationaryGrowth: 1.8
 --- !u!1 &996587666
 GameObject:
   m_ObjectHideFlags: 0
@@ -8086,7 +8181,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1036229902
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9777,7 +9872,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1265277365
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11263,16 +11358,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 915784465}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 915784469}
+        m_TargetAssemblyTypeName: ExitPanelController, Assembly-CSharp
+        m_MethodName: ShowPaneleByText
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: "\u041F\u0410\u0423\u0417\u0410"
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 2608684637391112931}
@@ -11663,27 +11758,27 @@ MonoBehaviour:
   _data: {fileID: 11400000, guid: 81bd7272b3559b44c9c98037e0428f45, type: 2}
   _beeRecyclerUIPanel: {fileID: 1503123517}
   _upgrades:
-  - maxHealthPoints: 15
+  - maxHealthPoints: 25
     maxSatietyPoints: 15
     flightSpeed: 1
     productionEfficiency: 2
-    NPR: 4
-  - maxHealthPoints: 20
+    NPR: 3.2
+  - maxHealthPoints: 30
     maxSatietyPoints: 20
     flightSpeed: 2
-    productionEfficiency: 3
-    NPR: 3
-  - maxHealthPoints: 25
+    productionEfficiency: 4
+    NPR: 2.9
+  - maxHealthPoints: 35
     maxSatietyPoints: 25
     flightSpeed: 3
-    productionEfficiency: 4
-    NPR: 2
-  - maxHealthPoints: 30
+    productionEfficiency: 7
+    NPR: 2.3
+  - maxHealthPoints: 40
     maxSatietyPoints: 30
     flightSpeed: 4
-    productionEfficiency: 5
-    NPR: 1
-  _upgradePrices: 05000000140000003200000064000000
+    productionEfficiency: 9
+    NPR: 1.5
+  _upgradePrices: 070000001c0000003f0000007d000000
 --- !u!114 &1503123517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11724,7 +11819,7 @@ MonoBehaviour:
   _beePanel: {fileID: 1503123517}
   _beeSpawner: {fileID: 101273696}
   _price: 10
-  _inflationaryGrowth: 0
+  _inflationaryGrowth: 2.2
 --- !u!1 &1507542341
 GameObject:
   m_ObjectHideFlags: 0
@@ -12040,15 +12135,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8053502502830038391, guid: f4814613917565643816e3a629149ca0, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8053502502830038391, guid: f4814613917565643816e3a629149ca0, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8339045346598863340, guid: f4814613917565643816e3a629149ca0, type: 3}
       propertyPath: m_Name
       value: Wasp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8339045346598863340, guid: f4814613917565643816e3a629149ca0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4814613917565643816e3a629149ca0, type: 3}
@@ -12843,6 +12942,86 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1635861784}
+  m_CullTransparentMesh: 1
+--- !u!1 &1636426202
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1636426203}
+  - component: {fileID: 1636426205}
+  - component: {fileID: 1636426204}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1636426203
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1636426202}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 95761847}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1636426204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1636426202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: f0143a46aea17db45a71b94536ef45c1, type: 3}
+    m_FontSize: 64
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 6
+    m_MaxSize: 64
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &1636426205
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1636426202}
   m_CullTransparentMesh: 1
 --- !u!1 &1645942583
 GameObject:
@@ -16797,21 +16976,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: BeeWarrior
       objectReference: {fileID: 0}
-    - target: {fileID: 2346869049637025193, guid: 42f8f3980a0e6b9479cf54a6632aeb9c, type: 3}
-      propertyPath: m_AnchorMax.x
+    - target: {fileID: 2055553534515692168, guid: 42f8f3980a0e6b9479cf54a6632aeb9c, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2346869049637025193, guid: 42f8f3980a0e6b9479cf54a6632aeb9c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346869049637025193, guid: 42f8f3980a0e6b9479cf54a6632aeb9c, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2721368398603905980, guid: 42f8f3980a0e6b9479cf54a6632aeb9c, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.38
       objectReference: {fileID: 0}
     - target: {fileID: 2721368398603905980, guid: 42f8f3980a0e6b9479cf54a6632aeb9c, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42f8f3980a0e6b9479cf54a6632aeb9c, type: 3}
@@ -17604,7 +17787,7 @@ PrefabInstance:
     - target: {fileID: 7902886442859103625, guid: f455432976e1a7e49a3aa7547a6cb968, type: 3}
       propertyPath: _exitPanel
       value: 
-      objectReference: {fileID: 915784465}
+      objectReference: {fileID: 915784469}
     - target: {fileID: 7902886442859103625, guid: f455432976e1a7e49a3aa7547a6cb968, type: 3}
       propertyPath: _integrity
       value: 100
@@ -17650,9 +17833,17 @@ PrefabInstance:
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7902886442859103625, guid: f455432976e1a7e49a3aa7547a6cb968, type: 3}
+      propertyPath: _exitPanelTextTitle
+      value: 
+      objectReference: {fileID: 1636426204}
+    - target: {fileID: 7902886442859103625, guid: f455432976e1a7e49a3aa7547a6cb968, type: 3}
       propertyPath: _hiveOptionsUIPanel
       value: 
       objectReference: {fileID: 1983683870}
+    - target: {fileID: 7902886442859103625, guid: f455432976e1a7e49a3aa7547a6cb968, type: 3}
+      propertyPath: _exitPanelCloseButton
+      value: 
+      objectReference: {fileID: 1839676811}
     - target: {fileID: 7902886442859103625, guid: f455432976e1a7e49a3aa7547a6cb968, type: 3}
       propertyPath: _integrityStateSlider
       value: 
