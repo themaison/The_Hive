@@ -6,23 +6,29 @@ public abstract class Enemy : FlyingEntity
     protected float _damageFrequency;
 
     protected GameObject _target;
+    protected Hive _hive;
 
-    protected virtual void Bite(Bee bee)
-    {
-        bee.TakeDamage(_damagePoints);
-    }
-    protected virtual void Break(Hive hive)
-    {
-        hive.TakeDamage(_damagePoints);
-    }
+    protected float _damageTime = 0f;
 
-    public virtual void SetEnemyData(EnemyData ED)  // для Шершня (временно)
+    protected void Bite()
     {
-        _name = ED.name;
-        _maxHealthPoints = ED.healthPoints;
-        _flightSpeed = ED.flightSpeed;
-        _damagePoints = ED.damagePoints;
-        _damageFrequency = ED.damageFrequency;
+        //_takeDamageAnim.SetBool("TakeDamageWasp", true);
+
+        if (Time.time - _damageTime > _damageFrequency)
+        {
+            _target.GetComponent<Bee>().TakeDamage(_damagePoints);
+            _damageTime = Time.time;
+        }
+
+        //_takeDamageAnim.SetBool("TakeDamageWasp", false);
     }
 
+    protected void Break()
+    {
+        if (Time.time - _damageTime > _damageFrequency)
+        {
+            _hive.TakeDamage(_damagePoints);
+            _damageTime = Time.time;
+        }
+    }
 }

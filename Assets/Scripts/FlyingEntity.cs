@@ -44,7 +44,6 @@ public abstract class FlyingEntity : MonoBehaviour, IPointerEnterHandler, IPoint
 
     protected void UpdateHealthPointsSlider()
     {
-        //Change Text
         _healthPointsSlider.value = (float)_currentHealthPoints / _maxHealthPoints;
     }
 

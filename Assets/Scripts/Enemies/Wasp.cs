@@ -10,7 +10,10 @@ public class Wasp : Enemy
     new private static int _damagePoints;
     new private static float _damageFrequency;
 
+    private SpriteRenderer _spriteRenderer;
     private Animator _takeDamageAnim;
+
+    private float minDistance = 0f;
 
     public static int MaxHealthPoints
     {
@@ -36,12 +39,6 @@ public class Wasp : Enemy
         set { _damageFrequency = value; }
     }
 
-    private SpriteRenderer _spriteRenderer;
-    private Hive _hive;
-
-    private float _damageTime = 0f;
-    private float minDistance = 0f;
-
     private void Start()
     {
         LoadData(_waspData);
@@ -50,7 +47,6 @@ public class Wasp : Enemy
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _hive = FindObjectOfType<Hive>();
 
-        //_damageTime = _damageFrequency;
         _currentHealthPoints = _maxHealthPoints;
 
         SetHintPanelSettings();
@@ -71,41 +67,15 @@ public class Wasp : Enemy
         }
         else if (_target.CompareTag("bee"))
         {
-            Fight();
+            Bite();
         }
         else if (_target.CompareTag("hive"))
         {
-            Breaking();
+            Break();
         }
     }
 
-    protected void Fight()
-    {
-        _takeDamageAnim.SetBool("TakeDamageWasp", true);
-        if (Time.time - _damageTime > _damageFrequency)
-        {
-            if (_target.CompareTag("bee"))
-            {
-                Bite(_target.GetComponent<Bee>());
-                _damageTime = Time.time;
-            }
-        }
-        _takeDamageAnim.SetBool("TakeDamageWasp", false);
-    }
-
-    protected void Breaking()
-    {
-        if (Time.time - _damageTime > _damageFrequency)
-        {
-            if (_target.CompareTag("hive"))
-            {
-                Break(_target.GetComponent<Hive>());
-                _damageTime = Time.time;
-            }
-        }
-    }
-
-    private void FindNearestTarget()
+    protected void FindNearestTarget()
     {
         Bee[] bees = FindObjectsOfType<Bee>();
 
