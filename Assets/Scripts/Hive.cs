@@ -35,6 +35,9 @@ public class Hive : StaticObject
         _hintPanel.SetActive(false);
 
         CurrentIntegrityPoints = MaxIntegrityPoints;
+        NectarOccupancy = 0;
+        HoneyOccupancy = 0;
+        BeeOccupancy = 0;
     }
 
     private void Update()
