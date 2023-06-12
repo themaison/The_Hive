@@ -10,7 +10,7 @@ public class Hive : StaticObject
     [SerializeField] private GameObject _hiveOptionsUIPanel;
     [SerializeField] private ExitPanelController _exitPanel;
     [SerializeField] private Slider _integrityPointsSlider;
-
+    [SerializeField] private AudioClip[] _backgroundAudioClips;
     private SpriteRenderer _spriteRenderer;
 
     public static int MaxIntegrityPoints;
@@ -24,20 +24,34 @@ public class Hive : StaticObject
     public static int BeeOccupancy;
 
     private Animator _takeDamage;
+    private AudioSource _punch;
+    public AudioSource _backgroundAudioSource;
+    private int _currentBackgroundAudioIndex;
 
     private void Start()
     {
         LoadData(_hiveData);
-
+        _punch = GetComponent<AudioSource>();
         _takeDamage = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
-   
+
         _hintPanel.SetActive(false);
 
         CurrentIntegrityPoints = MaxIntegrityPoints;
         NectarOccupancy = 0;
         HoneyOccupancy = 0;
         BeeOccupancy = 0;
+
+        _backgroundAudioSource = gameObject.AddComponent<AudioSource>();
+        _backgroundAudioSource.loop = true;
+        _backgroundAudioSource.volume = 0.3f;
+
+        if (_backgroundAudioClips.Length > 0)
+        {
+            _backgroundAudioSource.clip = _backgroundAudioClips[0];
+            _backgroundAudioSource.Play();
+            _currentBackgroundAudioIndex = 0;
+        }
     }
 
     private void Update()
@@ -47,6 +61,7 @@ public class Hive : StaticObject
 
     public virtual void TakeDamage(int damage)
     {
+        _punch.Play();
         _takeDamage.SetBool("TakeDamage", true);
         CurrentIntegrityPoints -= damage;
         CurrentIntegrityPoints = Mathf.Clamp(CurrentIntegrityPoints, 0, MaxIntegrityPoints);
@@ -54,6 +69,7 @@ public class Hive : StaticObject
 
         if (CurrentIntegrityPoints <= 0)
         {
+            _backgroundAudioSource.volume = 0;
             _exitPanel.ShowResultPanel("ÏÎÐÀÆÅÍÈÅ!");
         }
         _takeDamage.SetBool("TakeDamage", false);
@@ -91,7 +107,7 @@ public class Hive : StaticObject
 
     public int GetNectar(int amount)
     {
-        if(amount > NectarOccupancy)
+        if (amount > NectarOccupancy)
         {
             amount = NectarOccupancy;
         }
@@ -127,11 +143,29 @@ public class Hive : StaticObject
 
     public void TimePause()
     {
+        _backgroundAudioSource.Pause();
         Time.timeScale = 0;
     }
+
     public void ContinueTime()
     {
+        _backgroundAudioSource.UnPause();
         Time.timeScale = 1;
+    }
+
+    public void PlayNextBackgroundAudio()
+    {
+        if (_backgroundAudioClips.Length > 1)
+        {
+            _currentBackgroundAudioIndex++;
+            if (_currentBackgroundAudioIndex >= _backgroundAudioClips.Length)
+            {
+                _currentBackgroundAudioIndex = 0;
+            }
+
+            _backgroundAudioSource.clip = _backgroundAudioClips[_currentBackgroundAudioIndex];
+            _backgroundAudioSource.Play();
+        }
     }
 
     private void LoadData(HiveData data)

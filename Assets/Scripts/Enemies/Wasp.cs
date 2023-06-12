@@ -11,7 +11,6 @@ public class Wasp : Enemy
     new private static float _damageFrequency;
 
     private SpriteRenderer _spriteRenderer;
-    private Animator _takeDamageAnim;
 
     private float minDistance = 0f;
 
@@ -43,7 +42,6 @@ public class Wasp : Enemy
     {
         LoadData(_waspData);
 
-        _takeDamageAnim = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _hive = FindObjectOfType<Hive>();
 

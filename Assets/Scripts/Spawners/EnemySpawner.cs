@@ -1,4 +1,4 @@
-using System;
+Ôªøusing System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -40,6 +40,7 @@ public class EnemySpawner : MonoBehaviour
     private bool _isWaveActive = false;
 
     private float _lastUpdateTime = 0f;
+    private float timeLeft;
 
     private void Start()
     {
@@ -69,40 +70,40 @@ public class EnemySpawner : MonoBehaviour
             Enemy[] enemies = FindObjectsOfType<Enemy>();
             if (enemies.Length > 0)
             {
-                _nextWaveTime = _waveDelay;
+                _nextWaveTime = Mathf.Max(_nextWaveTime, _lastUpdateTime + _waveDelay);
             }
             else
             {
                 if (_currentWaveIndex == _waves.Length)
                 {
-                    _exitPanel.ShowResultPanel("œŒ¡≈ƒ¿!");
+                    _exitPanel.ShowResultPanel("–ü–û–ë–ï–î–ê!");
                 }
                 else
                 {
-                    _waveCountText.text = "œŒƒ√Œ“Œ¬ ¿";
+                    _waveCountText.text = "–ü–û–î–ì–û–¢–û–í–ö–ê";
                     _waveTimerText.enabled = true;
                 }
             }
         }
 
         float timeLeft = Mathf.Clamp(_nextWaveTime - _lastUpdateTime, 0f, _waveDelay);
-        _waveTimerText.text = "—À≈ƒ. ¬ŒÀÕ¿ ◊≈–≈« " + Mathf.CeilToInt(timeLeft).ToString() + " —≈ ";
+        _waveTimerText.text = "–°–õ–ï–î. –í–û–õ–ù–ê –ß–ï–†–ï–ó " + Mathf.CeilToInt(timeLeft).ToString() + " –°–ï–ö";
 
         if (_isPreparing)
         {
-            _waveCountText.text = "œŒƒ√Œ“Œ¬ ¿";
+            _waveCountText.text = "–ü–û–î–ì–û–¢–û–í–ö–ê";
             _waveTimerText.enabled = true;
         }
 
         if ((_currentWaveIndex >= _waves.Length - 1) && (_isWaveActive))
         {
-            _waveCountText.text = "¡Œ——";
+            _waveCountText.text = "–ë–û–°–°";
             _waveTimerText.enabled = false;
-
+            return;
         }
         else if (_isWaveActive)
         {
-            _waveCountText.text = "¬ŒÀÕ¿ " + (_currentWaveIndex + 1).ToString();
+            _waveCountText.text = "–í–û–õ–ù–ê " + (_currentWaveIndex + 1).ToString();
             _waveTimerText.enabled = false;
         }
     }
