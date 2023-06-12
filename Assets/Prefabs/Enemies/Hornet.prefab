@@ -300,7 +300,7 @@ GameObject:
   - component: {fileID: 348558982594317442}
   m_Layer: 0
   m_Name: Hornet
-  m_TagString: enemy
+  m_TagString: hornet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -10,7 +10,7 @@ public abstract class Bee : FlyingEntity
     protected int _maxSatietyPoints;
     protected int _currentSatietyPoints;
 
-    protected const float _hungerDelay = 7;
+    protected const float _hungerDelay = 4.5f;
     protected const float _hungerDelayBoost = 3;
 
     protected const int _hungerDamage = 1;
@@ -20,7 +20,7 @@ public abstract class Bee : FlyingEntity
     protected const int _regenerateValue = 1;   
     protected float _lastRegenerateTime;
 
-    protected const float _eatDelay = 8;
+    protected const float _eatDelay = 6.5f;
     protected const int _nectarToSatiety = 4;   
 
     protected Hive _hive;

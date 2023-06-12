@@ -13,6 +13,9 @@ TagManager:
   - barrel
   - barrel_busy
   - invisible_bee
+  - hornet
+  - wasp
+  - wasp_busy
   layers:
   - Default
   - TransparentFX

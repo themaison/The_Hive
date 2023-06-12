@@ -83,6 +83,14 @@ public class BeeWarrior : Bee
     private void FindNearestEnemy()
     {
         Enemy[] enemies = FindObjectsOfType<Enemy>(); 
+        int busy_count = 0;
+        foreach (Enemy enemy in enemies)
+        {
+            if (enemy.CompareTag("wasp_busy"))
+            {
+                busy_count++;
+            }
+        }
 
         float closestDistance = Mathf.Infinity;
 
@@ -91,8 +99,11 @@ public class BeeWarrior : Bee
             float distance = Vector2.Distance(transform.position, enemy.transform.position);
             if (distance < closestDistance && distance <= _detectionRange)
             {
-                closestDistance = distance;
-                _nearestEnemy = enemy;
+                if (!enemy.CompareTag("wasp_busy") || busy_count == enemies.Length)
+                {
+                    closestDistance = distance;
+                    _nearestEnemy = enemy;
+                }
             }
         }
     }
@@ -101,6 +112,7 @@ public class BeeWarrior : Bee
     {
         if (_nearestEnemy != null)
         {
+            _nearestEnemy.tag = "wasp_busy";
             _targetPosition = _nearestEnemy.transform.position;
 
         }

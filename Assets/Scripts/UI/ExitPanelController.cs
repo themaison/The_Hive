@@ -39,7 +39,7 @@ public class ExitPanelController : MonoBehaviour
             _gameover.mute = true;
         }
 
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
         _titleText.text = text;
         _closeButton.interactable = false;
         _panel.SetActive(true);
